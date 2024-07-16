@@ -1,0 +1,13 @@
+@font-face {
+    font-family: "Arimo";
+    font-weight: 400;
+    src: url("../../assets/fonts/Arimo/Arimo/static/Arimo-Regular.ttf") format("truetype");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Arimo Standard";
+    font-weight: 400;
+    src: url("../../assets/fonts/Arimo/Old_Standard_TT/OldStandardTT-Regular.ttf") format("truetype");
+    font-display: swap;
+}

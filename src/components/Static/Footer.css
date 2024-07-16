@@ -1,0 +1,76 @@
+.footer-start {
+    background-color: #F2F2F2;
+    color: #454545;
+    padding: 52px 0;
+}
+
+.footer-header {
+    font-family: "Arimo Standard";
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 38px;
+    color: #000;
+}
+
+.footer-title {
+    font-family: "Arimo Standard";
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 21px;
+}
+
+.footer-arrowIcon {
+    color: #FF4330;
+    margin-left: 20px;
+}
+
+.footer-listItem {
+    font-family: "Arimo Standard";
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 21px;
+    display: block;
+    color: #000;
+    text-decoration: none;
+    margin-bottom: 16px;
+    cursor: pointer;
+}
+
+.tab-input {
+    font-family: "Arimo Standard" !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 21px !important;
+    color: #8C8C8C !important;
+    border: 0.5px solid #D6D6D6 !important;
+    padding: 16px 28px !important;
+    border-radius: 0 !important;
+    background-color: #fff;
+    width: 100%!important;
+}
+
+.tab-input:focus {
+    box-shadow: none !important;
+}
+
+.footer-icon {
+    width: 20px;
+    height: 20px;
+    margin-left: 10px;
+}
+
+.footer-form-submit-btn {
+    background: #FF4330 !important;
+    border-radius: 0 !important;
+    padding: 6px 60px 6px 16px !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 28px !important;
+    color: #fff !important;
+    border: none !important;
+    float: right !important;
+}
+
+.socialMediaLinks {
+    cursor: pointer;
+}

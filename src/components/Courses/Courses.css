@@ -1,0 +1,89 @@
+.courses-card {
+    box-shadow: 0px 10px 20px 0px #0000001A;
+    border: none !important;
+    position: relative;
+}
+
+.courses-status {
+    padding: 0 13.5px;
+    border-radius: 1.71px;
+    background-color: #fff;
+    font-family: "Arimo Standard";
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #FF4330;
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+.courses-header {
+    font-family: "Arimo Standard";
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 24px;
+}
+
+.courses-author {
+    font-family: "Arimo Standard";
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 24px;
+    color: #0F0F0F;
+}
+
+.courses-text {
+    font-family: "Arimo Standard";
+    font-size: 10px;
+    font-weight: 400;
+    line-height: 15px;
+    color: #838383;
+}
+
+.courses-rating {
+    font-family: "Arimo Standard";
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 15px;
+    color: #838383;
+}
+
+.courses-btn {
+    padding: 2px 20px;
+    border-radius: 2px;
+    color: #fff;
+    font-family: "Arimo Standard";
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.courses-btn button, .courses-btn button:hover, .courses-btn button:active {
+    background-color: transparent!important;
+    border: none;
+}
+
+.courses-btn-notTaken {
+    background-color: #FF4330;
+
+}
+
+.courses-btn-taken {
+    background-color: #21B580;
+}
+
+.pagination {
+    justify-content: end;
+    margin-top: 20px;
+}
+
+.active>.page-link, .page-link.active {
+    background-color: #FF4330!important;
+    border-color: #FF4330!important;
+    color: #fff!important;
+}
+
+.page-link {
+    color: #FF4330!important;
+}

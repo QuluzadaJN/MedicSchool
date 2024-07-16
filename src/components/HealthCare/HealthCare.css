@@ -1,0 +1,68 @@
+.healtCare-text {
+    font-family: "Arimo Standard";
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 40px;
+    color: #232323;
+}
+
+.heathCare-contact {
+    font-family: "Arimo Standard";
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    color: #AEAEAE;
+}
+
+.healthCarePage-wp {
+    font-family: "Arimo Standard"!important;
+    font-size: 30px!important;
+    font-weight: 500!important;
+    line-height: 20px!important;
+    color: #fff!important;
+    box-shadow: 0px 5px 20px 0px #00000026!important;
+    background-color: #69E483!important;
+    border-radius: 8px!important;
+    border: none !important;
+    padding: 16px 40px!important;
+}
+
+.healthCare-input,
+.healthCare-input::placeholder {
+    font-family: "Arimo Standard" !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 21px !important;
+    color: #8C8C8C !important;
+}
+
+.healthCare-input {
+    border: 0.5px solid #D6D6D6 !important;
+    padding: 16px 28px !important;
+    border-radius: 0 !important;
+}
+
+.healthCare-input:focus {
+    box-shadow: none !important;
+}
+
+.healthCare-btn {
+    font-family: "Arimo Standard" !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 28px !important;
+    border-radius: 3px !important;
+    background-color: #FF4330 !important;
+    color: #fff !important;
+    padding: 6px 20px !important;
+    border: none !important;
+}
+
+.healthCare-call {
+    font-family: "Arimo Standard";
+    font-size: 18px;
+    font-weight: 500;
+    line-height: 28px;
+    color: #AEAEAE;
+    text-decoration: underline;
+}

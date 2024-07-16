@@ -1,0 +1,52 @@
+.bg-gray {
+    background-color: #F2F2F2;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.about-header {
+    font-family: "Arimo Standard";
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 82px;
+    color: #232323;
+}
+
+.about-content {
+    font-family: "Arimo Standard";
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 47px;
+}
+
+.about-img {
+    width: 142px;
+    height: 142px;
+    background-color: #D9D9D9;
+}
+
+.about-section-header {
+    font-family: "Arimo Standard";
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 40px;
+    position: absolute;
+    z-index: 1;
+}
+
+.about-header--border {
+    position: absolute;
+    display: block;
+    width: 180px;
+    bottom: 6px;
+    border-bottom: 8px solid #FF4330;
+}
+
+.about-text {
+    font-family: "Arimo Standard";
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 38px;
+}

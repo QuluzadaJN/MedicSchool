@@ -1,0 +1,94 @@
+.bg-gray {
+    background-color: #F2F2F2;
+}
+
+.contact-header {
+    font-family: "Arimo Standard";
+    font-size: 70px;
+    font-weight: 700;
+    line-height: 82px;
+    color: #232323;
+}
+
+.contact-desc {
+    font-family: "Arimo Standard";
+    font-size: 32px;
+    font-weight: 400;
+    line-height: 46px;
+    color: #AFAFAF;
+}
+
+.contact-button {
+    padding: 10px 32px !important;
+    border-radius: 8px !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 22px !important;
+    background: #FF4330 !important;
+    border: none !important;
+}
+
+.contact-form {
+    padding: 60px 0;
+}
+
+.bg-white {
+    padding: 50px 80px;
+    background-color: #fff;
+}
+
+.contact-form-right .contact-input {
+    width: 100%;
+    padding: 16px 28px;
+    border: 0.5px solid #B3B3B3;
+    font-family: "Arimo Standard";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+    color: #8C8C8C;
+    border-radius: 0!important;
+}
+
+.contact-form-right .form-control:focus {
+    box-shadow: none !important;
+}
+
+.contact-form-right .form-control::placeholder {
+    color: #8C8C8C;
+}
+
+.contact-div {
+    font-family: "Arimo Standard";
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 28px;
+    color: #878787;
+    padding: 32px 56px;
+    background-color: #fff;
+}
+
+.contact-div-icon {
+    width: 32px;
+    height: 32px;
+    margin-left: 24px;
+}
+
+.control-error {
+    font-family: "Arimo Standard";
+    font-size: 12px;
+    color: #FF4330;
+    text-align: left;
+}
+
+.contact-form-submit-btn {
+    background: #FF4330 !important;
+    border-radius: 0 !important;
+    padding: 12px 80px 12px 24px !important;
+    font-size: 24px !important;
+    font-weight: 500 !important;
+    line-height: 28px !important;
+    color: #fff !important;
+    border: none !important;
+    float: right !important;
+}

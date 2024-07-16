@@ -1,0 +1,24 @@
+.bg-gray {
+    background-color: #F2F2F2;
+}
+
+.interestedCourses-header {
+    font-family: "Arimo";
+    font-size: 21px;
+    font-weight: 500;
+    line-height: 28px;
+    color: #161616;
+}
+
+.interestedCoursesbtn {
+    border-radius: 4px !important;
+    border: none !important;
+    background-color: #FF4330 !important;
+    color: #fff !important;
+    padding: 8px 12px 8px 60px !important;
+    font-family: "Arimo" !important;
+    font-size: 14px !important;
+    font-weight: 500 !important;
+    line-height: 24px !important;
+    text-decoration: none!important;
+}

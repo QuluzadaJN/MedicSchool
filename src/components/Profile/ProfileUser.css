@@ -1,0 +1,58 @@
+.user-header {
+    background-color: #4A4A4A;
+    padding: 12px 0;
+}
+
+.user-profile-img {
+    background-color: #D9D9D9;
+    width: 170px;
+    height: 170px;
+}
+
+.user-name {
+    font-family: "Arimo Standard";
+    font-size: 36px;
+    font-weight: 500;
+    line-height: 42px;
+    color: #fff;
+}
+
+.edit-user {
+    font-family: "Arimo Standard"!important;
+    font-size: 16px!important;
+    font-weight: 500!important;
+    line-height: 19px!important;
+    background-color: #D9D9D9!important;
+    color: #000!important;
+    border: none!important;
+    border-radius: 0!important;
+}
+
+.user-content-name {
+    color: #232323;
+}
+
+.user-content-text {
+    font-family: "Arimo Standard";
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    width: 55%;
+    margin: 28px 0;
+}
+
+.bg-gray {
+    background-color: #F2F2F2;
+}
+
+.bg-white {
+    background-color: #fff;
+}
+
+.user-courses-header {
+    font-family: "Arimo Standard";
+    font-size: 27px;
+    font-weight: 700;
+    line-height: 32px;
+    color: #232323;
+}

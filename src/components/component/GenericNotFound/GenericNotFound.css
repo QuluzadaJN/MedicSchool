@@ -1,0 +1,18 @@
+.genericNotFound {
+    font-family: "Arimo Standard";
+    font-size: 48px;
+    margin: 48px 0;
+    text-align: center;
+}
+
+.genericNotFound-btn{
+    margin-top: 32px;
+    border-radius: 8px!important;
+    font-family: "Arimo Standard"!important;
+    font-size: 18px!important;
+    font-weight: 500!important;
+    line-height: 28px!important;
+    color: #fff!important;
+    background-color: #FF4330!important;
+    border: none!important;
+}

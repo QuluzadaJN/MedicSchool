@@ -1,0 +1,54 @@
+.course-header {
+    font-family: "Arimo Standard";
+    font-size: 32px;
+    font-weight: 600;
+    line-height: 49px;
+}
+
+.course-img {
+    border-radius: 8px;
+    width: 100%;
+}
+
+.course-title {
+    font-family: "Arimo Standard";
+    font-size: 20px;
+    font-weight: 600;
+    line-height: 49px;
+    color: #000;
+}
+
+.course-author {
+    font-family: "Arimo Standard";
+    font-size: 16px;
+    font-weight: 400;
+    color: #4E4E4E;
+}
+
+.course-progress-bar {
+    height: 3px !important;
+}
+
+.progress-bar {
+    background-color: #57CCA2 !important;
+}
+
+.course-status {
+    font-family: "Arimo Standard";
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 49px;
+    color: #4E4E4E;
+}
+
+.course-btn {
+    background-color: #FF4330 !important;
+    border: none !important;
+    padding: 6px 48px !important;
+    border-radius: 4px !important;
+    font-family: "Arimo Standard" !important;
+    font-size: 11px !important;
+    font-weight: 500 !important;
+    line-height: 17px !important;
+    color: #fff !important;
+}

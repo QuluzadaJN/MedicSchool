@@ -1,0 +1,173 @@
+.detail-header {
+    font-family: "Arimo Standard";
+    font-size: 39px;
+    font-weight: 600;
+    line-height: 49px;
+}
+
+.detail-fav-div {
+    border-bottom: 1px solid #CACACA;
+}
+
+.detail-section-header {
+    font-family: "Arimo Standard";
+    font-size: 28px;
+    font-weight: 600;
+    line-height: 56px;
+}
+
+.detail-section-header span {
+    background-color: #000;
+    color: #fff;
+    padding: 0 16px;
+    border-radius: 100%;
+    margin-right: 18px;
+    line-height: 46px;
+}
+
+.detail-text {
+    font-family: "Arimo Standard";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 32px;
+}
+
+.course-certificate {
+    border: 0.5px solid #D6D6D6;
+    background-color: #FF4330;
+    padding: 17px 0px 17px 29px;
+    color: #fff;
+    font-family: "Arimo Standard";
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 21px;
+}
+
+.course-certificate-download {
+    text-align: right;
+    cursor: pointer;
+}
+
+.rate-course {
+    font-family: "Arimo Standard" !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 15px !important;
+    color: #fff !important;
+    background-color: #FF4330 !important;
+    padding: 9px 17px !important;
+    border: none !important;
+    border-radius: 0 !important;
+}
+
+.taken-detail-right {
+    box-shadow: -5px 5px 10px 0px #0000001A;
+    border: 1px solid #FFFFFF;
+    border-radius: 10px;
+    min-height: 611px;
+    padding: 0 24px;
+}
+
+.taken-detail-right-header {
+    font-family: "Arimo Standard";
+    font-size: 20px;
+    font-weight: 400;
+    line-height: 28px;
+    color: #343434;
+}
+
+.courseDetail-tab.nav-link {
+    color: #525252 !important;
+    font-family: "Arimo Standard" !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 40px !important;
+    padding: 7px !important;
+    border-radius: 10px !important;
+}
+
+.courseDetail-tab.nav-link.active {
+    background-color: #eaeaea !important;
+    font-weight: 600 !important;
+    text-decoration: none !important;
+}
+
+.detail-right-section {
+    font-family: "Arimo Standard";
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 28px;
+}
+
+.detail-right-section span {
+    background-color: #D9D9D9;
+    color: #000;
+    padding: 0 11px;
+    border-radius: 100%;
+    margin-right: 12px;
+    line-height: 28px;
+}
+
+.detail-right-section span.active-number {
+    background-color: #000;
+    color: #fff;
+}
+
+.detail-right-checkIcon {
+    color: #DEDEDE;
+}
+
+.detail-right-checkIcon.active-icon {
+    color: #474747;
+}
+
+.courseDetail-tab-first.nav-link {
+    font-family: Gilroy!important;
+    font-size: 18px!important;
+    font-weight: 500!important;
+    line-height: 21.83px!important;
+    color: #000!important;
+    background-color: transparent!important;
+}
+
+.courseDetail-tab-first.nav-link.active {
+    text-decoration: underline!important;
+}
+
+.comment-div {
+    border-radius: 10px;
+    box-shadow: -5px 5px 10px 0px #0000001A;
+    padding: 10px;
+    margin-bottom: 12px;
+}
+
+.comment-name {
+    font-family: "Arimo Standard";
+    font-size: 12px;
+}
+
+.comment-content {
+    font-family: "Arimo Standard";
+}
+
+.comment-input {
+    border: 0.5px solid #D6D6D6 !important;
+    padding: 16px 28px !important;
+    border-radius: 0 !important;
+}
+
+.comment-input:focus {
+    box-shadow: none !important;
+}
+
+.sendComment {
+    padding: 8px 24px !important;
+    border-radius: 8px !important;
+    color: #fff !important;
+    font-size: 18px !important;
+    font-weight: 700 !important;
+    line-height: 22px !important;
+    background: #FF4330 !important;
+    border: none !important;
+    margin: 10px 0 32px;
+}

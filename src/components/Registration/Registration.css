@@ -1,0 +1,129 @@
+.registr-div {
+    height: 100vh;
+    padding: 40px;
+}
+
+.registr-logo {
+    position: absolute;
+    top: 24px;
+    right: 32px;
+}
+
+@media screen and (max-width: 767px) {
+    .registr-logo {
+        left: 32px;
+    }
+    
+    .registr-form{
+        margin-top: 88px;
+    }
+}
+
+.registr-form {
+    border-radius: 10px;
+    border: 1px solid #878787;
+    box-shadow: 0 4px 32px rgba(0, 0, 0, 0.2);
+    padding: 32px;
+}
+
+.registr-wlcm {
+    font-size: 25px;
+    font-weight: 500;
+    line-height: 30px;
+    color: #4A50E9;
+    margin-bottom: 20px;
+}
+
+.registr-header {
+    font-size: 31px;
+    font-weight: 500;
+    line-height: 47px;
+    color: #4A50E9;
+}
+
+.registr-text {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #4A50E9;
+    margin-bottom: 20px;
+}
+
+.registr-button {
+    border-radius: 6px;
+    background: #4A50E9;
+    color: #fff;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+}
+
+.form-label {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #4A50E9;
+}
+
+.form-control {
+    border: 0.6px solid #282828;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+.form-control:focus {
+    box-shadow: none !important;
+    border-bottom: 1px solid #000;
+}
+
+.form-control::placeholder {
+    color: #ABABAB;
+}
+
+.pass-eye {
+    position: absolute;
+    right: 12px;
+    bottom: 20%;
+    color: #4A50E9;
+}
+
+.form-check {
+    color: #4A50E9;
+}
+
+.form-check-input {
+    border-color: #4A50E9;
+}
+
+.registr-button {
+    width: 100%;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    padding: 12px 0 !important;
+    background-color: #4A50E9 !important;
+    margin: 20px 0 30px;
+}
+
+.notRegistr {
+    font-size: 16px;
+    font-weight: 300;
+    line-height: 24px;
+    color: #7D7D7D;
+    text-align: center;
+    margin-top: 20px;
+}
+
+.notRegistr span {
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #4A50E9;
+}
+
+.forgotPass {
+    font-size: 12px;
+    font-weight: 500;
+    line-height: 15px;
+    color: #4D4D4D;
+}

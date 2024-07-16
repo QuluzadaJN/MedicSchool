@@ -1,0 +1,89 @@
+.bg-gray {
+    background-color: #F2F2F2;
+}
+
+.settings-header {
+    font-family: "Arimo Standard";
+    font-size: 40px;
+    font-weight: 600;
+    line-height: 47px;
+}
+
+.settings-tab.nav-link {
+    color: #525252 !important;
+    font-family: "Arimo Standard" !important;
+    font-size: 20px !important;
+    font-weight: 500 !important;
+    line-height: 40px !important;
+}
+
+.settings-tab.nav-link.active {
+    background-color: transparent !important;
+    font-weight: 600 !important;
+}
+
+.tab-content-wrapper {
+    padding: 36px 52px;
+    background-color: #fff;
+}
+
+.tab-title {
+    font-family: "Arimo Standard" !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 21px !important;
+}
+
+.tab-text {
+    font-family: "Arimo Standard" !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 21px !important;
+    color: #B9B9B9 !important;
+}
+
+.tab-label {
+    font-family: "Arimo Standard" !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 21px !important;
+}
+
+.tab-input,
+.tab-input::placeholder {
+    font-family: "Arimo Standard" !important;
+    font-size: 18px !important;
+    font-weight: 400 !important;
+    line-height: 21px !important;
+    color: #8C8C8C !important;
+}
+
+.tab-input {
+    border: 0.5px solid #D6D6D6 !important;
+    padding: 16px 28px !important;
+    border-radius: 0 !important;
+    width: 70%!important;
+}
+
+.tab-input:focus {
+    box-shadow: none!important;
+}
+
+.tab-btn {
+    font-family: "Arimo Standard"!important;
+    font-size: 18px!important;
+    font-weight: 500!important;
+    line-height: 28px!important;
+    border-radius: 3px!important;
+    background-color: #FF4330!important;
+    color: #fff!important;
+    padding: 6px 20px!important;
+    border: none!important;
+}
+
+.control-error {
+    font-family: "Arimo Standard";
+    font-size: 12px;
+    color: #FF4330;
+    text-align: left;
+}

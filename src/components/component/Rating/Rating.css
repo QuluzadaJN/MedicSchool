@@ -1,0 +1,9 @@
+input[type="radio"] {
+    display: none;
+}
+
+.star {
+    cursor: pointer;
+    font-size: 28px;
+    margin: 5px;
+}

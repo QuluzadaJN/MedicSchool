@@ -1,23 +1,24 @@
-import logo from './logo.svg';
+import cookies from "js-cookie";
+import HeaderTop from './components/Static/HeaderTop';
+import Header from './components/Static/Header';
+import Footer from './components/Static/Footer';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+import './assets/fonts/fonts.css';
 import './App.css';
 
 function App() {
+  if (!cookies.get("Authorization")) {
+    localStorage.removeItem('userInfo');
+    localStorage.removeItem('authTime');
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <HeaderTop />
+      <Header />
+      <ToastContainer />
+      <Footer />
     </div>
   );
 }
