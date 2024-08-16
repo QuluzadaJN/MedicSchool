@@ -92,3 +92,31 @@
     border: none !important;
     float: right !important;
 }
+
+@media screen and (max-width: 600px) {
+    .contact-form {
+        padding: 44px 0;
+    }
+
+    .contact-header {
+        font-size: 52px;
+        line-height: 52px;
+    }
+
+    .contact-desc {
+        font-size: 24px;
+        line-height: 36px;
+    }
+
+    .contact-div {
+        font-size: 20px;
+        line-height: 24px;
+        padding: 16px 24px;
+    }
+
+    .contact-div-icon {
+        width: 20px;
+        height: 20px;
+        margin-left: 16px;
+    }
+}

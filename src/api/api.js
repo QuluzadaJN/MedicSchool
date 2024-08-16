@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import axios from "axios";
 import { store } from "../store";
 
-const BASE_URL = 'http://167.86.101.78:8080/api/v1';
+const BASE_URL = 'https://api.medicschool.az/api/v1';
 
 const { userInfo } = store.getState().auth;
 
@@ -23,6 +23,22 @@ export const authAPI = {
             }).catch(error => {
                 toast.error(error?.response?.data?.errors?.[0].defaultMessage);
             })
+    },
+    registerWithFacebook({ email, fullName }) {
+        return axios.post(`${BASE_URL}/auth/facebook/register?email=${email}&fullName=${fullName}`, {
+            'credentials': "omit",
+        }).then(response => {
+            if (response.status === 200) {
+                if (response.data.status === 'OK') {
+                    toast.success(response.data.body);
+                    return response.data;
+                } else {
+                    toast.error(response.data.body);
+                }
+            }
+        }).catch(error => {
+            toast.error(error?.response?.data?.errors?.[0].defaultMessage);
+        })
     },
     register({ email, fullName, password, phoneNumber }) {
         return axios.post(`${BASE_URL}/auth/register`, JSON.stringify({ email, fullName, password, phoneNumber }), {

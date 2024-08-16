@@ -3,8 +3,8 @@ import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import { Tab, Nav, Col, Container, Image, Row, Button } from 'react-bootstrap';
-
+import { Tab, Nav, Col, Container, Row, Button } from 'react-bootstrap';
+import ReactPlayer from 'react-player';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheck, faDownload } from '@fortawesome/free-solid-svg-icons';
 
@@ -121,6 +121,7 @@ export default function CourseDetailTaken() {
             <Helmet>
                 <title>{t('menu.courses')}</title>
                 <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
+                <meta name='description' content={courses && courses.body && courses.body.items.map(item => item.description)} />
             </Helmet>
             <Container className='my-5'>
                 <Tab.Container id="right-tabs-example" defaultActiveKey="event-cont1">
@@ -148,7 +149,7 @@ export default function CourseDetailTaken() {
                                                         <Tab.Pane key={index} eventKey={`event${course.id}`}>
                                                             <div>
                                                                 <h1 className='detail-header'>{course.courseName}</h1>
-                                                                <iframe style={{ height: '438px', width: '100%' }} src={course.mediaPath} />
+                                                                <ReactPlayer className="course-video" url={course.mediaPath} controls />
                                                                 <div className='detail-fav-div pt-4'></div>
                                                                 <div className='my-4 detail-section-header d-flex align-items-center'>
                                                                     <span>{course.id}</span>

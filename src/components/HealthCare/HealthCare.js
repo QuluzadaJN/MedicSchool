@@ -16,6 +16,7 @@ export default function HealthCare() {
             <Helmet>
                 <title>{t('healtyBanner.title')}</title>
                 <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
+                <meta name='description' content={t('healtyBanner.forContact')} />
             </Helmet>
             <div>
                 <div className='bg-white'>

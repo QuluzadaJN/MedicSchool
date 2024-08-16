@@ -171,3 +171,14 @@
     border: none !important;
     margin: 10px 0 32px;
 }
+
+.course-video {
+    height: 438px!important;
+    width: 100%!important;
+}
+
+@media screen and (max-width: 600px) {
+    .taken-detail-right {
+        min-height: 400px;
+    }
+}

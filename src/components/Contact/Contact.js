@@ -96,6 +96,7 @@ export default function Contact() {
             <Helmet>
                 <title>{t('menu.contact')}</title>
                 <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
+                <meta name='description' content={t('contactText')} />
             </Helmet>
             <div className="bg-gray">
                 <Container>

@@ -136,6 +136,7 @@ i18n
                         againNewPassword: "New password again",
                     },
                     login: {
+                        facebook: "WITH FACEBOOK",
                         google: "WITH GOOGLE",
                         hasAccount: "If you already have an account",
                         log: "Log",
@@ -284,6 +285,7 @@ i18n
                         againNewPassword: "Təkrar yeni şifrəniz",
                     },
                     login: {
+                        facebook: "FACEBOOK İLƏ",
                         google: "GOOGLE İLƏ",
                         hasAccount: "Artıq hesabın varsa",
                         log: "Giriş",

@@ -140,3 +140,54 @@
     top: 12px;
     cursor: pointer;
 }
+
+.nav-courses-flex-left {
+    padding-right: 48px;
+    margin-right: 48px;
+}
+
+.nav-courses-flex-right {
+    padding-right: 48px;
+}
+
+@media screen and (max-width: 600px) {
+    .input-wrapper {
+        line-height: 16px;
+        margin: 0;
+        width: 99%;
+    }
+
+    .profil-dropdown.show {
+        border-radius: 8px;
+    }
+
+    .nav-courses-flex {
+        flex-direction: column;
+    }
+
+    #navbarScrollingDropdown+.dropdown-menu {
+        width: 100% !important;
+        padding: 20px 0
+    }
+
+    .nav-courses-flex-left {
+        padding-right: 0;
+        margin-right: 0;
+    }
+
+    .nav-courses-flex-right {
+        padding-right: 0;
+    }
+
+
+    .nav-login,
+    .nav-register {
+        max-width: 99% !important;
+        line-height: 40px !important;
+        margin-top: 16px;
+    }
+
+    .nav-login {
+        margin-right: 0px;
+    }
+}

@@ -8,13 +8,21 @@
 }
 
 .intro-btn {
-    font-family: "Arimo Standard"!important;
-    font-size: 18px!important;
-    font-weight: 500!important;
-    line-height: 21px!important;
-    padding: 12px 20px!important;
-    border-radius: 8px!important;
-    background-color: #fff!important;
-    color: #000!important;
-    border: #fff!important;
+    font-family: "Arimo Standard" !important;
+    font-size: 18px !important;
+    font-weight: 500 !important;
+    line-height: 21px !important;
+    padding: 12px 20px !important;
+    border-radius: 8px !important;
+    background-color: #fff !important;
+    color: #000 !important;
+    border: #fff !important;
+}
+
+@media screen and (max-width: 600px) {
+    .intro-text {
+        font-size: 40px;
+        line-height: 56px;
+        width: 100%;
+    }
 }

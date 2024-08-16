@@ -21,11 +21,12 @@ function AboutPage() {
             <Helmet>
                 <title>{t('about.title')}</title>
                 <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
+                <meta name='description' content={t('about.content')} />
             </Helmet>
             <div className="bg-gray">
-                <Container className="bg-white px-5">
-                    <div className="py-5">
-                        <h1 className="about-header pt-5">{t('about.title')}</h1>
+                <Container className="bg-white px-sm-4 px-md-5">
+                    <div className="py-sm-0 py-md-5">
+                        <h1 className="about-header pt-sm-0 pt-md-5">{t('about.title')}</h1>
                         <p className="about-content">{t('about.content')}</p>
                     </div>
                     <div>
@@ -34,7 +35,7 @@ function AboutPage() {
                                 <Image className="about-img" />
                             </Col>
                             <Col xs={12} md={10}>
-                                <div className="position-relative" style={{ height: "44px" }}>
+                                <div className="position-relative about-section-header-wrapper">
                                     <h3 className="about-section-header">{t('about.vision')}</h3>
                                     <span className="about-header--border"></span>
                                 </div>
@@ -46,7 +47,7 @@ function AboutPage() {
                                 <Image className="about-img" />
                             </Col>
                             <Col xs={12} md={10}>
-                                <div className="position-relative" style={{ height: "44px" }}>
+                                <div className="position-relative about-section-header-wrapper">
                                     <h3 className="about-section-header">{t('about.mission')}</h3>
                                     <span className="about-header--border"></span>
                                 </div>
@@ -58,7 +59,7 @@ function AboutPage() {
                                 <Image className="about-img" />
                             </Col>
                             <Col xs={12} md={10}>
-                                <div className="position-relative" style={{ height: "44px" }}>
+                                <div className="position-relative about-section-header-wrapper">
                                     <h3 className="about-section-header">{t('about.goal')}</h3>
                                     <span className="about-header--border"></span>
                                 </div>

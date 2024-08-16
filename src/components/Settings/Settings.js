@@ -129,6 +129,7 @@ export default function Settings() {
             <Helmet>
                 <title>{t('menu.settings')}</title>
                 <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
+                <meta name='description' content={t('settings.title')} />
             </Helmet>
             <div className='bg-gray'>
                 <Container>

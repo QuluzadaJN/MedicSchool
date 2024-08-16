@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import LogoImage from "../../images/Logo.png";
 import { useTranslation } from 'react-i18next';
 import { logOut } from '../../store/authSlice';
+import { useLogoutMutation } from '../../api/usersApiSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Container, Form, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
@@ -43,6 +44,7 @@ export default function Header() {
     const [showRegParam, setShowRegParam] = useState(false);
     const [showLogin, setShowLogin] = useState(false);
     const [searchParam, setSearchParam] = useState("");
+    const [logOutToApi] = useLogoutMutation();
 
     // const setIsLoginOrRegister = (bool) => {
     //     setShowRegParam(bool)
@@ -66,7 +68,19 @@ export default function Header() {
     ];
 
     const logoutHandler = async () => {
-        dispatch(logOut());
+        console.log(userInfo)
+        try {
+            const resp = await logOutToApi(userInfo.body.email).unwrap();
+            if (resp.status === 'OK') {
+                dispatch(logOut());
+                toast.success(resp.body)
+                window.location.reload();
+            } else {
+                toast.error(resp.body)
+            }
+        } catch (err) {
+            toast.error(err.data.message || err.error)
+        }
     }
 
     const [categories, setCategories] = useState([]);
@@ -118,12 +132,11 @@ export default function Header() {
                                 <Navbar.Collapse id="navbarScroll">
                                     <Nav
                                         className="my-2 my-lg-0"
-                                        style={{ maxHeight: '100px' }}
                                         navbarScroll
                                     >
                                         <NavDropdown title={t('menu.courses')} className='courses-dropdown' id="navbarScrollingDropdown" onClick={getCategories}>
-                                            <Container className='d-flex'>
-                                                <div className='me-5 pe-5'>
+                                            <Container className='d-flex nav-courses-flex'>
+                                                <div className='nav-courses-flex-left'>
                                                     <h3 className="footer-title mb-3">Bütün kurslar <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} /></h3>
                                                     {categories ? categories?.body?.items?.map((cat) => {
                                                         return (
@@ -131,7 +144,7 @@ export default function Header() {
                                                         )
                                                     }) : <Loader />}
                                                 </div>
-                                                <div className='ps-5'>
+                                                <div className='nav-courses-flex-right'>
                                                     <h3 className="footer-title mb-3">Mənim kurslarım <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} /></h3>
                                                     <NavDropdown.Item className='footer-listItem ps-0' value="" href="/courses">Mənim kurslarım</NavDropdown.Item>
                                                     {filterArray.map((filter, index) => (
@@ -171,7 +184,7 @@ export default function Header() {
                                                     <NavDropdown.Item href="/contact">
                                                         <FontAwesomeIcon className='me-3' icon={faCircleQuestion} />{t('menu.contact')}
                                                     </NavDropdown.Item>
-                                                    <NavDropdown.Item onClick={logoutHandler} href='/' >
+                                                    <NavDropdown.Item onClick={() => logoutHandler()} >
                                                         <FontAwesomeIcon className='me-3' icon={faArrowRightFromBracket} />{t('menu.exit')}
                                                     </NavDropdown.Item>
                                                 </NavDropdown>

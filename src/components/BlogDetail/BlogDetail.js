@@ -40,6 +40,7 @@ export default function BlogDetail() {
             <Helmet>
                 <title>{t('menu.blogs')}</title>
                 <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
+                <meta name='description' content={blog && blog.body.seoDescription} />
             </Helmet>
             <Container className='my-5'>
                 {blog && blog.body ?

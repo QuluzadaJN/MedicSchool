@@ -55,32 +55,37 @@
 
 import { apiSlice } from "../store/apiSlice";
 
-const USERS_URL = 'http://167.86.101.78:8080/api/v1/auth';
+const USERS_URL = 'https://api.medicschool.az/api/v1';
 
 export const usersApiSlice = apiSlice.injectEndpoints({
     endpoints: (builder) => ({
         login: builder.mutation({
             query: (data) => ({
-                url: `${USERS_URL}/login`,
+                url: `${USERS_URL}/auth/login`,
                 method: 'POST',
                 body: data,
             }),
         }),
         loginWithGoogle: builder.mutation({
             query: (data) => ({
-                url: `${USERS_URL}/google/login?email=` + data,
+                url: `${USERS_URL}/auth/google/login?email=` + data,
                 method: 'POST',
             }),
         }),
-        // logout: builder.mutation({
-        //     query: () => ({
-        //         url: `${USERS_URL}/logout`,
-        //         method: 'POST'
-        //     })
-        // })
+        loginWithFacebook: builder.mutation({
+            query: (data) => ({
+                url: `${USERS_URL}/auth/facebook/login?email=` + data,
+                method: 'POST',
+                credentials: "omit",
+            }),
+        }),
+        logout: builder.mutation({
+            query: (data) => ({
+                url: `${USERS_URL}/sessionTransaction/updateSessionToDeactive?email=` + data,
+                method: 'PUT'
+            })
+        })
     }),
 });
 
-export const { useLoginMutation, useLoginWithGoogleMutation,
-    // useLogoutMutation
- } = usersApiSlice;
+export const { useLoginMutation, useLoginWithGoogleMutation, useLoginWithFacebookMutation, useLogoutMutation} = usersApiSlice;

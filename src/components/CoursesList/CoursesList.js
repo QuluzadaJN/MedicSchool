@@ -60,6 +60,8 @@ export default function CoursesList() {
             <Helmet>
                 <title>{t('menu.myCourses')}</title>
                 <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
+                <meta name='description' content={data.courses && data.courses.length > 0 && data.courses.map(course => course.topic)} />
+                {/* <meta name='description' content={data && data.courses && data.courses[0].topic} /> */}
             </Helmet>
             {data.courses && data.courses.length > 0 ?
                 <div>

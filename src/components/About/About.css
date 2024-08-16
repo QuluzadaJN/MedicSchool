@@ -50,3 +50,23 @@
     font-weight: 500;
     line-height: 38px;
 }
+
+.about-section-header-wrapper {
+    height: 44px;
+}
+
+@media screen and (max-width: 600px) {
+    .about-header {
+        font-size: 52px;
+        line-height: 82px;
+    }
+
+    .about-content {
+        font-size: 24px;
+        line-height: 32px;
+    }
+
+    .about-section-header-wrapper {
+        margin: 20px 0;
+    }
+}

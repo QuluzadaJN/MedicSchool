@@ -138,3 +138,8 @@
     color: #161616;
     font-weight: 500;
 }
+
+.course-video {
+    height: 438px!important;
+    width: 100%!important;
+}

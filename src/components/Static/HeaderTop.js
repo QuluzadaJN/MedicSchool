@@ -14,15 +14,15 @@ export default function HeaderTop() {
             <Container>
                 <Row className='py-3'>
                     <Col sm={12} md={3}>
-                        <Image src={HealthCareImageLogo} className='w-50' />
+                        <Image src={HealthCareImageLogo} className='headerTop-logo' />
                     </Col>
                     <Col sm={12} md={4}>
                         <h1 className='headerTop-header'><span>{t('healtyBanner.title')}</span> {t('healtyBanner.content')}</h1>
                     </Col>
                     <Col sm={12} md={5}>
-                        <Button className='healthCare-wp mb-3' onClick={() => {
+                        <Button className='healthCare-wp' onClick={() => {
                             window.open(`https://api.whatsapp.com/send?phone=994507551135?text=Salam MedicSchooldan müraciət edirəm`, "_blank")
-                        }}><Image src={whatsappIcon} className='me-3' /> {t('actions.joinUs')}</Button>
+                        }}><Image src={whatsappIcon} className='headerTop-icon' /> {t('actions.joinUs')}</Button>
                     </Col>
                 </Row>
             </Container>

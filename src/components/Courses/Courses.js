@@ -16,7 +16,7 @@ function Courses({ id, img, topic, instructorName, body, soldCount, rating, pric
                 to={purchased ? `/content/byCourse/${id}` : `/course/id/${id}`}
             >
                 <Card className="courses-card">
-                    <Card.Img variant="top" src={img} style={{ minHeight: "270px" }} />
+                    <Card.Img variant="top" src={img} style={{ height: "300px" }} />
                     {/* <span className="courses-status">POPULYAR</span> */}
                     <Card.Body>
                         <Card.Title className="courses-header px-4">{topic}</Card.Title>

@@ -13,3 +13,10 @@
     line-height: 24px;
     color: #969696;
 }
+
+@media screen and (max-width: 600px) {
+    .coursesDetail-header {
+        font-size: 36px;
+        line-height: 40px;
+    }
+}

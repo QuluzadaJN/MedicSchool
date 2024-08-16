@@ -12,6 +12,7 @@ export default function GenericNotFound() {
             <Helmet>
                 <title>{t('error.notFoundPage')}</title>
                 <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
+                <meta name='description' content={t('error.notFoundPage')} />
             </Helmet>
             <div className="genericNotFound">
                 <p>{t('error.notFoundPage')}</p>

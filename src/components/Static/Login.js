@@ -3,15 +3,20 @@ import axios from "axios";
 import { useTranslation } from 'react-i18next';
 import { Button, Modal, Row, Col, Image } from 'react-bootstrap';
 import { useGoogleLogin } from '@react-oauth/google';
+// import FacebookLogin from 'react-facebook-login';
+import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+
+
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 
 import { authAPI } from '../../api/api';
 import { setCredentials } from '../../store/authSlice';
-import { useLoginMutation, useLoginWithGoogleMutation } from '../../api/usersApiSlice';
+import { useLoginMutation, useLoginWithGoogleMutation, useLoginWithFacebookMutation } from '../../api/usersApiSlice';
 
 import LoginBgImage from "../../images/Login-bg.png";
 import LogoRedImage from "../../images/Logo-red.png";
+import FacebookIconImage from "../../images/facebook-icon.svg";
 import GoogleIconImage from "../../images/google-icon.svg";
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -27,6 +32,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
 
     const [login, { isLoading }] = useLoginMutation();
     const [loginWithGoogleFunc] = useLoginWithGoogleMutation();
+    const [loginWithFacebookFunc] = useLoginWithFacebookMutation();
     const [isVisible, setVisible] = useState(false);
     const [isVisibleLogin, setVisibleLogin] = useState(false);
 
@@ -202,17 +208,72 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
         }
     }
 
+    const authWithFacebook = async (response) => {
+        if (showRegParam) {
+            try {
+                const resp = await authAPI.registerWithFacebook({ email: response.email, fullName: response.name });
+                if (resp.status === 'OK') {
+                    setShowRegParam(false)
+                } else {
+                    toast.error(resp.body)
+                }
+            } catch (err) {
+                toast.error(err?.response?.data?.errors?.[0].defaultMessage)
+            }
+        } else {
+            try {
+                const resp = await loginWithFacebookFunc(response.email).unwrap();
+                if (resp.status === 'OK') {
+                    dispatch(setCredentials({ ...resp }))
+                    // window.location.reload();
+                    setShowLogin(false);
+                } else {
+                    toast.error(resp.body)
+                }
+            } catch (err) {
+                toast.error(err.data.message || err.error)
+            }
+        }
+    }
+
     return (
         <Modal show={props.show} setShowRegParam={props.setShowRegParam} showRegParam={props.showRegParam} onHide={props.close} size="lg" className='login-modal'>
             <Modal.Body className='login-modal-body'>
                 <Row>
-                    <Col md={5} className='d-sm-none d-md-block pe-0'>
+                    <Col md={5} className='login-sm-none pe-0'>
                         <Image src={LoginBgImage} className='w-100' />
                     </Col>
                     <Col sm={12} md={7} className='ps-0'>
                         <div className='text-center login-modal-body-inner'>
                             <div className='login-bg-white px-4'>
+                                {/* facebook app id - 797206392291276 */}
                                 <Image src={LogoRedImage} className='login-modal-logo m-auto' />
+                                {/* <Button
+                                    onClick={() => authWithFacebook()}
+                                    className='login-modal-btn my-3'
+                                >
+                                    <Image src={FacebookIconImage} className='me-3' />
+                                    {t('login.facebook')} {showRegParam
+                                        ? t('actions.enter')
+                                        : t('actions.signIn')}
+                                </Button> */}
+                                <FacebookLogin
+                                    appId="797206392291276"
+                                    fields="name,email,picture"
+                                    // autoLoad
+                                    callback={authWithFacebook}
+                                    render={renderProps => (
+                                        <Button
+                                            onClick={renderProps.onClick}
+                                            className='login-modal-btn mt-3'
+                                        >
+                                            <Image src={FacebookIconImage} style={{ "width": "14px"}} className='me-3' />
+                                            {t('login.facebook')} {showRegParam
+                                                ? t('actions.enter')
+                                                : t('actions.signIn')}
+                                        </Button>
+                                    )}
+                                />
                                 <Button
                                     onClick={() => authWithGoogle()}
                                     className='login-modal-btn my-3'

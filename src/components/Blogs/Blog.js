@@ -11,7 +11,7 @@ function Blogs({ id, coverPhoto, topic, content }) {
                 to={`/blog/${id}`}
             >
                 <Card className="courses-card">
-                    <Card.Img variant="top" src={coverPhoto} style={{ minHeight: "270px" }} />
+                    <Card.Img variant="top" src={coverPhoto} style={{ height: "300px" }} />
                     <Card.Body>
                         <Card.Title className="courses-header px-4">{topic}</Card.Title>
                         <Card.Text className="courses-text px-4 text-truncate">

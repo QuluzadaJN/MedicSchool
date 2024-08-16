@@ -35,6 +35,7 @@ export default function ProfileUser() {
             <Helmet>
                 <title>{t('profil')}</title>
                 <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
+                <meta name='description' content={userInfo && userInfo.biography} />
             </Helmet>
             <div className="bg-gray">
                 <div className="user-header">

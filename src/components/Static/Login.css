@@ -111,3 +111,9 @@
     cursor: pointer;
     color: #7b7b7b;
 }
+
+@media screen and (max-width: 600px) {
+    .login-sm-none {
+        display: none;
+    }
+}

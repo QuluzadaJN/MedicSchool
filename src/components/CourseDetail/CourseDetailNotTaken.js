@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
 import { Button, Col, Image, Row, Container } from 'react-bootstrap';
-
+import ReactPlayer from 'react-player'
 import linkedinIcon from '../../images/linkedin.svg';
 import internetIcon from '../../images/internet.svg';
 import instagramIcon from '../../images/instagram.svg';
@@ -56,7 +56,6 @@ export default function CourseDetailNotTaken() {
 
     useEffect(() => {
         getCoursesById();
-
     }, [])
 
     const handlePurchaseCourse = async () => {
@@ -80,7 +79,7 @@ export default function CourseDetailNotTaken() {
                 localStorage.setItem("orderId", orderId);
                 localStorage.setItem("sessionId", sessionId);
 
-                window.location.assign(`https://tstpg.kapitalbank.az/index.jsp?ORDERID=${orderId}&SESSIONID=${sessionId}`);
+                window.location.assign(`https://3dsrv.kapitalbank.az/index.jsp?ORDERID=${orderId}&SESSIONID=${sessionId}`);
             } else {
                 toast.error(resp.body);
             }
@@ -118,6 +117,7 @@ export default function CourseDetailNotTaken() {
             <Helmet>
                 <title>{t('menu.courses')}</title>
                 <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
+                <meta name='description' content={ course && course.body && course.body.body} />
             </Helmet>
             <Container className='my-5'>
                 {course && course.body ?
@@ -125,7 +125,7 @@ export default function CourseDetailNotTaken() {
                         <Col sm={12} md={9}>
                             <div>
                                 <h1 className='detail-header'>{course.body.topic}</h1>
-                                <iframe style={{ height: '438px', width: '100%' }} src={course.body.demoFilePath} />
+                                <ReactPlayer className="course-video" url={course.body.demoFilePath} controls />
                                 {/* <div className='detail-fav-div d-flex justify-content-end align-items-center p-2'>
                                     <span className='detail-fav'><FontAwesomeIcon className='me-3' icon={faShareNodes} />{t('actions.share')}</span>
                                     <span className='detail-fav ms-4'><FontAwesomeIcon className='me-2' icon={faPlus} />{t('actions.addtoFavorites')}</span>
@@ -136,7 +136,7 @@ export default function CourseDetailNotTaken() {
                                 <p className='detail-text my-4'>
                                     {course.body.body}
                                 </p>
-                                {/* <Image src={CourseDetailImage2} /> */}
+                                <Image src={course.body.coverPhotoPath} />
                                 <h4 className='detail-title mt-5'>
                                     {t('course.whatToLearn')}
                                 </h4>
@@ -203,7 +203,7 @@ export default function CourseDetailNotTaken() {
                                 <Button className='detail-btn' onClick={handlePurchaseCourse}>{t('actions.purchaseCourse')}</Button>
                                 {(course.body.discountEndDate && discountedDate !== "") && <p className='detail-sale-duration'>{discountedDate} {t('course.saleDuration')}</p>}
                                 <p className='deatil-right-text'>{course.body.commentCount} {t('course.comment')}</p>
-                                <p className='deatil-right-text'>{course.body.contents.length} {t('actions.lesson')} ({course.body.courseLength})</p>
+                                <p className='deatil-right-text'>{course.body.contents.length} {t('course.lesson')} ({course.body.courseLength})</p>
                                 {/* <p className='deatil-right-text'>12 əlavə resurs</p> */}
                                 <p className='deatil-right-text'>{t('language.title')}: {course.body.language}</p>
                                 <p className='deatil-right-text'>{t('course.level')}: {course.body.level}</p>

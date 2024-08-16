@@ -14,12 +14,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   // <React.StrictMode>
-  <GoogleOAuthProvider clientId='821038068639-qf27hiis7timgt8sqarvbmatnn3nj2id.apps.googleusercontent.com'>
-    <Provider store={store}>
-      <HelmetProvider>
+  <HelmetProvider>
+    <GoogleOAuthProvider clientId='821038068639-qf27hiis7timgt8sqarvbmatnn3nj2id.apps.googleusercontent.com'>
+      <Provider store={store}>
         <App />
-      </HelmetProvider>
-    </Provider>
-  </GoogleOAuthProvider>
+      </Provider>
+    </GoogleOAuthProvider>
+  </HelmetProvider>
   // </React.StrictMode>
 );
