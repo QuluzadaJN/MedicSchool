@@ -139,7 +139,7 @@
     font-weight: 500;
 }
 
-.course-video {
+.course-video, .course-coverPhoto {
     height: 438px!important;
     width: 100%!important;
 }

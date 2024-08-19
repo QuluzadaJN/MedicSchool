@@ -136,7 +136,7 @@ export default function CourseDetailNotTaken() {
                                 <p className='detail-text my-4'>
                                     {course.body.body}
                                 </p>
-                                <Image src={course.body.coverPhotoPath} />
+                                <Image className='course-coverPhoto' src={course.body.coverPhotoPath} />
                                 <h4 className='detail-title mt-5'>
                                     {t('course.whatToLearn')}
                                 </h4>
