@@ -168,7 +168,7 @@ export default function CourseDetailNotTaken() {
                                 <div className='detail-instructor my-4 pb-5'>
                                     <Row>
                                         <Col sm={12} md={3}>
-                                            <Image src={course.body.instructor.profilePhotoPath} />
+                                            <Image className='instructorProfilPhoto' src={course.body.instructor.profilePhotoPath} />
                                         </Col>
                                         <Col sm={12} md={9}>
                                             <h2 className='detail-instructor-name'>{course.body.instructor.fullName}</h2>
@@ -213,7 +213,7 @@ export default function CourseDetailNotTaken() {
                                         <p className='detail-right-instructor'>{t('course.trainer')}: <span>{course.body.instructor.fullName}</span></p>
                                         <p className='detail-right-instructor'>{course.body.instructor.instructorPosition}</p>
                                     </div>
-                                    <Image src={course.body.instructor.profilePhotoContent} />
+                                    <Image className='instructor-profil-img-right' src={course.body.instructor.profilePhotoContent} />
                                 </div>
                             </div>
                         </Col>

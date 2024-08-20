@@ -15,7 +15,7 @@ export default function Instructors() {
                 <Col sm={12} md={6}>
                     <Row>
                         <Col sm={12} md={4}>
-                            <Image src={instructorImage} />
+                            <Image className='about-instructor-img' src={instructorImage} />
                         </Col>
                         <Col sm={12} md={8}>
                             <h3 className='instructor-name'>Mətin Mahmudov</h3>
@@ -31,7 +31,7 @@ export default function Instructors() {
                 <Col sm={12} md={6}>
                     <Row>
                         <Col sm={12} md={4}>
-                            <Image src={instructorImage} />
+                            <Image className='about-instructor-img' src={instructorImage} />
                         </Col>
                         <Col sm={12} md={8}>
                             <h3 className='instructor-name'>Mətin Mahmudov</h3>
@@ -47,7 +47,7 @@ export default function Instructors() {
                 <Col sm={12} md={6}>
                     <Row>
                         <Col sm={12} md={4}>
-                            <Image src={instructorImage} />
+                            <Image className='about-instructor-img' src={instructorImage} />
                         </Col>
                         <Col sm={12} md={8}>
                             <h3 className='instructor-name'>Mətin Mahmudov</h3>

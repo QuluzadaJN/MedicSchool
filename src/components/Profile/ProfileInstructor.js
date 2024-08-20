@@ -42,7 +42,7 @@ export default function ProfileInstructor() {
                             <div className="user-content-header">
                                 <Row>
                                     <Col sm={12} md={2}>
-                                        <Image src={userInfo.profilePhotoContent} />
+                                        <Image className='profil-img' src={userInfo.profilePhotoContent} />
                                     </Col>
                                     <Col sm={12} md={10}>
                                         <h2 className="instructor-name">{userInfo.fullName}</h2>

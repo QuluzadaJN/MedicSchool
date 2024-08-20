@@ -143,3 +143,14 @@
     height: 438px!important;
     width: 100%!important;
 }
+
+.instructorProfilPhoto {
+    height: 180px!important;
+    width: 180px!important;
+}
+
+.instructor-profil-img-right {
+    height: 48px!important;
+    width: 48px!important;
+    border-radius: 100%;
+}
