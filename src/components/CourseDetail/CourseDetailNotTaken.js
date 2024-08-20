@@ -9,7 +9,6 @@ import ReactPlayer from 'react-player'
 import linkedinIcon from '../../images/linkedin.svg';
 import internetIcon from '../../images/internet.svg';
 import instagramIcon from '../../images/instagram.svg';
-import instructorImage from '../../images/instructor.png';
 
 import { authAPI } from '../../api/api';
 import Loader from '../component/Loader';
@@ -169,11 +168,11 @@ export default function CourseDetailNotTaken() {
                                 <div className='detail-instructor my-4 pb-5'>
                                     <Row>
                                         <Col sm={12} md={3}>
-                                            <Image src={instructorImage} />
+                                            <Image src={course.body.instructor.profilePhotoPath} />
                                         </Col>
                                         <Col sm={12} md={9}>
                                             <h2 className='detail-instructor-name'>{course.body.instructor.fullName}</h2>
-                                            <span className='detail-badge me-2'>TEACHER</span><span className='detail-span'>{course.body.instructor.instructorPosition}</span>
+                                            <span className='detail-badge me-2'>{course.body.instructor.instructorPosition}</span>
                                             <div className='detail-social-media'>
                                                 <a className="socialMediaLinks" href={course.body.instructor.instagramAddress} target="_blank" rel="noreferrer">
                                                     <Image src={instagramIcon} />

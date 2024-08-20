@@ -1,24 +1,22 @@
+
 import { toast } from 'react-toastify';
-import { Container } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
 import { useCallback, useEffect, useState } from "react";
 
-import Course from "./Course";
 import Filter from "../Filter/Filter";
+
+import Courses from "../Courses/Courses";
 import Loader from "../component/Loader";
 import CoursePagination from "../component/CoursePagination";
-import InterestedCourses from '../InterestedPart/InterestedCourses';
 
 import { authAPI } from '../../api/api';
 
-import './CoursesList.css';
-
-export default function CoursesList() {
+export default function CoursesContainer() {
     const { t } = useTranslation();
 
     const [data, setData] = useState({});
-    const [page, setPage] = useState(1)
+    const [page, setPage] = useState(1);
 
     const getClientCourses = async () => {
         try {
@@ -38,7 +36,7 @@ export default function CoursesList() {
             const filter = val;
             const res = await authAPI.getAllByFilter({ page, filter })
             if (res.status === 'OK') {
-                setData({ courses: res?.body?.items, totalPage: Math.ceil((res?.body?.items.length) / 6) })
+                setData({ courses: res?.body?.items, totalPage: Math.ceil((res?.body?.totalElements) / 9) })
             } else {
                 toast.error(res.body)
             }
@@ -57,34 +55,33 @@ export default function CoursesList() {
 
     return (
         <>
-            <Helmet>
-                <title>{t('menu.myCourses')}</title>
-                <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
-                <meta name='description' content={data.courses && data.courses.length > 0 && data.courses.map(course => course.topic)} />
-                {/* <meta name='description' content={data && data.courses && data.courses[0].topic} /> */}
-            </Helmet>
             {data.courses && data.courses.length > 0 ?
-                <div>
-                    <Container>
-                        <div className="d-flex align-items-center mb-3 mt-5">
-                            <h1 className="course-header me-3" style={{ textTransform: 'uppercase'}}>{t('menu.myCourses')}</h1>
-                            <Filter handleFilter={handleFilter} />
-                        </div>
-                        <div className="mb-5">
+                <>
+                    <div className="d-flex justify-content-between align-items-center mb-3 mt-5">
+                        <h1 className="course-header me-3" style={{ textTransform: 'uppercase' }}>{t('menu.myCourses')}</h1>
+                        <Filter handleFilter={handleFilter} />
+                    </div>
+                    <div>
+                        <Row>
                             {data.courses && data.courses.length > 0 ?
                                 data.courses.map((course, index) => (
-                                    <Course
-                                        key={index}
-                                        id={course.id}
-                                        img={course.coverPhotoPath}
-                                        topic={course.topic}
-                                        instructorName={course.instructorName}
-                                        progress={course.progress}
-                                    />
+                                    <Col sm={12} md={4} key={index}>
+                                        <Courses
+                                            id={course.id}
+                                            img={course.coverPhotoPath}
+                                            topic={course.topic}
+                                            instructorName={course.instructorName}
+                                            body={course.body}
+                                            soldCount={course.soldCount}
+                                            rating={course.rating}
+                                            price={course.price}
+                                            purchased={course.purchased}
+                                        />
+                                    </Col>
                                 ))
                                 : <Loader />
                             }
-                        </div>
+                        </Row>
                         {data.totalPage > 1 && (
                             <CoursePagination
                                 total={data.totalPage}
@@ -92,13 +89,11 @@ export default function CoursesList() {
                                 onChangePage={handleChangePage}
                             />
                         )}
-                    </Container>
-                    {/* <InterestedCourses /> */}
-                </div>
+                    </div>
+                </>
                 :
                 <p style={{ textAlign: "center", fontSize: "52px", margin: "64px 0" }}>{t('notFound.course')}</p>
             }
         </>
-
     )
 }

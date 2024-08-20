@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 import { Col, Container, Image, Row } from "react-bootstrap";
 
-import CoursesContainer from '../Courses/CoursesContainer';
+import ClientCoursesContainer from './ClientCoursesContainer';
 import InterestedCourses from "../InterestedPart/InterestedCourses";
 
 import { authAPI } from '../../api/api';
@@ -56,7 +56,7 @@ export default function ProfileInstructor() {
                         }
                     </div>
                     <div className="user-courses">
-                        <CoursesContainer />
+                        <ClientCoursesContainer />
                     </div>
                 </Container>
                 <InterestedCourses />

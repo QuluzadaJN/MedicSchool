@@ -192,7 +192,7 @@ export default function CourseDetailTaken() {
                                                                     <Nav.Link className="courseDetail-tab py-0" eventKey={`event${course.id}`} onClick={() => putProgress(course.id)}>
                                                                         <div className='d-flex justify-content-between align-items-center'>
                                                                             <div className='detail-right-section d-flex align-items-center'>
-                                                                                <span className={(course.completedByUser || selectedContents.includes(course.id)) && 'active-number'}>{course.id}</span>
+                                                                                <span className={(course.completedByUser || selectedContents.includes(course.id)) && 'active-number'}>{index + 1}</span>
                                                                                 <p className='mb-0'>{course.name}</p>
                                                                             </div>
                                                                             <FontAwesomeIcon icon={faCheck} className={`detail-right-checkIcon ${(course.completedByUser || selectedContents.includes(course.id)) && 'active-icon'}`} />

@@ -7,7 +7,7 @@ import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { faPen } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import CoursesContainer from "../Courses/CoursesContainer";
+import ClientCoursesContainer from "./ClientCoursesContainer";
 
 import { authAPI } from '../../api/api';
 
@@ -60,7 +60,7 @@ export default function ProfileUser() {
                         </div>
                     </div>
                     <div className="user-courses">
-                        <CoursesContainer />
+                        <ClientCoursesContainer />
                     </div>
                 </Container>
                 {/* <InterestedCourses /> */}

@@ -88,7 +88,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
                 const res = await login({ email, password }).unwrap();
                 if (res.status === 'OK') {
                     dispatch(setCredentials({ ...res }))
-                    window.location.reload();
+                    window.location.replace('/');
                     setShowLogin(false);
                 } else {
                     toast.error(res.body)
@@ -197,7 +197,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
                 const resp = await loginWithGoogleFunc(respon.data.email).unwrap();
                 if (resp.status === 'OK') {
                     dispatch(setCredentials({ ...resp }))
-                    window.location.reload();
+                    window.location.replace('/');
                     setShowLogin(false);
                 } else {
                     toast.error(resp.body)
@@ -225,7 +225,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
                 const resp = await loginWithFacebookFunc(response.email).unwrap();
                 if (resp.status === 'OK') {
                     dispatch(setCredentials({ ...resp }))
-                    // window.location.reload();
+                    window.location.reload('/');
                     setShowLogin(false);
                 } else {
                     toast.error(resp.body)
