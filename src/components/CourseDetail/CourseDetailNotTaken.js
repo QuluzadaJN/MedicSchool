@@ -117,7 +117,7 @@ export default function CourseDetailNotTaken() {
             <Helmet>
                 <title>{t('menu.courses')}</title>
                 <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
-                <meta name='description' content={ course && course.body && course.body.body} />
+                <meta name='description' content={course && course.body && course.body.body} />
             </Helmet>
             <Container className='my-5'>
                 {course && course.body ?
@@ -125,7 +125,9 @@ export default function CourseDetailNotTaken() {
                         <Col sm={12} md={9}>
                             <div>
                                 <h1 className='detail-header'>{course.body.topic}</h1>
-                                <ReactPlayer className="course-video" url={course.body.demoFilePath} controls />
+                                <ReactPlayer config={{ file: { attributes: { controlsList: 'nodownload' } } }}
+                                    onContextMenu={e => e.preventDefault()}
+                                    className="course-video" url={course.body.demoFilePath} controls />
                                 {/* <div className='detail-fav-div d-flex justify-content-end align-items-center p-2'>
                                     <span className='detail-fav'><FontAwesomeIcon className='me-3' icon={faShareNodes} />{t('actions.share')}</span>
                                     <span className='detail-fav ms-4'><FontAwesomeIcon className='me-2' icon={faPlus} />{t('actions.addtoFavorites')}</span>

@@ -149,7 +149,9 @@ export default function CourseDetailTaken() {
                                                         <Tab.Pane key={index} eventKey={`event${course.id}`}>
                                                             <div>
                                                                 <h1 className='detail-header'>{course.courseName}</h1>
-                                                                <ReactPlayer className="course-video" url={course.mediaPath} controls />
+                                                                <ReactPlayer config={{ file: { attributes: { controlsList: 'nodownload' } } }}
+                                                                    onContextMenu={e => e.preventDefault()}
+                                                                    className="course-video" url={course.mediaPath} controls />
                                                                 <div className='detail-fav-div pt-4'></div>
                                                                 <div className='my-4 detail-section-header d-flex align-items-center'>
                                                                     <span>{course.id}</span>
