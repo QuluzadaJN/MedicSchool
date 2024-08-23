@@ -13,13 +13,13 @@ export default function HeaderTop() {
         <div>
             <Container>
                 <Row className='py-3'>
-                    <Col sm={12} md={3}>
+                    <Col xs={3}>
                         <Image src={HealthCareImageLogo} className='headerTop-logo' />
                     </Col>
-                    <Col sm={12} md={4}>
+                    <Col xs={4}>
                         <h1 className='headerTop-header'><span>{t('healtyBanner.title')}</span> {t('healtyBanner.content')}</h1>
                     </Col>
-                    <Col sm={12} md={5}>
+                    <Col xs={5}>
                         <Button className='healthCare-wp' onClick={() => {
                             window.open(`https://api.whatsapp.com/send?phone=994507551135?text=Salam MedicSchooldan müraciət edirəm`, "_blank")
                         }}><Image src={whatsappIcon} className='headerTop-icon' /> {t('actions.joinUs')}</Button>

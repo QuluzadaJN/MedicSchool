@@ -190,4 +190,12 @@
     .nav-login {
         margin-right: 0px;
     }
+
+    .navbar-brand img {
+        width: 70%!important;
+    }
+
+    .navbar-toggler {
+        margin-right: 12px;
+    }
 }

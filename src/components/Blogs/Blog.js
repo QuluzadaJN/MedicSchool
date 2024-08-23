@@ -1,6 +1,7 @@
 import { NavLink } from "react-router-dom";
 import { useTranslation } from 'react-i18next';
 import { Card } from "react-bootstrap";
+import ReactHtmlParser from 'react-html-parser';
 
 function Blogs({ id, coverPhoto, topic, content }) {
     const { t } = useTranslation();
@@ -15,7 +16,7 @@ function Blogs({ id, coverPhoto, topic, content }) {
                     <Card.Body>
                         <Card.Title className="courses-header px-4">{topic}</Card.Title>
                         <Card.Text className="courses-text px-4 text-truncate">
-                            {content}
+                            {ReactHtmlParser(content)}
                         </Card.Text>
                     </Card.Body>
                 </Card>

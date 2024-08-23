@@ -10,7 +10,7 @@ export default function HomePageIntro() {
     const { t } = useTranslation();
 
     return (
-        <div>
+        <div className='homehage-intro-wrapper'>
             <div className='intro-bg' style={{ backgroundImage: `url(${HomePageIntroImg})`, backgroundSize: "cover", padding: "140px 0" }}>
                 <Container>
                     <h1 className='intro-text mb-5'>{t('homePageIntroText')}</h1>

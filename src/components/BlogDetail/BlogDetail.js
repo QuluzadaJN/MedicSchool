@@ -48,7 +48,9 @@ export default function BlogDetail() {
                         <Col sm={12} md={9}>
                             <div>
                                 <h1 className='detail-header'>{blog.body.topic}</h1>
-                                {ReactHtmlParser(blog.body.content)}
+                                <div className='blogDetail-wrapper'>
+                                    {ReactHtmlParser(blog.body.content)}
+                                </div>
                             </div>
                         </Col>
                     </Row>

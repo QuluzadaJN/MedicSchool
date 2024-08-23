@@ -35,28 +35,26 @@
 
 @media screen and (max-width: 600px) {
     .headerTop-logo {
-        width: 40%;
-        text-align: center;
-        margin: auto;
+        width: 80%;
+        margin-left: auto;
     }
 
     .headerTop-header {
-        margin: 12px 0;
-        font-size: 20px;
-        line-height: 24px;
+        font-size: 10px;
+        line-height: 12px;
         text-align: center;
     }
 
     .healthCare-wp {
-        font-size: 16px !important;
-        line-height: 20px !important;
-        padding: 8px 20px !important;
+        font-size: 8px !important;
+        line-height: 12px !important;
+        padding: 6px 16px !important;
         float: none;
         display: block!important;
         margin: auto;
     }
     .headerTop-icon {
-        width: 24px;
-        margin-bottom: 4px;
+        width: 9px;
+        margin-right: 4px!important;
     }
 }

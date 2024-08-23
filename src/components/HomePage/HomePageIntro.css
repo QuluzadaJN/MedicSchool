@@ -25,4 +25,8 @@
         line-height: 56px;
         width: 100%;
     }
+
+    .homehage-intro-wrapper {
+        display: none;
+    }
 }
