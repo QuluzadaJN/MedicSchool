@@ -62,7 +62,7 @@ export default function CoursesContainer() {
                                                 id={course.id}
                                                 coverPhoto={course.coverPhoto}
                                                 topic={course.topic}
-                                                content={course.content}
+                                                content={course.description}
                                             />
                                         </Col>
                                     ))
