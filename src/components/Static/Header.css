@@ -172,6 +172,10 @@
     display: none;
 }
 
+.spacer {
+    display: none;
+}
+
 @media screen and (max-width: 600px) {
     .dropdown-item {
         color: #fff !important;
@@ -202,6 +206,7 @@
     }
 
     .spacer {
+        display: block;
         width: 100%;
         height: 64px;
     }
