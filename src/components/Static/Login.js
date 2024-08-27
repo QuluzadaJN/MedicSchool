@@ -246,21 +246,10 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
                     <Col sm={12} md={7} className='ps-0'>
                         <div className='text-center login-modal-body-inner'>
                             <div className='login-bg-white px-4'>
-                                {/* facebook app id - 797206392291276 */}
                                 <Image src={LogoRedImage} className='login-modal-logo m-auto' />
-                                {/* <Button
-                                    onClick={() => authWithFacebook()}
-                                    className='login-modal-btn my-3'
-                                >
-                                    <Image src={FacebookIconImage} className='me-3' />
-                                    {t('login.facebook')} {showRegParam
-                                        ? t('actions.enter')
-                                        : t('actions.signIn')}
-                                </Button> */}
                                 <FacebookLogin
                                     appId="797206392291276"
                                     fields="name,email,picture"
-                                    // autoLoad
                                     callback={authWithFacebook}
                                     render={renderProps => (
                                         <Button

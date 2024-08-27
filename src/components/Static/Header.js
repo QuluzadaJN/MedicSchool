@@ -7,6 +7,7 @@ import { useLogoutMutation } from '../../api/usersApiSlice';
 import { useSelector, useDispatch } from 'react-redux';
 import { Button, Container, Form, Image, Nav, Navbar, NavDropdown } from 'react-bootstrap';
 
+import MobileProfileIcon from '../../images/mobile_profile.svg';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch, faArrowRight, faUser, faBookmark, faGear, faComment, faCircleQuestion, faArrowRightFromBracket, faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -127,8 +128,8 @@ export default function Header() {
                     <Container>
                         <Navbar expand="lg">
                             <Container fluid>
-                                <Navbar.Brand className='me-5' href="/"><Image src={LogoImage} /></Navbar.Brand>
                                 <Navbar.Toggle aria-controls="navbarScroll" />
+                                <Navbar.Brand href="/"><Image src={LogoImage} /></Navbar.Brand>
                                 <Navbar.Collapse id="navbarScroll">
                                     <Nav
                                         className="my-2 my-lg-0"
@@ -156,16 +157,7 @@ export default function Header() {
                                         <Nav.Link as={Link} activeClassName="active" to={'/blogs'}>{t('menu.blogs')}</Nav.Link>
                                         <Nav.Link as={Link} activeClassName="active" to={'/about'}>{t('menu.about')}</Nav.Link>
                                         <Nav.Link as={Link} activeClassName="active" to={'/contact'}>{t('menu.contact')}</Nav.Link>
-                                        <Form.Group className="input-wrapper" controlId="formSearch">
-                                            <FontAwesomeIcon className='search-icon' icon={faSearch} />
-                                            <Form.Control to={'/search'} onChange={(e) => setSearchParam(e.target.value)} type="search" className='search-input' placeholder={t('menu.search')} />
-                                            {searchParam !== "" &&
-                                                <Link to={'/search'}>
-                                                    <FontAwesomeIcon className='me-3 searchArrow' onClick={() => getSearchByName(searchParam)} icon={faArrowCircleRight} />
-                                                </Link>
-                                            }
-                                        </Form.Group>
-                                        {userInfo?.status === 'OK' ?
+                                        {userInfo?.status === 'OK' &&
                                             <>
                                                 <Nav.Link as={Link} activeClassName="active" to={'/myCourses'}>{t('menu.myCourses')}</Nav.Link>
                                                 <NavDropdown className='profil-dropdown' title="Profilim" id="navbarScrollingDropdown">
@@ -188,27 +180,47 @@ export default function Header() {
                                                         <FontAwesomeIcon className='me-3' icon={faArrowRightFromBracket} />{t('menu.exit')}
                                                     </NavDropdown.Item>
                                                 </NavDropdown>
-                                            </> :
-                                            <>
-                                                <Button className='nav-login'
-                                                    onClick={() => {
-                                                        setShowLogin(true);
-                                                        setShowRegParam(false)
-                                                        // setIsLoginOrRegister(false)
-                                                    }}>{t('actions.login')}</Button>
-                                                <Button className="nav-register"
-                                                    onClick={() => {
-                                                        setShowLogin(true);
-                                                        setShowRegParam(true)
-                                                        // setIsLoginOrRegister(true)
-                                                    }}>{t('actions.register')}</Button>
                                             </>
                                         }
                                     </Nav>
                                 </Navbar.Collapse>
+                                <Form.Group className="input-wrapper" controlId="formSearch">
+                                    <FontAwesomeIcon className='search-icon' icon={faSearch} />
+                                    <Form.Control to={'/search'} onChange={(e) => setSearchParam(e.target.value)} type="search" className='search-input' placeholder={t('menu.search')} />
+                                    {searchParam !== "" &&
+                                        <Link to={'/search'}>
+                                            <FontAwesomeIcon className='me-3 searchArrow' onClick={() => getSearchByName(searchParam)} icon={faArrowCircleRight} />
+                                        </Link>
+                                    }
+                                </Form.Group>
+                                {userInfo?.status !== 'OK' &&
+                                    <>
+                                        <Button className='nav-login'
+                                            onClick={() => {
+                                                setShowLogin(true);
+                                                setShowRegParam(false)
+                                                // setIsLoginOrRegister(false)
+                                            }}>{t('actions.login')}</Button>
+                                        <Button className="nav-register"
+                                            onClick={() => {
+                                                setShowLogin(true);
+                                                setShowRegParam(true)
+                                                // setIsLoginOrRegister(true)
+                                            }}>{t('actions.register')}</Button>
+                                        <span className='nav-mobile-reg'
+                                            onClick={() => {
+                                                setShowLogin(true);
+                                                setShowRegParam(false)
+                                                // setIsLoginOrRegister(true)
+                                            }}><Image src={MobileProfileIcon} /></span>
+                                    </>
+                                }
                             </Container>
                         </Navbar>
                     </Container>
+                </div>
+                <div class="spacer">
+                    &nbsp;
                 </div>
                 <div>
                     <Routes>
