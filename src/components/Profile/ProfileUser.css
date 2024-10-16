@@ -10,7 +10,7 @@
 }
 
 .user-name {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 36px;
     font-weight: 500;
     line-height: 42px;
@@ -18,7 +18,7 @@
 }
 
 .edit-user {
-    font-family: "Arimo Standard"!important;
+    font-family: "TT Hoves"!important;
     font-size: 16px!important;
     font-weight: 500!important;
     line-height: 19px!important;
@@ -33,7 +33,7 @@
 }
 
 .user-content-text {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 16px;
     font-weight: 500;
     line-height: 19px;
@@ -50,7 +50,7 @@
 }
 
 .user-courses-header {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 27px;
     font-weight: 700;
     line-height: 32px;

@@ -24,7 +24,7 @@
 
 .login-modal-btn {
     width: 100%;
-    font-family:"Arimo Standard" !important;
+    font-family:"TT Hoves" !important;
     font-size: 18px !important;
     font-weight: 500 !important;
     line-height: 28px !important;
@@ -47,7 +47,7 @@
 }
 
 .login-modal-text {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 15px;
     font-weight: 400;
     line-height: 17.67px;
@@ -67,7 +67,7 @@
 .login-modal-input,
 .login-modal-input::placeholder {
     color: #8C8C8C;
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 18px;
     font-weight: 400;
     line-height: 21.2px;
@@ -81,7 +81,7 @@
 }
 
 .login-modal-footer-text {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 15px;
     font-weight: 400;
     line-height: 17.67px;
@@ -89,7 +89,7 @@
 }
 
 .login-modal-footer-text span {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 15px;
     font-weight: 700;
     line-height: 17.67px;
@@ -98,7 +98,7 @@
 }
 
 .control-error {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 12px;
     color: #FF4330;
     text-align: left;

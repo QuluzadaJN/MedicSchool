@@ -1,5 +1,5 @@
 .healtCare-text {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 28px;
     font-weight: 500;
     line-height: 40px;
@@ -7,7 +7,7 @@
 }
 
 .heathCare-contact {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;
@@ -15,7 +15,7 @@
 }
 
 .healthCarePage-wp {
-    font-family: "Arimo Standard"!important;
+    font-family: "TT Hoves"!important;
     font-size: 30px!important;
     font-weight: 500!important;
     line-height: 20px!important;
@@ -29,7 +29,7 @@
 
 .healthCare-input,
 .healthCare-input::placeholder {
-    font-family: "Arimo Standard" !important;
+    font-family: "TT Hoves" !important;
     font-size: 18px !important;
     font-weight: 400 !important;
     line-height: 21px !important;
@@ -47,7 +47,7 @@
 }
 
 .healthCare-btn {
-    font-family: "Arimo Standard" !important;
+    font-family: "TT Hoves" !important;
     font-size: 18px !important;
     font-weight: 500 !important;
     line-height: 28px !important;
@@ -59,7 +59,7 @@
 }
 
 .healthCare-call {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 18px;
     font-weight: 500;
     line-height: 28px;

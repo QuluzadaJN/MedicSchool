@@ -19,37 +19,15 @@ export default function CoursesContainer() {
     const [page, setPage] = useState(1);
 
     const getCourses = async () => {
-        if (localStorage.getItem('catId')) {
-            try {
-                const resp = await authAPI.getAllByCategory(localStorage.getItem('catId'));
-                if (resp.status === 'OK') {
-                    setData({ courses: resp?.body.items, totalPage: Math.ceil((resp?.body.totalElements) / 9) })
-                } else {
-                    toast.error(resp.body)
-                }
-            } catch (error) {
-                toast.error(error?.response?.data?.errors?.[0].defaultMessage)
+        try {
+            const res = await authAPI.getCoursesPagination(page)
+            if (res.status === 'OK') {
+                setData({ courses: res?.body?.items, totalPage: res?.body.totalPages })
+            } else {
+                toast.error(res.body)
             }
-            setTimeout(() => {
-                localStorage.removeItem('catId');
-            }, 1000);
-        } else if (localStorage.getItem('filterName')) {
-            handleFilter(localStorage.getItem('filterName'));
-
-            setTimeout(() => {
-                localStorage.removeItem('filterName');
-            }, 1000);
-        } else {
-            try {
-                const res = await authAPI.getCoursesPagination(page)
-                if (res.status === 'OK') {
-                    setData({ courses: res?.body?.items, totalPage: Math.ceil((res?.body?.totalElements) / 9) })
-                } else {
-                    toast.error(res.body)
-                }
-            } catch (error) {
-                toast.error(error?.response?.data?.errors?.[0].defaultMessage)
-            }
+        } catch (error) {
+            toast.error(error?.response?.data?.errors?.[0].defaultMessage)
         }
     }
 
@@ -58,7 +36,7 @@ export default function CoursesContainer() {
             const filter = val;
             const res = await authAPI.getAllByFilter({ page, filter })
             if (res.status === 'OK') {
-                setData({ courses: res?.body?.items, totalPage: Math.ceil((res?.body?.totalElements) / 9) })
+                setData({ courses: res?.body?.items, totalPage: res?.body.totalPages })
             } else {
                 toast.error(res.body)
             }

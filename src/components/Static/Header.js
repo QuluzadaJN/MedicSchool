@@ -36,6 +36,8 @@ import CoursesDetailTaken from '../CourseDetail/CourseDetailTaken';
 import CoursesDetailNotTaken from '../CourseDetail/CourseDetailNotTaken';
 import BlogDetail from '../BlogDetail/BlogDetail';
 import GenericNotFound from '../component/GenericNotFound/GenericNotFound';
+import CoursesByCategory from '../Courses/CoursesByCategory';
+import CoursesByFilter from '../Courses/CoursesByFilter';
 
 import { authAPI } from '../../api/api';
 
@@ -95,20 +97,7 @@ export default function Header() {
         }
     }
 
-    const getCategoryId = (catId) => {
-        localStorage.removeItem('filterName');
-        localStorage.removeItem('topicName');
-        localStorage.setItem('catId', catId);
-    }
-
-    const handleFilter = (filterName) => {
-        localStorage.removeItem('catId');
-        localStorage.removeItem('topicName');
-        localStorage.setItem('filterName', filterName);
-    }
-
     const getSearchByName = (topicName) => {
-        localStorage.removeItem('catId');
         localStorage.removeItem('filterName');
         localStorage.setItem('topicName', topicName);
     }
@@ -124,10 +113,10 @@ export default function Header() {
                     setShowLogin(false)
                 }} />
             <div>
-                <div className='header-bg'>
+                <div className='header-bg position-relative'>
                     <Container>
-                        <Navbar expand="lg">
-                            <Container fluid>
+                        <Navbar expand="lg" className='position-static'>
+                            <Container fluid className='position-static'>
                                 <Navbar.Toggle aria-controls="navbarScroll" />
                                 <Navbar.Brand href="/"><Image src={LogoImage} /></Navbar.Brand>
                                 <Navbar.Collapse id="navbarScroll">
@@ -135,21 +124,21 @@ export default function Header() {
                                         className="my-2 my-lg-0"
                                         navbarScroll
                                     >
-                                        <NavDropdown title={t('menu.courses')} className='courses-dropdown' id="navbarScrollingDropdown" onClick={getCategories}>
+                                        <NavDropdown title={t('menu.courses')} className='courses-dropdown position-static' id="navbarScrollingDropdown" onClick={getCategories}>
                                             <Container className='d-flex nav-courses-flex'>
                                                 <div className='nav-courses-flex-left'>
-                                                    <h3 className="footer-title mb-3">Bütün kurslar <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} /></h3>
+                                                    <h3 className="footer-title mb-3">{t('footerMenu.allCourses')} <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} /></h3>
                                                     {categories ? categories?.body?.items?.map((cat) => {
                                                         return (
-                                                            <NavDropdown.Item className='footer-listItem ps-0' href='/' key={cat.id} onClick={() => getCategoryId(cat.id)}>{cat.name}</NavDropdown.Item>
+                                                            <NavDropdown.Item className='footer-listItem ps-0' href={`/courses/category/${cat.id}`} key={cat.id}>{cat.name}</NavDropdown.Item>
                                                         )
                                                     }) : <Loader />}
                                                 </div>
                                                 <div className='nav-courses-flex-right'>
-                                                    <h3 className="footer-title mb-3">Mənim kurslarım <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} /></h3>
-                                                    <NavDropdown.Item className='footer-listItem ps-0' value="" href="/courses">Mənim kurslarım</NavDropdown.Item>
+                                                    <h3 className="footer-title mb-3">{t('footerMenu.myCourses')} <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} /></h3>
+                                                    <NavDropdown.Item className='footer-listItem ps-0' value="" href="/courses">{t('footerMenu.myCourses')}</NavDropdown.Item>
                                                     {filterArray.map((filter, index) => (
-                                                        <NavDropdown.Item href='/' className='footer-listItem ps-0' onClick={() => handleFilter(filter.name)} key={index} value={filter.name}>{filter.text}</NavDropdown.Item>
+                                                        <NavDropdown.Item href={`/courses/${filter.name}`} className='footer-listItem ps-0' key={index} value={filter.name}>{filter.text}</NavDropdown.Item>
                                                     ))}
                                                 </div>
                                             </Container>
@@ -227,6 +216,8 @@ export default function Header() {
                         {/* <Switch> */}
                         <Route path="/" element={<HomePage />} />
                         <Route path="/courses" element={<CoursesList />} />
+                        <Route path="/courses/category/:id" element={<CoursesByCategory />} />
+                        <Route path="/courses/:id" element={<CoursesByFilter />} />
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/contact" element={<Contact />} />

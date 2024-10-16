@@ -36,7 +36,7 @@ export default function CoursesContainer() {
             const filter = val;
             const res = await authAPI.getAllByFilter({ page, filter })
             if (res.status === 'OK') {
-                setData({ courses: res?.body?.items, totalPage: Math.ceil((res?.body?.totalElements) / 9) })
+                setData({ courses: res?.body?.items, totalPage: res?.body.totalPages })
             } else {
                 toast.error(res.body)
             }

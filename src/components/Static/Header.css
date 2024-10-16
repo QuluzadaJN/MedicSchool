@@ -7,7 +7,7 @@
 }
 
 .nav-link {
-    font-family: "Arimo Standard" !important;
+    font-family: "TT Hoves" !important;
     font-size: 18px !important;
     font-weight: 500 !important;
     line-height: 21px !important;
@@ -23,7 +23,7 @@
 .input-wrapper {
     background-color: #C13230;
     border-radius: 8px;
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 18px;
     font-weight: 300;
     line-height: 21px;
@@ -79,7 +79,7 @@
 }
 
 .footer-title {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves Medium";
     font-size: 18px;
     font-weight: 700;
     line-height: 21px;
@@ -91,16 +91,14 @@
 }
 
 .footer-listItem {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 18px;
     font-weight: 500;
     line-height: 21px;
 }
 
 .courses-dropdown .dropdown-menu {
-    width: 100vw !important;
-    top: 64px !important;
-    left: -422px !important;
+    width: 100% !important;
     border: none !important;
     border-radius: 0 !important;
     padding: 40px 0 160px;
@@ -110,7 +108,7 @@
     border-radius: 8px;
     padding: 10px 28px;
     background-color: #fff;
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 18px;
     font-weight: 500;
     line-height: 21px;

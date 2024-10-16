@@ -19,7 +19,7 @@ export default function Search({ ...props }) {
         try {
             const resp = await authAPI.getSearchByName(props.searchParam);
             if (resp.status === 'OK') {
-                setData({ courses: resp?.body?.items, totalPage: Math.ceil((resp?.body?.totalElements) / 9) })
+                setData({ courses: resp?.body?.items, totalPage: resp?.body.totalPages })
             } else {
                 toast.error(resp.body)
             }

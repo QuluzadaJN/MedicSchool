@@ -1,5 +1,5 @@
 .course-header {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 32px;
     font-weight: 600;
     line-height: 49px;
@@ -11,7 +11,7 @@
 }
 
 .course-title {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 20px;
     font-weight: 600;
     line-height: 49px;
@@ -19,7 +19,7 @@
 }
 
 .course-author {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 16px;
     font-weight: 400;
     color: #4E4E4E;
@@ -34,7 +34,7 @@
 }
 
 .course-status {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 16px;
     font-weight: 400;
     line-height: 49px;
@@ -46,7 +46,7 @@
     border: none !important;
     padding: 6px 48px !important;
     border-radius: 4px !important;
-    font-family: "Arimo Standard" !important;
+    font-family: "TT Hoves" !important;
     font-size: 11px !important;
     font-weight: 500 !important;
     line-height: 17px !important;

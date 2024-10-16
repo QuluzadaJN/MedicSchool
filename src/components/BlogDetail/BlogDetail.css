@@ -1,12 +1,10 @@
 .detail-header {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 39px;
     font-weight: 600;
     line-height: 49px;
 }
 
-@media screen and (max-width: 600px) {
-    .blogDetail-wrapper img {
-        width: 100%;
-    }
+.blogDetail-wrapper img {
+    width: 100%;
 }

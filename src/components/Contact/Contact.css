@@ -3,7 +3,7 @@
 }
 
 .contact-header {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 70px;
     font-weight: 700;
     line-height: 82px;
@@ -11,7 +11,7 @@
 }
 
 .contact-desc {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 32px;
     font-weight: 400;
     line-height: 46px;
@@ -42,7 +42,7 @@
     width: 100%;
     padding: 16px 28px;
     border: 0.5px solid #B3B3B3;
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 18px;
     font-weight: 400;
     line-height: 21px;
@@ -59,7 +59,7 @@
 }
 
 .contact-div {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 24px;
     font-weight: 500;
     line-height: 28px;
@@ -75,7 +75,7 @@
 }
 
 .control-error {
-    font-family: "Arimo Standard";
+    font-family: "TT Hoves";
     font-size: 12px;
     color: #FF4330;
     text-align: left;

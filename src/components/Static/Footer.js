@@ -42,16 +42,6 @@ export default function Footer() {
         getCategories();
     }, [])
 
-    const getCategoryId = (catId) => {
-        localStorage.removeItem('filterName');
-        localStorage.setItem('catId', catId);
-    }
-
-    const handleFilter = (filterName) => {
-        localStorage.removeItem('catId');
-        localStorage.setItem('filterName', filterName);
-    }
-
     const changeLanguageForWeb = (e) => {
         i18n.changeLanguage(e.target.value);
     }
@@ -66,7 +56,7 @@ export default function Footer() {
                             <h3 className="footer-title mb-3">{t('footerMenu.allCourses')} <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} /></h3>
                             {categories? categories?.body?.items?.map((cat) => {
                                 return (
-                                    <a href='/' className="footer-listItem" key={cat.id} onClick={() => getCategoryId(cat.id)}>{cat.name}</a>
+                                    <a href={`/courses/category/${cat.id}`} className="footer-listItem" key={cat.id}>{cat.name}</a>
                                 )
                             }) : <Loader />}
                         </Col>
@@ -74,7 +64,7 @@ export default function Footer() {
                             <h3 className="footer-title mb-3">{t('footerMenu.myCourses')} <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} /></h3>
                             <a href='/myCourses' className='footer-listItem'>Mənim kurslarım</a>
                             {filterArray.map((filter, index) => (
-                                <a href='/' className='footer-listItem' onClick={() => handleFilter(filter.name)} key={index} value={filter.name}>{filter.text}</a>
+                                <a href={`/courses/${filter.name}`} className='footer-listItem' key={index} value={filter.name}>{filter.text}</a>
                             ))}
                             {/* <p className="footer-listItem">Sertifikatlı kurslar</p> */}
                         </Col>
