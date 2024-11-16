@@ -63,9 +63,19 @@ export default function Contact() {
 
         if (!contactEmailIsInvalid && !contactNameIsInvalid && !contactNoteIsInvalid) {
             try {
-                const res = await authAPI.postSubmitContactForm({ email, fullName, note }).unwrap();
+                const res = await authAPI.postSubmitContactForm({ email, fullName, note });
                 if (res.status === 'OK') {
                     toast.success(res.body);
+                    setEnteredContactValues({
+                        contactEmail: '',
+                        contactName: '',
+                        contactNote: '',
+                    });
+                    setDidContactEdit({
+                        contactEmail: false,
+                        contactName: false,
+                        contactNote: false,
+                    });
                 } else {
                     toast.error(res.body)
                 }

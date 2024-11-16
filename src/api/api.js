@@ -400,7 +400,6 @@ export const authAPI = {
         }).then(response => {
             if (response.status === 200) {
                 if (response.data.status === 'OK') {
-                    toast.success(response.data.body);
                     return response.data;
                 } else {
                     toast.error(response.data.body);

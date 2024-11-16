@@ -32,7 +32,7 @@ i18n
                     actions: {
                         login: "Log In",
                         register: "Register",
-                        followUs: "FOLLOW US",
+                        followUs: "APPLY",
                         mainPage: "HOME PAGE",
                         rateCourse: "Rate course",
                         share: "Share",
@@ -181,7 +181,7 @@ i18n
                     actions: {
                         login: "Giriş",
                         register: "Qeydiyyat",
-                        followUs: "BİZİ İZLƏ",
+                        followUs: "MÜRACİƏT EDİN",
                         mainPage: "ANA SƏHİFƏ",
                         rateCourse: "Kursu qiymətləndir",
                         share: "Paylaş",
@@ -240,7 +240,7 @@ i18n
                         passwordError: "Şifrə 8 rəqəmdən az olmamalıdır.",
                         phoneError: "Düzgün Əlaqə nömrəsi qeyd etməlisiniz",
                     },
-                    contactText: "Bizimlə əlaqə üçün formu dolura bilərsiniz",
+                    contactText: "Bizimlə əlaqə üçün formu doldura bilərsiniz",
                     course: {
                         whatToLearn: "Bu onlayn kursda nə öyrənəcəksiniz?",
                         whoResp: "Bu kurs kimlər üçündür?",
