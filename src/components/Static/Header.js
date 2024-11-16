@@ -113,9 +113,9 @@ export default function Header() {
                     setShowLogin(false)
                 }} />
             <div>
-                <div className='header-bg position-relative'>
+                <div className='header-bg'>
                     <Container>
-                        <Navbar expand="lg" className='position-static'>
+                        <Navbar expand="lg">
                             <Container fluid className='position-static'>
                                 <Navbar.Toggle aria-controls="navbarScroll" />
                                 <Navbar.Brand href="/"><Image src={LogoImage} /></Navbar.Brand>
