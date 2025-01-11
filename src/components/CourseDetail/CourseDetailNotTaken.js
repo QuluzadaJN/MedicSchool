@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
-import { Button, Col, Image, Row, Container } from 'react-bootstrap';
+import { Button, Col, Image, Row, Container, Tooltip } from 'react-bootstrap';
 import ReactPlayer from 'react-player'
 import linkedinIcon from '../../images/linkedin.svg';
 import internetIcon from '../../images/internet.svg';
@@ -58,32 +58,34 @@ export default function CourseDetailNotTaken() {
     }, [])
 
     const handlePurchaseCourse = async () => {
-        let model = {
-            "amount": course.body.discountedPrice ? course.body.discountedPrice : course.body.price,
-            "approverUrl": urlsite,
-            "cancelUrl": urlsite,
-            "courseId": courseId,
-            "currency": "944",
-            "declineUrl": urlsite,
-            "description": "string",
-            "language": "AZ"
-        };
+        if (localStorage.getItem('userInfo')) {
+            let model = {
+                "amount": course.body.discountedPrice ? course.body.discountedPrice : course.body.price,
+                "approverUrl": urlsite,
+                "cancelUrl": urlsite,
+                "courseId": courseId,
+                "currency": "944",
+                "declineUrl": urlsite,
+                "description": "string",
+                "language": "AZ"
+            };
 
-        try {
-            const resp = await authAPI.postPurchaseCourse(model);
-            if (resp.status === 'OK') {
-                const orderId = resp.body.response.order.orderId;
-                const sessionId = resp.body.response.order.sessionId;
+            try {
+                const resp = await authAPI.postPurchaseCourse(model);
+                if (resp.status === 'OK') {
+                    const orderId = resp.body.response.order.orderId;
+                    const sessionId = resp.body.response.order.sessionId;
 
-                localStorage.setItem("orderId", orderId);
-                localStorage.setItem("sessionId", sessionId);
+                    localStorage.setItem("orderId", orderId);
+                    localStorage.setItem("sessionId", sessionId);
 
-                window.location.assign(`https://3dsrv.kapitalbank.az/index.jsp?ORDERID=${orderId}&SESSIONID=${sessionId}`);
-            } else {
-                toast.error(resp.body);
+                    window.location.assign(`https://3dsrv.kapitalbank.az/index.jsp?ORDERID=${orderId}&SESSIONID=${sessionId}`);
+                } else {
+                    toast.error(resp.body);
+                }
+            } catch (err) {
+                toast.error(err?.response?.data?.errors?.[0].defaultMessage);
             }
-        } catch (err) {
-            toast.error(err?.response?.data?.errors?.[0].defaultMessage);
         }
     }
 
@@ -201,7 +203,10 @@ export default function CourseDetailNotTaken() {
                                     </> :
                                     <h1 className='course-detail-price'>₼{course.body.price} AZN</h1>
                                 }
-                                <Button className='detail-btn' onClick={handlePurchaseCourse}>{t('actions.purchaseCourse')}</Button>
+                                <div className='p-relative'>
+                                    <Button disabled={!localStorage.getItem('userInfo')} className='detail-btn' onClick={handlePurchaseCourse}>{t('actions.purchaseCourse')}</Button>
+                                    <Tooltip className='p-absolute' placement="top" style={{ marginTop: "-35px", marginBottom: "21px"}} title={!localStorage.getItem('userInfo') && t('course.tooltip')}></Tooltip>
+                                </div>
                                 {(course.body.discountEndDate && discountedDate !== "") && <p className='detail-sale-duration'>{discountedDate} {t('course.saleDuration')}</p>}
                                 <p className='deatil-right-text'>{course.body.commentCount} {t('course.comment')}</p>
                                 <p className='deatil-right-text'>{course.body.contents.length} {t('course.lesson')} ({course.body.courseLength})</p>
