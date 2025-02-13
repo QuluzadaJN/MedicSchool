@@ -69,7 +69,7 @@ export default function CoursesContainer() {
                     <div>
                         <Row>
                             {data.courses && data.courses.length > 0 ?
-                                data.courses.map((course, index) => (
+                                data.courses.filter(el=>el.active === true).map((course, index) => (
                                     <Col sm={12} md={4} key={index}>
                                         <Courses
                                             id={course.id}

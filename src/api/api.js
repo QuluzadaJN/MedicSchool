@@ -3,6 +3,7 @@ import axios from "axios";
 import { store } from "../store";
 
 const BASE_URL = 'https://api.medicschool.az/api/v1';
+const BASE_URL2 = 'https://api.medicschool.az/api/v2';
 
 const { userInfo } = store.getState().auth;
 
@@ -24,8 +25,8 @@ export const authAPI = {
                 toast.error(error?.response?.data?.errors?.[0].defaultMessage);
             })
     },
-    registerWithFacebook({ email, fullName }) {
-        return axios.post(`${BASE_URL}/auth/facebook/register?email=${email}&fullName=${fullName}`, {
+    registerWithFacebook({ email, fullName,redirectUri }) {
+        return axios.post(`${BASE_URL}/auth/facebook/register?email=${email}&fullName=${fullName}&redirect_uri=${redirectUri}`, {
             'credentials': "omit",
         }).then(response => {
             if (response.status === 200) {
@@ -333,13 +334,13 @@ export const authAPI = {
         })
     },
 
-    postCheckPayment({ orderId, sessionId }) {
-        return axios.post(`${BASE_URL}/payment/check`, JSON.stringify({ orderId, sessionId }), {
+    postCheckPayment({ orderId }) {
+        return axios.get(`${BASE_URL2}/payment/${orderId}`,{
             headers: {
                 'Content-Type': 'application/json',
                 ...token ? { authorization: token } : {},
-            },
-        }).then(response => {
+            }},
+        ).then(response => {
             if (response.status === 200) {
                 if (response.data.status === 'OK') {
                     toast.success(response.data.body);
@@ -354,7 +355,7 @@ export const authAPI = {
     },
 
     postPurchaseCourse(data) {
-        return axios.post(`${BASE_URL}/payment/purchase`, JSON.stringify(data), {
+        return axios.post(`${BASE_URL2}/payment/purchase`, JSON.stringify(data), {
             headers: {
                 'Content-Type': 'application/json',
                 ...token ? { authorization: token } : {},
