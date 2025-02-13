@@ -159,6 +159,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
 
     const authWithGoogle = useGoogleLogin({
         onSuccess: async (response) => {
+            debugger
             try {
                 await axios.get(
                     "https://www.googleapis.com/oauth2/v3/userinfo",
@@ -181,6 +182,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
     });
 
     const authWGoogleApi = async (respon) => {
+        debugger
         if (showRegParam) {
             try {
                 const resp = await authAPI.registerWithGoogle({ email: respon.data.email, fullName: respon.data.name });
@@ -210,8 +212,15 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
 
     const authWithFacebook = async (response) => {
         if (showRegParam) {
+            debugger
             try {
-                const resp = await authAPI.registerWithFacebook({ email: response.email, fullName: response.name });
+                const redirectUri = `${window.location.origin}`
+                console.log(redirectUri)
+                const resp = await authAPI.registerWithFacebook({
+                    email: response.email,
+                    fullName: response.name,
+                    redirectUri:redirectUri
+                });
                 if (resp.status === 'OK') {
                     setShowRegParam(false)
                 } else {
@@ -222,6 +231,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
             }
         } else {
             try {
+                debugger
                 const resp = await loginWithFacebookFunc(response.email).unwrap();
                 if (resp.status === 'OK') {
                     dispatch(setCredentials({ ...resp }))

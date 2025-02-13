@@ -21,10 +21,15 @@ export default function CoursesList() {
     const [page, setPage] = useState(1)
 
     const getClientCourses = async () => {
+        debugger
         try {
             const res = await authAPI.getClientCourses(page)
             if (res.status === 'OK') {
-                setData({ courses: res?.body?.items, totalPage: Math.ceil((res?.body?.items.length) / 6) })
+                debugger
+                console.log(res?.body?.items)
+                setData(
+                    { courses: res?.body?.items?.filter(el => el.active!== true),
+                    totalPage: Math.ceil((res?.body?.items.length) / 6) })
             } else {
                 toast.error(res.body)
             }

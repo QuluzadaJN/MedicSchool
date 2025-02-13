@@ -61,8 +61,8 @@ export default function CoursesContainer() {
                                             <Blogs
                                                 id={course.id}
                                                 coverPhoto={course.coverPhoto}
-                                                topic={course.topic}
-                                                content={course.description}
+                                                topic={course.topic && (course.topic.length > 25 ? course.topic.substr(0,25)+('...') : course.topic)}
+                                                content={course.description }
                                             />
                                         </Col>
                                     ))

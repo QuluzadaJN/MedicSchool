@@ -59,27 +59,32 @@ export default function CourseDetailNotTaken() {
 
     const handlePurchaseCourse = async () => {
         if (localStorage.getItem('userInfo')) {
+
             let model = {
-                "amount": course.body.discountedPrice ? course.body.discountedPrice : course.body.price,
-                "approverUrl": urlsite,
-                "cancelUrl": urlsite,
                 "courseId": courseId,
-                "currency": "944",
-                "declineUrl": urlsite,
-                "description": "string",
-                "language": "AZ"
+                "order":{
+                    "amount": course.body.discountedPrice ? course.body.discountedPrice.toString() : course.body.price.toString(),
+                    "currency": "AZN",
+                    "description": "string",
+                    "language": "az",
+                    "hppCofCapturePurposes":["Cit"],
+                    "hppRedirectUrl":urlsite,
+                    "typeRid":"Order_SMS"
+                    }
             };
 
             try {
                 const resp = await authAPI.postPurchaseCourse(model);
                 if (resp.status === 'OK') {
-                    const orderId = resp.body.response.order.orderId;
-                    const sessionId = resp.body.response.order.sessionId;
-
+                    debugger
+                    const orderId = resp.body.order.id;
+                    // const sessionId = resp.body.response.order.sessionId;
+                    //
                     localStorage.setItem("orderId", orderId);
-                    localStorage.setItem("sessionId", sessionId);
-
-                    window.location.assign(`https://3dsrv.kapitalbank.az/index.jsp?ORDERID=${orderId}&SESSIONID=${sessionId}`);
+                    // localStorage.setItem("sessionId", sessionId);
+                    debugger
+                    window.location.assign(resp.body.order.RedirectUrlFromBack);
+                    // window.location.assign(`https://3dsrv.kapitalbank.az/index.jsp?ORDERID=${orderId}&SESSIONID=${sessionId}`);
                 } else {
                     toast.error(resp.body);
                 }
@@ -89,13 +94,13 @@ export default function CourseDetailNotTaken() {
         }
     }
 
-    const handleCheckPurchase = async (orderId, sessionId) => {
+    const handleCheckPurchase = async (orderId) => {
         try {
-            const resp = await authAPI.postCheckPayment({ orderId, sessionId });
+            const resp = await authAPI.postCheckPayment({ orderId });
             if (resp.status === 'OK') {
                 navigate(`/content/byCourse/${courseId}`);
                 localStorage.removeItem("orderId");
-                localStorage.removeItem("sessionId");
+                // localStorage.removeItem("sessionId");
             } else {
                 toast.error(resp.body);
             }
@@ -105,13 +110,13 @@ export default function CourseDetailNotTaken() {
     }
 
     const storageOrderId = localStorage.getItem("orderId");
-    const storageSessionId = localStorage.getItem("sessionId");
+    // const storageSessionId = localStorage.getItem("sessionId");
 
     useEffect(() => {
-        if (storageOrderId || storageSessionId) {
-            handleCheckPurchase(storageOrderId, storageSessionId);
+        if (storageOrderId && !isNaN(storageOrderId)) {
+            handleCheckPurchase(parseInt(storageOrderId));
         }
-    }, storageSessionId);
+    }, storageOrderId);
 
     return (
         <>
@@ -204,8 +209,14 @@ export default function CourseDetailNotTaken() {
                                     <h1 className='course-detail-price'>₼{course.body.price} AZN</h1>
                                 }
                                 <div className='p-relative'>
-                                    <Button disabled={!localStorage.getItem('userInfo')} className='detail-btn' onClick={handlePurchaseCourse}>{t('actions.purchaseCourse')}</Button>
-                                    <Tooltip className='p-absolute' placement="top" style={{ marginTop: "-35px", marginBottom: "21px"}} title={!localStorage.getItem('userInfo') && t('course.tooltip')}></Tooltip>
+                                    <Button disabled={!localStorage.getItem('userInfo')} className='detail-btn'
+                                            onClick={handlePurchaseCourse}>{t('actions.purchaseCourse')}</Button>
+                                    {/*<Tooltip className='p-absolute'*/}
+                                    {/*         placement="top"*/}
+                                    {/*         style={{ marginTop: "-35px", marginBottom: "21px"}}*/}
+                                    {/*         title={!localStorage.getItem('userInfo')*/}
+                                    {/*         && t('course.tooltip')}>*/}
+                                    {/*</Tooltip>*/}
                                 </div>
                                 {(course.body.discountEndDate && discountedDate !== "") && <p className='detail-sale-duration'>{discountedDate} {t('course.saleDuration')}</p>}
                                 <p className='deatil-right-text'>{course.body.commentCount} {t('course.comment')}</p>
