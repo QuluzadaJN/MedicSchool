@@ -69,11 +69,11 @@ export default function Footer() {
                             {/* <p className="footer-listItem">Sertifikatlı kurslar</p> */}
                         </Col>
                         <Col sm={12} md={4}>
-                            <p className="footer-listItem mb-3">{t('language.title')}</p>
-                            <Form.Select className='tab-input mb-2' onChange={(e) => changeLanguageForWeb(e)}>
-                                <option value="az">{t('language.az')}</option>
-                                <option value="en">{t('language.en')}</option>
-                            </Form.Select>
+                            {/*<p className="footer-listItem mb-3">{t('language.title')}</p>*/}
+                            {/*<Form.Select className='tab-input mb-2' onChange={(e) => changeLanguageForWeb(e)}>*/}
+                            {/*    <option value="az">{t('language.az')}</option>*/}
+                            {/*    <option value="en">{t('language.en')}</option>*/}
+                            {/*</Form.Select>*/}
                             <p className='tab-input d-flex justify-content-between align-items-center'>
                                 <span>{t('footerMenu.forContact')}</span>
                                 <div>

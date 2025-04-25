@@ -38,6 +38,7 @@ i18n
                         share: "Share",
                         addtoFavorites: "Add to wish list",
                         purchaseCourse: "KURSU AL",
+                        enjoyCourse: "KURSA KEÇ",
                         download: "Download",
                         send: "Send",
                         goToCourse: "GO TO COURSE",
@@ -145,6 +146,7 @@ i18n
                         newAcc: "To create a new account",
                         reg: "Register",
                         regEnd: "",
+                        succesFullLogin :''
                     },
                     settings: {
                         title: "SETTINGS",
@@ -188,6 +190,7 @@ i18n
                         share: "Paylaş",
                         addtoFavorites: "İstək siyahısına əlavə et",
                         purchaseCourse: "KURSU AL",
+                        enjoyCourse: "KURSA KEÇ",
                         download: "Yüklə",
                         send: "Göndər",
                         goToCourse: "KURSA KEÇİD ET",
@@ -295,6 +298,7 @@ i18n
                         newAcc: "Yeni hesabın yaratmaq üçün",
                         reg: "Qeydiyyat",
                         regEnd: "dan keç",
+                        succesFullLogin :'Uğurlu login oldunuz'
                     },
                     settings: {
                         title: "TƏNZİMLƏMƏLƏR",

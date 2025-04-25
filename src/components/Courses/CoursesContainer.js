@@ -47,6 +47,7 @@ export default function CoursesContainer() {
 
     useEffect(() => {
         getCourses();
+        console.log(data)
     }, [page])
 
     const handleChangePage = useCallback((page) => {
@@ -78,6 +79,7 @@ export default function CoursesContainer() {
                                             instructorName={course.instructorName}
                                             body={course.body}
                                             soldCount={course.soldCount}
+                                            discountedPrice={course.discountedPrice}
                                             rating={course.rating}
                                             price={course.price}
                                             purchased={course.purchased}

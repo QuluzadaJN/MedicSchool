@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
 import { Helmet } from 'react-helmet-async';
-import { Button, Col, Image, Row, Container, Tooltip } from 'react-bootstrap';
+import { Button, Col, Image, Row, Container, Tooltip,OverlayTrigger } from 'react-bootstrap';
 import ReactPlayer from 'react-player'
 import linkedinIcon from '../../images/linkedin.svg';
 import internetIcon from '../../images/internet.svg';
@@ -53,6 +53,11 @@ export default function CourseDetailNotTaken() {
 
     const urlsite = window.location.href;
 
+    const renderTooltip = (props) => (
+        <Tooltip id="button-tooltip" {...props}>
+            Kursu almaq üçün giriş etməlisiniz.
+        </Tooltip>
+    );
     useEffect(() => {
         getCoursesById();
     }, [])
@@ -108,7 +113,9 @@ export default function CourseDetailNotTaken() {
             toast.error(err?.response?.data?.errors?.[0].defaultMessage);
         }
     }
-
+    const isDisabled = !localStorage.getItem('userInfo');
+    console.log('isDisabled')
+    console.log(isDisabled)
     const storageOrderId = localStorage.getItem("orderId");
     // const storageSessionId = localStorage.getItem("sessionId");
 
@@ -117,6 +124,29 @@ export default function CourseDetailNotTaken() {
             handleCheckPurchase(parseInt(storageOrderId));
         }
     }, storageOrderId);
+
+    const buttonText = course?.body?.price > 0 ? t('actions.purchaseCourse') : t('actions.goToCourse');
+    const buttonContent = (
+        <span className="d-inline-block" style={{ pointerEvents: 'auto' }}>
+    <button
+        type="button"
+        className="btn btn-primary detail-btn"
+        onClick={handlePurchaseCourse}
+        disabled={isDisabled}
+        style={
+            isDisabled
+                ? {
+                    pointerEvents: 'none',
+                    opacity: 0.6,
+                    cursor: 'not-allowed',
+                }
+                : {}
+        }
+    >
+      {buttonText}
+    </button>
+  </span>
+    );
 
     return (
         <>
@@ -209,14 +239,107 @@ export default function CourseDetailNotTaken() {
                                     <h1 className='course-detail-price'>₼{course.body.price} AZN</h1>
                                 }
                                 <div className='p-relative'>
-                                    <Button disabled={!localStorage.getItem('userInfo')} className='detail-btn'
-                                            onClick={handlePurchaseCourse}>{t('actions.purchaseCourse')}</Button>
-                                    {/*<Tooltip className='p-absolute'*/}
-                                    {/*         placement="top"*/}
-                                    {/*         style={{ marginTop: "-35px", marginBottom: "21px"}}*/}
-                                    {/*         title={!localStorage.getItem('userInfo')*/}
-                                    {/*         && t('course.tooltip')}>*/}
-                                    {/*</Tooltip>*/}
+                                    {/*<OverlayTrigger*/}
+                                    {/*    placement="top"*/}
+                                    {/*    delay={{ show: 100, hide: 200 }} // ⚠️ BURDA GECIKME LƏĞV OLUNUR*/}
+                                    {/*    overlay={renderTooltip}*/}
+                                    {/*>*/}
+                                    {/*     <span className="d-inline-block">*/}
+                                    {/*    <Button disabled={!localStorage.getItem('userInfo')}*/}
+                                    {/*            className='detail-btn '*/}
+                                    {/*            onClick={handlePurchaseCourse}>*/}
+                                    {/*        {course.body.price > 0 ?t('actions.purchaseCourse') : t('actions.goToCourse')}*/}
+                                    {/*    </Button>*/}
+                                    {/*     </span>*/}
+                                    {/*    </OverlayTrigger>*/}
+                                    {/*<OverlayTrigger*/}
+                                    {/*    placement="top"*/}
+                                    {/*    overlay={renderTooltip}*/}
+                                    {/*    delay={{ show: 0, hide: 100 }}*/}
+                                    {/*>*/}
+                                    {/*  <span className="d-inline-block" style={{ cursor: 'not-allowed' }}>*/}
+                                    {/*      <Button disabled={!localStorage.getItem('userInfo')}*/}
+                                    {/*              className='detail-btn '*/}
+                                    {/*              onClick={handlePurchaseCourse}>*/}
+                                    {/*        {t('actions.purchaseCourse')}*/}
+                                    {/*    </Button>*/}
+                                    {/*  </span>*/}
+                                    {/*</OverlayTrigger>*/}
+                                    {/*<OverlayTrigger*/}
+                                    {/*    placement="top"*/}
+                                    {/*    overlay={renderTooltip}*/}
+                                    {/*    delay={{ show: 100, hide: 200 }}*/}
+                                    {/*>*/}
+                                    {/*  <span className="d-inline-block">*/}
+                                    {/*    <button*/}
+                                    {/*        type="button"*/}
+                                    {/*        className="btn btn-primary detail-btn"*/}
+                                    {/*        onClick={handlePurchaseCourse}*/}
+                                    {/*        disabled={false}*/}
+                                    {/*        style={*/}
+                                    {/*            !localStorage.getItem('userInfo')*/}
+                                    {/*                ? {*/}
+                                    {/*                    pointerEvents: 'none',*/}
+                                    {/*                    opacity: 0.6,*/}
+                                    {/*                    cursor: 'not-allowed',*/}
+                                    {/*                }*/}
+                                    {/*                : {}*/}
+                                    {/*        }*/}
+                                    {/*    >*/}
+                                    {/*      {course.body.price > 0*/}
+                                    {/*          ? t('actions.purchaseCourse')*/}
+                                    {/*          : t('actions.goToCourse')}*/}
+                                    {/*    </button>*/}
+                                    {/*  </span>*/}
+                                    {/*</OverlayTrigger>*/}
+
+
+
+                                    {/*<OverlayTrigger*/}
+                                    {/*    placement="top"*/}
+                                    {/*    overlay={renderTooltip}*/}
+                                    {/*    delay={{ show: 100, hide: 200 }}*/}
+                                    {/*>*/}
+                                    {/*      <span*/}
+                                    {/*          className="d-inline-block"*/}
+                                    {/*          style={isDisabled ? { pointerEvents: 'auto' } : {}}*/}
+                                    {/*      >*/}
+                                    {/*        <button*/}
+                                    {/*            type="button"*/}
+                                    {/*            className="btn btn-primary detail-btn"*/}
+                                    {/*            onClick={handlePurchaseCourse}*/}
+                                    {/*            disabled={false}*/}
+                                    {/*            style={*/}
+                                    {/*                isDisabled*/}
+                                    {/*                    ? {*/}
+                                    {/*                        pointerEvents: 'none', // kliklənməsin*/}
+                                    {/*                        opacity: 0.6,           // solğun görünsün*/}
+                                    {/*                        cursor: 'not-allowed',*/}
+                                    {/*                    }*/}
+                                    {/*                    : {}*/}
+                                    {/*            }*/}
+                                    {/*        >*/}
+                                    {/*          {course.body.price > 0*/}
+                                    {/*              ? t('actions.purchaseCourse')*/}
+                                    {/*              : t('actions.goToCourse')}*/}
+                                    {/*        </button>*/}
+                                    {/*      </span>*/}
+                                    {/*</OverlayTrigger>*/}
+
+
+                                    {
+                                        isDisabled ? (
+                                            <OverlayTrigger
+                                                placement="top"
+                                                overlay={renderTooltip}
+                                                delay={{ show: 100, hide: 200 }}
+                                            >
+                                                {buttonContent}
+                                            </OverlayTrigger>
+                                        ) : (
+                                            buttonContent
+                                        )
+                                    }
                                 </div>
                                 {(course.body.discountEndDate && discountedDate !== "") && <p className='detail-sale-duration'>{discountedDate} {t('course.saleDuration')}</p>}
                                 <p className='deatil-right-text'>{course.body.commentCount} {t('course.comment')}</p>
