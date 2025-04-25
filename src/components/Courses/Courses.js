@@ -7,7 +7,7 @@ import { faCartShopping, faStar, faUser } from "@fortawesome/free-solid-svg-icon
 
 import './Courses.css';
 
-function Courses({ id, img, topic, instructorName, body, soldCount, rating, price, purchased }) {
+function Courses({ id, img, topic, instructorName, body, soldCount, rating, price,discountedPrice, purchased }) {
     const { t } = useTranslation();
     
     return (
@@ -36,7 +36,17 @@ function Courses({ id, img, topic, instructorName, body, soldCount, rating, pric
                             <div className="courses-btn courses-btn-notTaken d-flex justify-content-between align-items-center">
                                 <FontAwesomeIcon icon={faCartShopping} />
                                 <Button>{t('actions.buy')}</Button>
-                                <span>{price} AZN</span>
+                                <span>
+                             {discountedPrice && discountedPrice < price ? (
+                              <>
+                                  <span className='detail-old-price text-muted'><s>{price} ₼</s></span>
+                                  <span className="mx-1" style={{ color: "white" }}>↓</span>
+                                  <span className='text-light fw-bold'>{discountedPrice} ₼</span>
+                              </>
+                          ) : (
+                              <span className='text-light'>{price} ₼</span>
+                          )}
+                            </span>
                             </div>
                         }
                     </Card.Body>

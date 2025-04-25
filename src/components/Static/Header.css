@@ -1,5 +1,6 @@
 .header-bg {
-    background-color: #FF4330;
+    /*background-color: #FF4330;*/
+    background-color: #4b50ea;
 }
 
 .navbar-brand {
@@ -21,7 +22,8 @@
 }
 
 .input-wrapper {
-    background-color: #C13230;
+    background-color: #8386e5;
+    /*background-color: #C13230;*/
     border-radius: 8px;
     font-family: "TT Hoves";
     font-size: 18px;

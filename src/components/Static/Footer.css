@@ -20,7 +20,8 @@
 }
 
 .footer-arrowIcon {
-    color: #FF4330;
+    color: #4b50ea;
+    /*color: #FF4330;*/
     margin-left: 20px;
 }
 
@@ -60,7 +61,8 @@
 }
 
 .footer-form-submit-btn {
-    background: #FF4330 !important;
+    background: #4b50ea !important;
+    /*background: #FF4330 !important;*/
     border-radius: 0 !important;
     padding: 6px 60px 6px 16px !important;
     font-size: 14px !important;

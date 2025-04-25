@@ -25,7 +25,8 @@
     font-size: 18px !important;
     font-weight: 700 !important;
     line-height: 22px !important;
-    background: #FF4330 !important;
+    background: #4b50ea !important;
+    /*background: #FF4330 !important;*/
     border: none !important;
 }
 
@@ -77,12 +78,14 @@
 .control-error {
     font-family: "TT Hoves";
     font-size: 12px;
-    color: #FF4330;
+    color: #4b50ea;
+    /*color: #FF4330;*/
     text-align: left;
 }
 
 .contact-form-submit-btn {
-    background: #FF4330 !important;
+    background: #4b50ea !important;
+    /*background: #FF4330 !important;*/
     border-radius: 0 !important;
     padding: 12px 80px 12px 24px !important;
     font-size: 24px !important;

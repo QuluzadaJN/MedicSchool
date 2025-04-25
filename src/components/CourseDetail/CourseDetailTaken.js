@@ -25,6 +25,9 @@ export default function CourseDetailTaken() {
     const [commentInput, setCommentInput] = useState('');
     const [selectedContents, setSelectedContents] = useState([]);
 
+    const ClearCommentInput =()=>{
+        setCommentInput('')
+    }
     const getCourseDetail = async () => {
         try {
             const resp = await authAPI.getAllByCourseId(courseId);
@@ -76,6 +79,8 @@ export default function CourseDetailTaken() {
                 const resp = await authAPI.postComment({ comment: commentInput, courseId });
                 if (resp.status === 'OK') {
                     toast.success(resp.body);
+                    ClearCommentInput();
+                    getCourseComments()
                 } else {
                     toast.error(resp.body)
                 }
@@ -213,7 +218,9 @@ export default function CourseDetailTaken() {
                         </Tab.Pane>
                         <Tab.Pane eventKey="event-cont2">
                             <form>
-                                <textarea className="w-100 comment-input" value={commentInput} onChange={(event) => setCommentInput(event.target.value)}></textarea>
+                                <textarea className="w-100 comment-input"
+                                          value={commentInput}
+                                          onChange={(event) => setCommentInput(event.target.value)}></textarea>
                                 <div className="text-right">
                                     <Button className="sendComment" onClick={sendComment}>{t('actions.send')}</Button>
                                 </div>

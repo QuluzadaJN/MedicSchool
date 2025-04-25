@@ -103,12 +103,16 @@
     font-weight: 500!important;
     line-height: 28px!important;
     color: #fff!important;
-    background-color: #FF4330!important;
+    background-color: #4b50ea!important;
+    /*background-color: #FF4330!important;*/
     border: none!important;
     width: 90%!important;
     margin-bottom: 8px;
 }
+.btn-custom-popup{
+    background-color: white;
 
+}
 .detail-sale-duration {
     font-family: "TT Hoves";
     font-size: 14px;

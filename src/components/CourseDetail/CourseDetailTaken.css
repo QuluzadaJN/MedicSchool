@@ -34,7 +34,8 @@
 
 .course-certificate {
     border: 0.5px solid #D6D6D6;
-    background-color: #FF4330;
+    background-color: #4b50ea;
+    /*background-color: #FF4330;*/
     padding: 17px 0px 17px 29px;
     color: #fff;
     font-family: "TT Hoves";
@@ -54,7 +55,8 @@
     font-weight: 400 !important;
     line-height: 15px !important;
     color: #fff !important;
-    background-color: #FF4330 !important;
+    background-color: #4b50ea !important;
+    /*background-color: #FF4330 !important;*/
     padding: 9px 17px !important;
     border: none !important;
     border-radius: 0 !important;
@@ -167,7 +169,8 @@
     font-size: 18px !important;
     font-weight: 700 !important;
     line-height: 22px !important;
-    background: #FF4330 !important;
+    /*background: #FF4330 !important;*/
+    background: #4b50ea !important;
     border: none !important;
     margin: 10px 0 32px;
 }
