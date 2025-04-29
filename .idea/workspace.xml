@@ -5,37 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b90f0982-5cc0-42ed-a22d-ebed67b527c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/public/apple-touch-icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon-96x96.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/favicon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/site.webmanifest" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web-app-manifest-192x192.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/web-app-manifest-512x512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/TooltipWrapper/TooltipWrapper.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/locales/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/locales/i18n.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Contact/Contact.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contact/Contact.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailNotTaken.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailNotTaken.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailNotTaken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailNotTaken.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailTaken.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailTaken.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailTaken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailTaken.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Courses/Courses.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Courses/Courses.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Courses/Courses.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Courses/Courses.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Courses/CoursesContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Courses/CoursesContainer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomePage/HomePage.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomePage/HomePage.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/HomePage/HomePageIntro.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/HomePage/HomePageIntro.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/InterestedPart/InterestedCourses.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/InterestedPart/InterestedCourses.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Static/Footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Footer.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Static/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Footer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Static/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Header.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Static/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Static/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Static/HeaderTop.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/HeaderTop.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -61,6 +51,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/public" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="ts.external.directory.path" value="$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external" />
     <property name="vue.rearranger.settings.migration" value="true" />
@@ -68,6 +59,9 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/public" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/utils/TooltipWrapper" />
     </key>
   </component>
   <component name="RunManager">
@@ -100,7 +94,7 @@
       <workItem from="1738733981259" duration="17056000" />
       <workItem from="1741252289122" duration="1180000" />
       <workItem from="1744916431681" duration="560000" />
-      <workItem from="1744917144314" duration="17792000" />
+      <workItem from="1744917144314" duration="27330000" />
     </task>
     <servers />
   </component>

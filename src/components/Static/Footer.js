@@ -1,7 +1,7 @@
 import { toast } from 'react-toastify';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Container, Row, Col, Form, Image, Button } from "react-bootstrap";
+import {Container, Row, Col, Form, Image, Button, Nav} from "react-bootstrap";
 
 import phoneIcon from "../../images/phone.svg";
 import youtubeIcon from "../../images/youtube.svg";
@@ -17,8 +17,11 @@ import { authAPI } from '../../api/api';
 import Loader from '../component/Loader';
 
 import "./Footer.css";
+// import {Navigate} from "react-router";
 
 export default function Footer() {
+    // const navigate = useNavigate();
+    const navigateToLink=()=>{window.location.href = '/contact'}
     const { t, i18n } = useTranslation();
     const [categories, setCategories] = useState([]);
 
@@ -97,9 +100,25 @@ export default function Footer() {
                                     </a>
                                 </div>
                             </p>
-                            <Button className="footer-form-submit-btn" type="submit">
+                            <Button
+                                // as={NavLink}
+                                //      to="/contact"
+                                    onClick={navigateToLink}
+                                     className="footer-form-submit-btn"
+                                     type="submit">
                                 <span className="me-5">+</span> {t('actions.followUs')}
                             </Button>
+                            {/*<Nav.Link as={Link}*/}
+                            {/*          activeClassName="active"*/}
+                            {/*          className="footer-form-submit-btn"*/}
+                            {/*          to={'/contact'}>*/}
+                            {/*    <span className="me-5">+</span> {t('actions.followUs')}*/}
+                            {/*</Nav.Link>*/}
+                            {/*<Nav.Link as={Link} activeClassName="active" to={'/blogs'}>{t('menu.blogs')}</Nav.Link>*/}
+
+                            {/*<NavLink to="/contact" className="btn footer-form-submit-btn d-inline-flex align-items-center">*/}
+                            {/*    <span className="me-2">+</span> {t('actions.followUs')}*/}
+                            {/*</NavLink>*/}
                         </Col>
                     </Row>
                 </Container>

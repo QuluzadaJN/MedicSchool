@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { HelmetProvider } from 'react-helmet-async';
 import { GoogleOAuthProvider } from '@react-oauth/google';
-
+import { BrowserRouter } from 'react-router-dom';
 import App from './App';
 import { store } from "./store/index";
 
@@ -17,7 +17,9 @@ root.render(
   <HelmetProvider>
     <GoogleOAuthProvider clientId='821038068639-qf27hiis7timgt8sqarvbmatnn3nj2id.apps.googleusercontent.com'>
       <Provider store={store}>
-        <App />
+          {/*<BrowserRouter>*/}
+              <App />
+          {/*</BrowserRouter>*/}
       </Provider>
     </GoogleOAuthProvider>
   </HelmetProvider>
