@@ -208,7 +208,7 @@ export default function Header() {
                         </Navbar>
                     </Container>
                 </div>
-                <div class="spacer">
+                <div classNamw="spacer">
                     &nbsp;
                 </div>
                 <div>

@@ -28,7 +28,7 @@ export default function HeaderTop() {
                     </Row>
                 </Container>
             </div>
-            <div class="spacer-top">
+            <div className="spacer-top">
                 &nbsp;
             </div>
         </>
