@@ -143,11 +143,14 @@
     font-weight: 500;
 }
 
-.course-video, .course-coverPhoto {
+.course-video {
     height: 438px!important;
     width: 100%!important;
 }
-
+.course-coverPhoto {
+    max-height: 600px!important;
+    max-width: 100%!important;
+}
 .instructorProfilPhoto {
     height: 180px!important;
     width: 180px!important;

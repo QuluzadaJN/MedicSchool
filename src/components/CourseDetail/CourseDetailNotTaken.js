@@ -1,9 +1,8 @@
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from "react-router-dom";
-import { Helmet } from 'react-helmet-async';
 import { Button, Col, Image, Row, Container } from 'react-bootstrap';
 import ReactPlayer from 'react-player'
 import linkedinIcon from '../../images/linkedin.svg';
@@ -15,6 +14,7 @@ import Loader from '../component/Loader';
 
 import './CourseDetailNotTaken.css';
 import {TooltipWrapper} from "../../utils/TooltipWrapper/TooltipWrapper";
+import SeoHead from "../../utils/SEOHead/SEOHead";
 
 export default function CourseDetailNotTaken() {
     const { t } = useTranslation();
@@ -62,7 +62,7 @@ export default function CourseDetailNotTaken() {
     const handlePurchaseCourse = async () => {
         if (localStorage.getItem('userInfo')) {
 
-            let model = {
+            const model = {
                 "courseId": courseId,
                 "order":{
                     "amount": course.body.discountedPrice ? course.body.discountedPrice.toString() : course.body.price.toString(),
@@ -122,14 +122,15 @@ export default function CourseDetailNotTaken() {
         }
     }, storageOrderId);
     const tooltipText = course?.body?.price > 0 ? 'Kursu almaq üçün Qeydiyyatdan keçin və ya Giriş edin' : 'Kursu keçmək üçün Qeydiyyatdan keçin və ya Giriş edin'
+    const seoUrl = `https://www.medicschool.az/course/id/${courseId}`
 
     return (
         <>
-            <Helmet>
-                <title>{t('menu.courses')}</title>
-                <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
-                <meta name='description' content={course && course.body && course.body.body} />
-            </Helmet>
+            <SeoHead
+                title={course?.body?.topic}
+                description={course && course.body && course?.body?.body}
+                url={seoUrl}
+            />
             <Container className='my-5'>
                 {course && course.body ?
                     <Row>

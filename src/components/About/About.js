@@ -1,13 +1,13 @@
 import React, { useEffect } from "react";
 import { useTranslation } from 'react-i18next';
 import { Row, Col, Image, Container } from "react-bootstrap";
-import { Helmet } from 'react-helmet-async';
 
 import Instructors from "./Intructors";
 import Partnors from "./Partnors";
 import InterestedCourses from '../InterestedPart/InterestedCourses';
 
 import './About.css';
+import SeoHead from "../../utils/SEOHead/SEOHead";
 
 function AboutPage() {
     const { t, i18n } = useTranslation();
@@ -15,14 +15,14 @@ function AboutPage() {
     useEffect(() => {
         i18n.changeLanguage('az');
     }, []);
-
+    const seoUrl = 'https://www.medicschool.az/about'
     return (
         <>
-            <Helmet>
-                <title>{t('about.title')}</title>
-                <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
-                <meta name='description' content={t('about.content')} />
-            </Helmet>
+            <SeoHead
+                title={t('about.title')}
+                description={t('about.content')}
+                url={seoUrl}
+            />
             <div className="bg-gray">
                 <Container className="bg-white px-sm-4 px-md-5">
                     <div className="py-sm-0 py-md-5">

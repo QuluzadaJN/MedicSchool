@@ -429,8 +429,27 @@ export const authAPI = {
         })
     },
 
-    updateUserProgressOnCourse(contentId) {
+    updateUserProgressOnCourseContent(contentId) {
         return axios.put(`${BASE_URL}/userProgress/update?contentId=${contentId}`, null, {
+            headers: {
+                'Content-Type': 'application/json',
+                ...token ? { authorization: token } : {}
+            },
+        }).then(response => {
+            if (response.status === 200) {
+                if (response.data.status === 'OK') {
+                    return response.data;
+                } else {
+                    toast.error(response.data.body);
+                }
+            }
+        }).catch(error => {
+            toast.error(error?.response?.data?.errors?.[0].defaultMessage);
+        })
+    },
+    updateUserProgressOnCourse(courseId) {
+        //userProgress?courseId=3
+        return axios.post(`${BASE_URL}/userProgress?courseId=${courseId}`, null, {
             headers: {
                 'Content-Type': 'application/json',
                 ...token ? { authorization: token } : {}

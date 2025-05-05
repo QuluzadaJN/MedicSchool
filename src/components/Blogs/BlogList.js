@@ -2,13 +2,14 @@
 import { toast } from 'react-toastify';
 import { Col, Container, Row } from "react-bootstrap";
 import { useTranslation } from 'react-i18next';
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { Helmet } from 'react-helmet-async';
 import Blogs from "./Blog";
 import Loader from "../component/Loader";
 import CoursePagination from "../component/CoursePagination";
 
 import { authAPI } from '../../api/api';
+import SeoHead from "../../utils/SEOHead/SEOHead";
 
 export default function CoursesContainer() {
     const { t } = useTranslation();
@@ -36,14 +37,15 @@ export default function CoursesContainer() {
     const handleChangePage = useCallback((page) => {
         setPage(page)
     }, [])
+    const seoUrl= 'https://www.medicschool.az/blogs'
 
     return (
         <>
-            <Helmet>
-                <title>{t('about.title')}</title>
-                <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
-                <meta name='description' content={data.courses && data.courses.length > 0 && data.courses.map(course => course.content)} />
-            </Helmet>
+            <SeoHead
+                title={t('about.title')}
+                description={data.courses && data.courses.length > 0 && data.courses.map(course => course.content)}
+                url={seoUrl}
+            />
             <Container>
                 {data.courses && data.courses.length > 0 ?
                     <>
@@ -63,6 +65,7 @@ export default function CoursesContainer() {
                                                 coverPhoto={course.coverPhoto}
                                                 topic={course.topic && (course.topic.length > 25 ? course.topic.substr(0,25)+('...') : course.topic)}
                                                 content={course.description }
+                                                seoDescription={course.seoDescription}
                                             />
                                         </Col>
                                     ))
