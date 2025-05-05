@@ -1,7 +1,6 @@
 import { toast } from 'react-toastify';
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
 import { Button, Container, Row, Col, Image } from "react-bootstrap";
 
 import phoneIcon from "../../images/phone.svg";
@@ -16,6 +15,7 @@ import { isEmail, isNotEmpty, hasMinLength } from '../../utils/validation';
 import { authAPI } from '../../api/api';
 
 import "./Contact.css";
+import SeoHead from "../../utils/SEOHead/SEOHead";
 
 export default function Contact() {
     const { t } = useTranslation();
@@ -100,14 +100,15 @@ export default function Contact() {
         //     }))
         // }
     }
+    const seoUrl = 'https://www.medicschool.az/contact'
 
     return (
         <>
-            <Helmet>
-                <title>{t('menu.contact')}</title>
-                <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
-                <meta name='description' content={t('contactText')} />
-            </Helmet>
+            <SeoHead
+                title={t('menu.contact')}
+                description={t('contactText')}
+                url={seoUrl}
+            />
             <div className="bg-gray">
                 <Container>
                     <div className="contact-form">

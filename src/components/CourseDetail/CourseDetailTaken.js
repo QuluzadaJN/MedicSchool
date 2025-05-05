@@ -1,8 +1,7 @@
 import { toast } from 'react-toastify';
 import { useParams } from 'react-router';
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
 import { Tab, Nav, Col, Container, Row, Button } from 'react-bootstrap';
 import ReactPlayer from 'react-player';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,6 +13,7 @@ import Rating from '../component/Rating/Rating';
 import { authAPI } from '../../api/api';
 
 import './CourseDetailTaken.css';
+import SeoHead from "../../utils/SEOHead/SEOHead";
 
 export default function CourseDetailTaken() {
     const { t } = useTranslation();
@@ -110,24 +110,32 @@ export default function CourseDetailTaken() {
 
     const putProgress = async (contentId) => {
         try {
-            const response = await authAPI.updateUserProgressOnCourse(contentId);
-            if (response.status === 'OK') {
-                setSelectedContents(s => [...s, contentId]);
+            // console.log(courseId)
+            // console.log(contentId)
+            const responseCourseUpdateProgress = await authAPI.updateUserProgressOnCourse(courseId);
+            if (responseCourseUpdateProgress.status === 'OK') {
+                const response = await authAPI.updateUserProgressOnCourseContent(contentId);
+                if (response.status === 'OK') {
+                    setSelectedContents(s => [...s, contentId]);
+                } else {
+                    toast.error(response.body)
+                }
             } else {
-                toast.error(response.body)
+                toast.error(responseCourseUpdateProgress.body)
             }
         } catch (err) {
             toast.error(err?.response?.data?.errors?.[0].defaultMessage)
         }
     }
+    const seoUrl = `https://www.medicschool.az/course/id/${courseId}`
 
     return (
         <>
-            <Helmet>
-                <title>{t('menu.courses')}</title>
-                <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
-                <meta name='description' content={courses && courses.body && courses.body.items.map(item => item.description)} />
-            </Helmet>
+            <SeoHead
+                title={courses?.body?.topic}
+                description={courses && courses.body && courses.body.items.map(item => item.description)}
+                url={seoUrl}
+            />
             <Container className='my-5'>
                 <Tab.Container id="right-tabs-example" defaultActiveKey="event-cont1">
                     <Nav variant="pills" className="mb-3">

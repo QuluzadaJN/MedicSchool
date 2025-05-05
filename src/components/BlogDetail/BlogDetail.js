@@ -2,7 +2,6 @@ import { toast } from 'react-toastify';
 import { useParams } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { Helmet } from 'react-helmet-async';
 import { Col, Row, Container } from 'react-bootstrap';
 import ReactHtmlParser from 'react-html-parser';
 
@@ -10,6 +9,7 @@ import { authAPI } from '../../api/api';
 import Loader from '../component/Loader';
 
 import './BlogDetail.css';
+import SeoHead from "../../utils/SEOHead/SEOHead";
 
 export default function BlogDetail() {
     const { t } = useTranslation();
@@ -34,14 +34,14 @@ export default function BlogDetail() {
     useEffect(() => {
         getBlogById();
     }, [])
-
+    const seoUrl= `https://www.medicschool.az/blog/${blogId}`
     return (
         <>
-            <Helmet>
-                <title>{t('menu.blogs')}</title>
-                <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
-                <meta name='description' content={blog && blog.data && blog.body.seoDescription} />
-            </Helmet>
+            <SeoHead
+                title={blog?.body?.topic}
+                description={blog?.body?.seoDescription}
+                url={seoUrl}
+            />
             <Container className='my-5'>
                 {blog && blog.body ?
                     <Row>

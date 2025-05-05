@@ -6,12 +6,20 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCartShopping, faStar, faUser } from "@fortawesome/free-solid-svg-icons";
 
 import './Courses.css';
+import SeoHead from "../../utils/SEOHead/SEOHead";
+import React from "react";
 
 function Courses({ id, img, topic, instructorName, body, soldCount, rating, price,discountedPrice, purchased }) {
     const { t } = useTranslation();
-    
+    const seoUrl = 'https://www.medicschool.az/courses'
+
     return (
         <div className="mb-3" key="">
+            <SeoHead
+                title={t('about.title')}
+                description={t('about.content')}
+                url={seoUrl}
+            />
             <NavLink style={{ textDecoration: 'none' }}
                 to={purchased ? `/content/byCourse/${id}` : `/course/id/${id}`}
             >

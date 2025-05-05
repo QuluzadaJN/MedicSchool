@@ -17,9 +17,7 @@ root.render(
   <HelmetProvider>
     <GoogleOAuthProvider clientId='821038068639-qf27hiis7timgt8sqarvbmatnn3nj2id.apps.googleusercontent.com'>
       <Provider store={store}>
-          {/*<BrowserRouter>*/}
-              <App />
-          {/*</BrowserRouter>*/}
+          <App />
       </Provider>
     </GoogleOAuthProvider>
   </HelmetProvider>
