@@ -2,7 +2,7 @@ import { toast } from 'react-toastify';
 import { Container } from "react-bootstrap";
 import { useTranslation } from 'react-i18next';
 import { Helmet } from 'react-helmet-async';
-import { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 
 import Course from "./Course";
 import Filter from "../Filter/Filter";
@@ -13,13 +13,34 @@ import InterestedCourses from '../InterestedPart/InterestedCourses';
 import { authAPI } from '../../api/api';
 
 import './CoursesList.css';
+import {useDispatch, useSelector} from "react-redux";
+import {useLogoutMutation} from "../../api/usersApiSlice";
+import {logOut} from "../../store/authSlice";
+import SeoHead from "../../utils/SEOHead/SEOHead";
 
 export default function CoursesList() {
     const { t } = useTranslation();
 
     const [data, setData] = useState({});
     const [page, setPage] = useState(1)
-
+    let { userInfo } = useSelector((state) => state.auth)
+    const [logOutToApi] = useLogoutMutation();
+    const dispatch = useDispatch()
+    const logoutHandler = async () => {
+        console.log(userInfo)
+        try {
+            const resp = await logOutToApi(userInfo.body.email).unwrap();
+            if (resp.status === 'OK') {
+                dispatch(logOut());
+                toast.success(resp.body)
+                window.location.reload();
+            } else {
+                toast.error(resp.body)
+            }
+        } catch (err) {
+            toast.error(err.data.message || err.error)
+        }
+    }
     const getClientCourses = async () => {
         debugger
         try {
@@ -31,6 +52,8 @@ export default function CoursesList() {
                     { courses: res?.body?.items?.filter(el => el.active!== true),
                     totalPage: Math.ceil((res?.body?.items.length) / 6) })
             } else {
+                debugger
+                res.status ==='FORBIDDEN' && logoutHandler()
                 toast.error(res.body)
             }
         } catch (error) {
@@ -59,15 +82,16 @@ export default function CoursesList() {
     const handleChangePage = useCallback((page) => {
         setPage(page)
     }, [])
+    const seoUrl = 'https://www.medicschool.az/courses'
 
     return (
         <>
-            <Helmet>
-                <title>{t('menu.myCourses')}</title>
-                <link name="keywords" content="kurs, sağlıqçı, mövzu, sertifikat" />
-                <meta name='description' content={data.courses && data.courses.length > 0 && data.courses.map(course => course.topic)} />
-                {/* <meta name='description' content={data && data.courses && data.courses[0].topic} /> */}
-            </Helmet>
+            <SeoHead
+                title={t('menu.myCourses')}
+                description={data.courses && data.courses.length > 0 && data.courses.map(course => course.topic)}
+                url={seoUrl}
+            />
+
             {data.courses && data.courses.length > 0 ?
                 <div>
                     <Container>

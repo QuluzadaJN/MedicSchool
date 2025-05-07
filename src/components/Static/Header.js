@@ -43,9 +43,9 @@ import { authAPI } from '../../api/api';
 
 import "./Header.css";
 
-export default function Header() {
-    const [showRegParam, setShowRegParam] = useState(false);
-    const [showLogin, setShowLogin] = useState(false);
+export default function Header({showRegParam, setShowRegParam, showLogin, setShowLogin}) {
+    // const [showRegParam, setShowRegParam] = useState(false);
+    // const [showLogin, setShowLogin] = useState(false);
     const [searchParam, setSearchParam] = useState("");
     const [logOutToApi] = useLogoutMutation();
 
@@ -151,22 +151,28 @@ export default function Header() {
                                                 <Nav.Link as={Link} activeClassName="active" to={'/myCourses'}>{t('menu.myCourses')}</Nav.Link>
                                                 <NavDropdown className='profil-dropdown' title="Profilim" id="navbarScrollingDropdown">
                                                     <NavDropdown.Item href="/profileUser">
-                                                        <FontAwesomeIcon className='me-3' icon={faUser} />{t('menu.profil')}
+                                                        <FontAwesomeIcon className='me-3' icon={faUser} />
+                                                        {t('menu.profil')}
                                                     </NavDropdown.Item>
                                                     <NavDropdown.Item href="/myCourses">
-                                                        <FontAwesomeIcon className='me-3' icon={faBookmark} />{t('menu.myCourses')}
+                                                        <FontAwesomeIcon className='me-3' icon={faBookmark} />
+                                                        {t('menu.myCourses')}
                                                     </NavDropdown.Item>
                                                     <NavDropdown.Item href="/settings">
-                                                        <FontAwesomeIcon className='me-3' icon={faGear} />{t('menu.settings')}
+                                                        <FontAwesomeIcon className='me-3' icon={faGear} />
+                                                        {t('menu.settings')}
                                                     </NavDropdown.Item>
                                                     <NavDropdown.Item href="/healthcare">
-                                                        <FontAwesomeIcon className='me-3' icon={faComment} />{t('menu.beHealthy')}
+                                                        <FontAwesomeIcon className='me-3' icon={faComment} />
+                                                        {t('menu.beHealthy')}
                                                     </NavDropdown.Item>
                                                     <NavDropdown.Item href="/contact">
-                                                        <FontAwesomeIcon className='me-3' icon={faCircleQuestion} />{t('menu.contact')}
+                                                        <FontAwesomeIcon className='me-3' icon={faCircleQuestion} />
+                                                        {t('menu.contact')}
                                                     </NavDropdown.Item>
                                                     <NavDropdown.Item onClick={() => logoutHandler()} >
-                                                        <FontAwesomeIcon className='me-3' icon={faArrowRightFromBracket} />{t('menu.exit')}
+                                                        <FontAwesomeIcon className='me-3' icon={faArrowRightFromBracket} />
+                                                        {t('menu.exit')}
                                                     </NavDropdown.Item>
                                                 </NavDropdown>
                                             </>
@@ -175,10 +181,16 @@ export default function Header() {
                                 </Navbar.Collapse>
                                 <Form.Group className="input-wrapper" controlId="formSearch">
                                     <FontAwesomeIcon className='search-icon' icon={faSearch} />
-                                    <Form.Control to={'/search'} onChange={(e) => setSearchParam(e.target.value)} type="search" className='search-input' placeholder={t('menu.search')} />
+                                    <Form.Control to={'/search'}
+                                                  onChange={(e) => setSearchParam(e.target.value)}
+                                                  type="search"
+                                                  className='search-input'
+                                                  placeholder={t('menu.search')} />
                                     {searchParam !== "" &&
                                         <Link to={'/search'}>
-                                            <FontAwesomeIcon className='me-3 searchArrow' onClick={() => getSearchByName(searchParam)} icon={faArrowCircleRight} />
+                                            <FontAwesomeIcon className='me-3 searchArrow'
+                                                             onClick={() => getSearchByName(searchParam)}
+                                                             icon={faArrowCircleRight} />
                                         </Link>
                                     }
                                 </Form.Group>
@@ -208,7 +220,7 @@ export default function Header() {
                         </Navbar>
                     </Container>
                 </div>
-                <div classNamw="spacer">
+                <div className="spacer">
                     &nbsp;
                 </div>
                 <div>
@@ -221,7 +233,10 @@ export default function Header() {
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
-                        <Route path="/course/id/:id" element={<CoursesDetailNotTaken />} />
+                        <Route path="/course/id/:id" element={<CoursesDetailNotTaken showRegParam={showRegParam}
+                                                                                     setShowRegParam={setShowRegParam}
+                                                                                     showLogin={showLogin}
+                                                                                     setShowLogin={setShowLogin}/>} />
                         <Route path='' element={<RequireAuth />}>
                             <Route path="/myCourses" element={<CoursesList />} />
                             <Route path="/profileUser" element={userInfo?.body.role === 'ADMIN' ? <ProfileInstructor /> : <ProfileUser />} />

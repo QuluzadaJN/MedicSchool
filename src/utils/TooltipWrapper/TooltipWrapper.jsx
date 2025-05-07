@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, cloneElement, isValidElement } from 'react';
 
 export const TooltipWrapper = ({
                                    children,
@@ -6,10 +6,20 @@ export const TooltipWrapper = ({
                                    disabledCondition,
                                    placement = 'top',
                                    className = '',
-                                   style = {}
+                                   style = {},
+                                   onDisabledClick
                                }) => {
     const [showTooltip, setShowTooltip] = useState(false);
-
+    const handleClick = (e, originalOnClick) => {
+        if (disabledCondition) {
+            e.preventDefault();
+            if (typeof onDisabledClick === 'function') {
+                onDisabledClick(e);
+            }
+        } else {
+            originalOnClick?.(e);
+        }
+    };
     const getTooltipPosition = () => {
         switch (placement) {
             case 'top':
@@ -44,6 +54,22 @@ export const TooltipWrapper = ({
                 return {};
         }
     };
+    let wrappedChild = children;
+    if (isValidElement(children)) {
+        const originalOnClick = children.props.onClick;
+
+        wrappedChild = cloneElement(children, {
+            onClick: (e) => handleClick(e, originalOnClick),
+            className: `${children.props.className || ''} ${disabledCondition ? 'disabled' : ''}`,
+            style: {
+                ...children.props.style,
+                pointerEvents: disabledCondition ? 'auto' : 'auto',
+                cursor: disabledCondition ? 'not-allowed' : 'pointer',
+                opacity: disabledCondition ? 0.6 : 1
+            },
+            disabled: false
+        });
+    }
 
     return (
         <div
@@ -52,7 +78,7 @@ export const TooltipWrapper = ({
             onMouseEnter={() => disabledCondition && setShowTooltip(true)}
             onMouseLeave={() => disabledCondition && setShowTooltip(false)}
         >
-            {children}
+            {wrappedChild}
             {showTooltip && (
                 <div
                     style={{
@@ -83,19 +109,22 @@ export const TooltipWrapper = ({
                                 borderWidth: '5px 5px 0 5px',
                                 borderColor: '#333 transparent transparent transparent',
                                 transform: 'translateX(-50%)'
-                            } : placement === 'bottom' ? {
+                            }
+                            : placement === 'bottom' ? {
                                 bottom: '100%',
                                 left: '50%',
                                 borderWidth: '0 5px 5px 5px',
                                 borderColor: 'transparent transparent #333 transparent',
                                 transform: 'translateX(-50%)'
-                            } : placement === 'left' ? {
+                            }
+                            : placement === 'left' ? {
                                 right: '-5px',
                                 top: '50%',
                                 borderWidth: '5px 0 5px 5px',
                                 borderColor: 'transparent transparent transparent #333',
                                 transform: 'translateY(-50%)'
-                            } : placement === 'right' ? {
+                            }
+                            : placement === 'right' ? {
                                 left: '-5px',
                                 top: '50%',
                                 borderWidth: '5px 5px 5px 0',
@@ -110,8 +139,7 @@ export const TooltipWrapper = ({
     );
 };
 
-
-
+//1ci
 
 // import React, { useState } from 'react';
 //
