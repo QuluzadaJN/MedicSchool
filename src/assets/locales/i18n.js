@@ -209,6 +209,7 @@ i18n
                         loginWithEmail: "Giriş məlumatlarınızı daxil edin",
                         logLogin: "GİRİŞ",
                         saveChanges: "Dəyişikliyi yadda saxla",
+                        dublicateSession: "Eyni anda aktiv 2 sessiya icazə verilmir",
                     },
                     footerMenu: {
                         ourCourses: "Kurslarımız",

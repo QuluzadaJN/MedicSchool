@@ -5,15 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b90f0982-5cc0-42ed-a22d-ebed67b527c0" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/utils/Logout/Logout.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailNotTaken.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailNotTaken.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/locales/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/locales/i18n.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailNotTaken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailNotTaken.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailTaken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailTaken.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CoursesList/CoursesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CoursesList/CoursesList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ClientCoursesContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ClientCoursesContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileUser.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Static/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Header.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/utils/TooltipWrapper/TooltipWrapper.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/utils/TooltipWrapper/TooltipWrapper.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -65,7 +66,17 @@
       <recent name="$PROJECT_DIR$/src/utils/TooltipWrapper" />
     </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="npm.start">
+    <configuration name="build" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
+      <package-json value="$PROJECT_DIR$/package.json" />
+      <command value="run" />
+      <scripts>
+        <script value="build" />
+      </scripts>
+      <node-interpreter value="project" />
+      <envs />
+      <method v="2" />
+    </configuration>
     <configuration name="start" type="js.build_tools.npm" temporary="true" nameIsGenerated="true">
       <package-json value="$PROJECT_DIR$/package.json" />
       <command value="run" />
@@ -78,6 +89,7 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
       </list>
     </recent_temporary>
@@ -95,7 +107,7 @@
       <workItem from="1738733981259" duration="17056000" />
       <workItem from="1741252289122" duration="1180000" />
       <workItem from="1744916431681" duration="560000" />
-      <workItem from="1744917144314" duration="46725000" />
+      <workItem from="1744917144314" duration="53426000" />
     </task>
     <servers />
   </component>

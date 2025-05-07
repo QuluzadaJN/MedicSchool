@@ -66,7 +66,7 @@ export default function CourseDetailNotTaken({showRegParam, setShowRegParam, sho
             } else {
                 debugger
                 resp.status ==='FORBIDDEN' && logoutHandler()
-                toast.error(resp.body)
+                toast.error(t('actions.dublicateSession'))
             }
         } catch (err) {
             toast.error(err?.response?.data?.errors?.[0].defaultMessage)

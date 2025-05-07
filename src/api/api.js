@@ -182,6 +182,7 @@ export const authAPI = {
                     return response.data;
                 } else {
                     toast.error(response.data.body);
+                    return response.data;
                 }
             }
         }).catch(error => {
@@ -219,6 +220,7 @@ export const authAPI = {
                     return response.data;
                 } else {
                     toast.error(response.data.body);
+                    return response.data
                 }
             }
         }).catch(error => {
@@ -290,7 +292,7 @@ export const authAPI = {
                 if (response.data.status === 'OK') {
                     return response.data;
                 } else if(response.data.status === 'FORBIDDEN'){
-
+                    return response.data;
                 }
 
                 else {
@@ -426,7 +428,8 @@ export const authAPI = {
                 if (response.data.status === 'OK') {
                     return response.data;
                 } else {
-                    toast.error(response.data.body);
+                    // toast.error(response.data.body);
+                    return response.data.body;
                 }
             }
         }).catch(error => {

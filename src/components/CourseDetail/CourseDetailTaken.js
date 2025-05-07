@@ -21,16 +21,15 @@ import {useLogoutMutation} from "../../api/usersApiSlice";
 export default function CourseDetailTaken() {
     const { t } = useTranslation();
     const { id: courseId } = useParams();
-
     const [courses, setCourses] = useState([]);
     const [comments, setComments] = useState([]);
     const [activeKey, setActiveKey] = useState('');
     const [commentInput, setCommentInput] = useState('');
     const [selectedContents, setSelectedContents] = useState([]);
-
     const ClearCommentInput =()=>{
         setCommentInput('')
     }
+
     let { userInfo } = useSelector((state) => state.auth)
     const [logOutToApi] = useLogoutMutation();
     const dispatch = useDispatch()
@@ -51,6 +50,7 @@ export default function CourseDetailTaken() {
     }
     const getCourseDetail = async () => {
         try {
+            debugger
             const resp = await authAPI.getAllByCourseId(courseId);
             if (resp.status === 'OK') {
                 setCourses(resp)
@@ -58,7 +58,7 @@ export default function CourseDetailTaken() {
             } else {
                 debugger
                 resp.status ==='FORBIDDEN' && logoutHandler()
-                toast.error(resp.body)
+                toast.error(t('actions.dublicateSession'))
             }
         } catch (err) {
             toast.error(err?.response?.data?.errors?.[0].defaultMessage)

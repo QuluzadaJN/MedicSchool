@@ -23,6 +23,7 @@ export default function CoursesList() {
 
     const [data, setData] = useState({});
     const [page, setPage] = useState(1)
+
     let { userInfo } = useSelector((state) => state.auth)
     const [logOutToApi] = useLogoutMutation();
     const dispatch = useDispatch()
@@ -41,6 +42,7 @@ export default function CoursesList() {
             toast.error(err.data.message || err.error)
         }
     }
+
     const getClientCourses = async () => {
         debugger
         try {
