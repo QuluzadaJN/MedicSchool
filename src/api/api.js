@@ -289,7 +289,12 @@ export const authAPI = {
             if (response.status === 200) {
                 if (response.data.status === 'OK') {
                     return response.data;
-                } else {
+                } else if(response.data.status === 'FORBIDDEN'){
+
+                }
+
+                else {
+
                     toast.error(response.data.body);
                 }
             }

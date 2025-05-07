@@ -15,10 +15,21 @@ import Loader from '../component/Loader';
 import './CourseDetailNotTaken.css';
 import {TooltipWrapper} from "../../utils/TooltipWrapper/TooltipWrapper";
 import SeoHead from "../../utils/SEOHead/SEOHead";
+import {useLogoutMutation} from "../../api/usersApiSlice";
+import {useDispatch, useSelector} from "react-redux";
+import {logOut} from "../../store/authSlice";
 
-export default function CourseDetailNotTaken() {
+export default function CourseDetailNotTaken({showRegParam, setShowRegParam, showLogin, setShowLogin}) {
     const { t } = useTranslation();
-
+    const handleShowLogin =()=>{
+        debugger
+        setShowLogin(!showLogin)
+    }
+    // onClick={() => {
+    //     setShowLogin(true);
+    //     setShowRegParam(false)
+    //     // setIsLoginOrRegister(false)
+    // }}
     const navigate = useNavigate();
     const todayDate = new Intl.DateTimeFormat('en-GB', { year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date());
 
@@ -27,7 +38,24 @@ export default function CourseDetailNotTaken() {
     const [course, setCourse] = useState({});
 
     const [discountedDate, setDiscountedDate] = useState("");
-
+    let { userInfo } = useSelector((state) => state.auth)
+    const [logOutToApi] = useLogoutMutation();
+    const dispatch = useDispatch()
+    const logoutHandler = async () => {
+        console.log(userInfo)
+        try {
+            const resp = await logOutToApi(userInfo.body.email).unwrap();
+            if (resp.status === 'OK') {
+                dispatch(logOut());
+                toast.success(resp.body)
+                window.location.reload();
+            } else {
+                toast.error(resp.body)
+            }
+        } catch (err) {
+            toast.error(err.data.message || err.error)
+        }
+    }
     const getCoursesById = async () => {
         try {
             const resp = await authAPI.getCourseById(courseId);
@@ -36,6 +64,8 @@ export default function CourseDetailNotTaken() {
 
                 parseDate(todayDate, resp.body.discountEndDate)
             } else {
+                debugger
+                resp.status ==='FORBIDDEN' && logoutHandler()
                 toast.error(resp.body)
             }
         } catch (err) {
@@ -85,7 +115,9 @@ export default function CourseDetailNotTaken() {
                     localStorage.setItem("orderId", orderId);
                     // localStorage.setItem("sessionId", sessionId);
                     debugger
-                    window.location.assign(resp.body.order.RedirectUrlFromBack);
+                    if(orderId !==0) window.location.assign(resp.body.order.RedirectUrlFromBack);
+                    else window.location.reload();
+
                     // window.location.assign(`https://3dsrv.kapitalbank.az/index.jsp?ORDERID=${orderId}&SESSIONID=${sessionId}`);
                 } else {
                     toast.error(resp.body);
@@ -111,14 +143,18 @@ export default function CourseDetailNotTaken() {
         }
     }
     const isDisabled = !localStorage.getItem('userInfo');
-    console.log('isDisabled')
-    console.log(isDisabled)
+    // console.log('isDisabled')
+    // console.log(isDisabled)
     const storageOrderId = localStorage.getItem("orderId");
     // const storageSessionId = localStorage.getItem("sessionId");
 
     useEffect(() => {
         if (storageOrderId && !isNaN(storageOrderId)) {
-            handleCheckPurchase(parseInt(storageOrderId));
+            if(parseInt(storageOrderId) !== 0) handleCheckPurchase(parseInt(storageOrderId))
+            else {
+                navigate(`/content/byCourse/${courseId}`);
+                localStorage.removeItem("orderId");
+            }
         }
     }, storageOrderId);
     const tooltipText = course?.body?.price > 0 ? 'Kursu almaq üçün Qeydiyyatdan keçin və ya Giriş edin' : 'Kursu keçmək üçün Qeydiyyatdan keçin və ya Giriş edin'
@@ -210,20 +246,41 @@ export default function CourseDetailNotTaken() {
                                 {course.body.discountPercentage !== 0 ?
                                     <>
                                         <h1 className='course-detail-price'>₼{course.body.discountedPrice} AZN</h1>
-                                        <p className='detail-sale'>{course.body.discountPercentage}% {t('course.discount')} <span className='detail-old-price'>{course.body.price}₼</span></p>
+                                        <p className='detail-sale'>{course.body.discountPercentage}% {t('course.discount')}
+                                        <span className='detail-old-price'>{course.body.price}₼</span></p>
                                     </> :
                                     <h1 className='course-detail-price'>₼{course.body.price} AZN</h1>
                                 }
                                 <div className='p-relative'>
+                                    {/*<TooltipWrapper*/}
+                                    {/*    tooltipText={tooltipText}*/}
+                                    {/*    disabledCondition={!localStorage.getItem('userInfo')}*/}
+                                    {/*    placement="bottom"*/}
+                                    {/*>*/}
+                                    {/*    <button*/}
+                                    {/*        disabled={!localStorage.getItem('userInfo')}*/}
+                                    {/*        className="btn btn-primary detail-btn"*/}
+                                    {/*        onClick={handlePurchaseCourse}*/}
+                                    {/*    >*/}
+                                    {/*        {course.body.price > 0 ? t('actions.purchaseCourse') : t('actions.goToCourse')}*/}
+                                    {/*    </button>*/}
+                                    {/*</TooltipWrapper>*/}
                                     <TooltipWrapper
                                         tooltipText={tooltipText}
                                         disabledCondition={!localStorage.getItem('userInfo')}
                                         placement="bottom"
+                                        onDisabledClick={handleShowLogin}
                                     >
                                         <button
-                                            disabled={!localStorage.getItem('userInfo')}
-                                            className="btn btn-primary detail-btn"
-                                            onClick={handlePurchaseCourse}
+                                            className={`btn btn-primary detail-btn ${!localStorage.getItem('userInfo') ? 'disabled' : ''}`}
+                                            onClick={() => {
+                                                // if (!localStorage.getItem('userInfo')) {
+                                                //     debugger
+                                                //
+                                                // } else {
+                                                    handlePurchaseCourse();
+                                                // }
+                                            }}
                                         >
                                             {course.body.price > 0 ? t('actions.purchaseCourse') : t('actions.goToCourse')}
                                         </button>

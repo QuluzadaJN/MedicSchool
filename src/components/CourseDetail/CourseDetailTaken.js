@@ -14,6 +14,9 @@ import { authAPI } from '../../api/api';
 
 import './CourseDetailTaken.css';
 import SeoHead from "../../utils/SEOHead/SEOHead";
+import {useDispatch, useSelector} from "react-redux";
+import {logOut} from "../../store/authSlice";
+import {useLogoutMutation} from "../../api/usersApiSlice";
 
 export default function CourseDetailTaken() {
     const { t } = useTranslation();
@@ -28,6 +31,24 @@ export default function CourseDetailTaken() {
     const ClearCommentInput =()=>{
         setCommentInput('')
     }
+    let { userInfo } = useSelector((state) => state.auth)
+    const [logOutToApi] = useLogoutMutation();
+    const dispatch = useDispatch()
+    const logoutHandler = async () => {
+        console.log(userInfo)
+        try {
+            const resp = await logOutToApi(userInfo.body.email).unwrap();
+            if (resp.status === 'OK') {
+                dispatch(logOut());
+                toast.success(resp.body)
+                window.location.reload();
+            } else {
+                toast.error(resp.body)
+            }
+        } catch (err) {
+            toast.error(err.data.message || err.error)
+        }
+    }
     const getCourseDetail = async () => {
         try {
             const resp = await authAPI.getAllByCourseId(courseId);
@@ -35,6 +56,8 @@ export default function CourseDetailTaken() {
                 setCourses(resp)
                 setActiveKey(resp.body.items[0].id)
             } else {
+                debugger
+                resp.status ==='FORBIDDEN' && logoutHandler()
                 toast.error(resp.body)
             }
         } catch (err) {
@@ -112,17 +135,17 @@ export default function CourseDetailTaken() {
         try {
             // console.log(courseId)
             // console.log(contentId)
-            const responseCourseUpdateProgress = await authAPI.updateUserProgressOnCourse(courseId);
-            if (responseCourseUpdateProgress.status === 'OK') {
+            // const responseCourseUpdateProgress = await authAPI.updateUserProgressOnCourse(courseId);
+            // if (responseCourseUpdateProgress.status === 'OK') {
                 const response = await authAPI.updateUserProgressOnCourseContent(contentId);
                 if (response.status === 'OK') {
                     setSelectedContents(s => [...s, contentId]);
                 } else {
                     toast.error(response.body)
                 }
-            } else {
-                toast.error(responseCourseUpdateProgress.body)
-            }
+            // } else {
+            //     toast.error(responseCourseUpdateProgress.body)
+            // }
         } catch (err) {
             toast.error(err?.response?.data?.errors?.[0].defaultMessage)
         }
@@ -180,7 +203,8 @@ export default function CourseDetailTaken() {
                                                                                 <p className='course-certificate-name mb-0'>{course.courseName}</p>
                                                                             </Col>
                                                                             <Col sm={12} md={6}>
-                                                                                <p className='mb-0 course-certificate-download' onClick={saveCertificateCourse}>{t('actions.download')} <FontAwesomeIcon className='ms-3' icon={faDownload} /></p>
+                                                                                <p className='mb-0 course-certificate-download'
+                                                                                   onClick={saveCertificateCourse}>{t('actions.download')} <FontAwesomeIcon className='ms-3' icon={faDownload} /></p>
                                                                             </Col>
                                                                         </Row>
                                                                         <div>

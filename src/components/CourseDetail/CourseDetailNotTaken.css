@@ -161,3 +161,8 @@
     width: 48px!important;
     border-radius: 100%;
 }
+.disabled {
+    pointer-events: none;
+    opacity: 0.6;
+    cursor: not-allowed;
+}
