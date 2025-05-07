@@ -233,13 +233,17 @@ export default function Header({showRegParam, setShowRegParam, showLogin, setSho
                         <Route path="/blogs" element={<Blogs />} />
                         <Route path="/about" element={<About />} />
                         <Route path="/contact" element={<Contact />} />
-                        <Route path="/course/id/:id" element={<CoursesDetailNotTaken showRegParam={showRegParam}
-                                                                                     setShowRegParam={setShowRegParam}
-                                                                                     showLogin={showLogin}
-                                                                                     setShowLogin={setShowLogin}/>} />
+                        <Route path="/course/id/:id"
+                               element={<CoursesDetailNotTaken
+                                        showRegParam={showRegParam}
+                                        setShowRegParam={setShowRegParam}
+                                        showLogin={showLogin}
+                                        setShowLogin={setShowLogin}/>} />
                         <Route path='' element={<RequireAuth />}>
                             <Route path="/myCourses" element={<CoursesList />} />
-                            <Route path="/profileUser" element={userInfo?.body.role === 'ADMIN' ? <ProfileInstructor /> : <ProfileUser />} />
+                            <Route path="/profileUser" element={userInfo?.body.role === 'ADMIN'
+                                ? <ProfileInstructor />
+                                : <ProfileUser />} />
                             <Route path="/content/byCourse/:id" element={<CoursesDetailTaken />} />
                         </Route>
                         <Route path="/blog/:id" element={<BlogDetail />} />

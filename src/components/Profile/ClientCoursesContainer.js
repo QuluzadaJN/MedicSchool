@@ -11,20 +11,41 @@ import Loader from "../component/Loader";
 import CoursePagination from "../component/CoursePagination";
 
 import { authAPI } from '../../api/api';
+import {useDispatch, useSelector} from "react-redux";
+import {useLogoutMutation} from "../../api/usersApiSlice";
+import {logOut} from "../../store/authSlice";
 
 export default function CoursesContainer() {
     const { t } = useTranslation();
 
     const [data, setData] = useState({});
     const [page, setPage] = useState(1);
-
+    let { userInfo } = useSelector((state) => state.auth)
+    const [logOutToApi] = useLogoutMutation();
+    const dispatch = useDispatch()
+    const logoutHandler = async () => {
+        console.log(userInfo)
+        try {
+            const resp = await logOutToApi(userInfo.body.email).unwrap();
+            if (resp.status === 'OK') {
+                dispatch(logOut());
+                toast.success(resp.body)
+                window.location.reload();
+            } else {
+                toast.error(resp.body)
+            }
+        } catch (err) {
+            toast.error(err.data.message || err.error)
+        }
+    }
     const getClientCourses = async () => {
         try {
             const res = await authAPI.getClientCourses(page)
             if (res.status === 'OK') {
                 setData({ courses: res?.body?.items, totalPage: Math.ceil((res?.body?.items.length) / 6) })
             } else {
-                toast.error(res.body)
+                res.status ==='FORBIDDEN' && logoutHandler()
+                toast.error(t('actions.dublicateSession'))
             }
         } catch (error) {
             toast.error(error?.response?.data?.errors?.[0].defaultMessage)
