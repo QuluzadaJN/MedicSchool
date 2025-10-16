@@ -5,16 +5,30 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b90f0982-5cc0-42ed-a22d-ebed67b527c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/utils/Logout/Logout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/utils/LoadSpinner/LoadSpinner.jsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/api/api.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/api/api.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/assets/locales/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/locales/i18n.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/fonts/fonts.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/fonts/fonts.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/About/About.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/About/Intructors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/Intructors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/About/Partnors.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/Partnors.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/BlogDetail/BlogDetail.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/BlogDetail/BlogDetail.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Blogs/BlogList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Blogs/BlogList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Contact/Contact.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Contact/Contact.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailNotTaken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailNotTaken.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailTaken.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CourseDetail/CourseDetailTaken.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Courses/CoursesByCategory.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Courses/CoursesByCategory.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Courses/CoursesByFilter.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Courses/CoursesByFilter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Courses/CoursesContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Courses/CoursesContainer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/CoursesList/CoursesList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/CoursesList/CoursesList.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/ClientCoursesContainer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ClientCoursesContainer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileInstructor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileInstructor.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Profile/ProfileUser.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Profile/ProfileUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Settings/Settings.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Settings/Settings.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Static/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Footer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Static/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Header.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Static/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Static/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Search.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,14 +97,14 @@
       <scripts>
         <script value="start" />
       </scripts>
-      <node-interpreter value="project" />
+      <node-interpreter value="$USER_HOME$/.nvm/versions/node/v20.19.2/bin/node" />
       <envs />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="npm.build" />
         <item itemvalue="npm.start" />
+        <item itemvalue="npm.build" />
       </list>
     </recent_temporary>
   </component>
@@ -107,7 +121,11 @@
       <workItem from="1738733981259" duration="17056000" />
       <workItem from="1741252289122" duration="1180000" />
       <workItem from="1744916431681" duration="560000" />
-      <workItem from="1744917144314" duration="53426000" />
+      <workItem from="1744917144314" duration="66201000" />
+      <workItem from="1750234009362" duration="7027000" />
+      <workItem from="1755620765678" duration="1206000" />
+      <workItem from="1755832414718" duration="598000" />
+      <workItem from="1759171880788" duration="14537000" />
     </task>
     <servers />
   </component>

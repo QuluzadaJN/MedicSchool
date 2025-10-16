@@ -39,7 +39,7 @@ import GenericNotFound from '../component/GenericNotFound/GenericNotFound';
 import CoursesByCategory from '../Courses/CoursesByCategory';
 import CoursesByFilter from '../Courses/CoursesByFilter';
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 
 import "./Header.css";
 
@@ -90,7 +90,7 @@ export default function Header({showRegParam, setShowRegParam, showLogin, setSho
 
     const getCategories = async () => {
         try {
-            const resp = await authAPI.getAllCategories();
+            const resp = await universalAPI.getAllCategories();
             setCategories(resp)
         } catch (err) {
             toast.error(err?.response?.data?.errors?.[0].defaultMessage)

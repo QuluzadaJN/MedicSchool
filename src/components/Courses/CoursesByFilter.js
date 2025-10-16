@@ -10,7 +10,7 @@ import Courses from "../Courses/Courses";
 import Loader from "../component/Loader";
 import CoursePagination from "../component/CoursePagination";
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 
 export default function CoursesByFilter() {
     const { t } = useTranslation();
@@ -22,7 +22,7 @@ export default function CoursesByFilter() {
     const getCourses = async () => {
         try {
             const filter = courseId;
-            const res = await authAPI.getAllByFilter({ page, filter })
+            const res = await universalAPI.getAllByFilter({ page, filter })
             if (res.status === 'OK') {
                 setData({ courses: res?.body?.items, totalPage: res?.body.totalPages })
             } else {

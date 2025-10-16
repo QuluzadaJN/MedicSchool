@@ -9,7 +9,7 @@ import linkedinIcon from '../../images/linkedin.svg';
 import internetIcon from '../../images/internet.svg';
 import instagramIcon from '../../images/instagram.svg';
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 import Loader from '../component/Loader';
 
 import './CourseDetailNotTaken.css';
@@ -58,7 +58,7 @@ export default function CourseDetailNotTaken({showRegParam, setShowRegParam, sho
     }
     const getCoursesById = async () => {
         try {
-            const resp = await authAPI.getCourseById(courseId);
+            const resp = await universalAPI.getCourseById(courseId);
             if (resp.status === 'OK') {
                 setCourse(resp);
 
@@ -106,7 +106,7 @@ export default function CourseDetailNotTaken({showRegParam, setShowRegParam, sho
             };
 
             try {
-                const resp = await authAPI.postPurchaseCourse(model);
+                const resp = await universalAPI.postPurchaseCourse(model);
                 if (resp.status === 'OK') {
                     debugger
                     const orderId = resp.body.order.id;
@@ -130,7 +130,7 @@ export default function CourseDetailNotTaken({showRegParam, setShowRegParam, sho
 
     const handleCheckPurchase = async (orderId) => {
         try {
-            const resp = await authAPI.postCheckPayment({ orderId });
+            const resp = await universalAPI.postCheckPayment({ orderId });
             if (resp.status === 'OK') {
                 navigate(`/content/byCourse/${courseId}`);
                 localStorage.removeItem("orderId");

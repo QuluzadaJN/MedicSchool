@@ -7,7 +7,7 @@ import Courses from "../Courses/Courses";
 import Loader from "../component/Loader";
 import CoursePagination from "../component/CoursePagination";
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 
 export default function Search({ ...props }) {
     const { t } = useTranslation();
@@ -17,7 +17,7 @@ export default function Search({ ...props }) {
 
     const handleSearchByFilter = async () => {
         try {
-            const resp = await authAPI.getSearchByName(props.searchParam);
+            const resp = await universalAPI.getSearchByName(props.searchParam);
             if (resp.status === 'OK') {
                 setData({ courses: resp?.body?.items, totalPage: resp?.body.totalPages })
             } else {

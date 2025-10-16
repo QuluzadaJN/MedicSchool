@@ -10,7 +10,7 @@ import Courses from "../Courses/Courses";
 import Loader from "../component/Loader";
 import CoursePagination from "../component/CoursePagination";
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 import {useDispatch, useSelector} from "react-redux";
 import {useLogoutMutation} from "../../api/usersApiSlice";
 import {logOut} from "../../store/authSlice";
@@ -40,7 +40,7 @@ export default function CoursesContainer() {
     }
     const getClientCourses = async () => {
         try {
-            const res = await authAPI.getClientCourses(page)
+            const res = await universalAPI.getClientCourses(page)
             if (res.status === 'OK') {
                 setData({ courses: res?.body?.items, totalPage: Math.ceil((res?.body?.items.length) / 6) })
             } else {
@@ -55,7 +55,7 @@ export default function CoursesContainer() {
     const handleFilter = async (val) => {
         try {
             const filter = val;
-            const res = await authAPI.getAllByFilter({ page, filter })
+            const res = await universalAPI.getAllByFilter({ page, filter })
             if (res.status === 'OK') {
                 setData({ courses: res?.body?.items, totalPage: res?.body.totalPages })
             } else {

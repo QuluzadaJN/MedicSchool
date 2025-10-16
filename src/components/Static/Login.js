@@ -10,7 +10,7 @@ import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props
 import { toast } from 'react-toastify';
 import { useDispatch } from 'react-redux';
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 import { setCredentials } from '../../store/authSlice';
 import { useLoginMutation, useLoginWithGoogleMutation, useLoginWithFacebookMutation } from '../../api/usersApiSlice';
 
@@ -147,7 +147,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
         const phoneNumber = enteredRegValues.regPhone;
         if (!regNameIsInvalid && !regEmailIsInvalid && !regPasswordIsInvalid && !regPhoneIsInvalid) {
             try {
-                const resp = await authAPI.register({ email, fullName, password, phoneNumber });
+                const resp = await universalAPI.register({ email, fullName, password, phoneNumber });
                 if (resp.status === 'OK') {
                     setShowRegParam(false)
                 } else {
@@ -187,7 +187,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
         debugger
         if (showRegParam) {
             try {
-                const resp = await authAPI.registerWithGoogle({ email: respon.data.email, fullName: respon.data.name });
+                const resp = await universalAPI.registerWithGoogle({ email: respon.data.email, fullName: respon.data.name });
                 if (resp.status === 'OK') {
                     setShowRegParam(false)
                 } else {
@@ -219,7 +219,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
             try {
                 const redirectUri = `${window.location.origin}`
                 console.log(redirectUri)
-                const resp = await authAPI.registerWithFacebook({
+                const resp = await universalAPI.registerWithFacebook({
                     email: response.email,
                     fullName: response.name,
                     redirectUri:redirectUri

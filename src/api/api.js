@@ -9,7 +9,7 @@ const { userInfo } = store.getState().auth;
 
 const token = userInfo?.headers?.token?.[0];
 
-export const authAPI = {
+export const universalAPI = {
     registerWithGoogle({ email, fullName }) {
         return axios.post(`${BASE_URL}/auth/google/register?email=${email}&fullName=${fullName}`)
             .then(response => {
@@ -139,6 +139,20 @@ export const authAPI = {
 
     getCommentsByCourseId(courseId) {
         return axios.get(`${BASE_URL}/comment/byCourse/${courseId}`
+        ).then(response => {
+            if (response.status === 200) {
+                if (response.data.status === 'OK') {
+                    return response.data;
+                } else {
+                    toast.error(response.data.body);
+                }
+            }
+        }).catch(error => {
+            toast.error(error?.response?.data?.errors?.[0].defaultMessage);
+        })
+    },
+    getAllAboutUsPage() {
+        return axios.get(`${BASE_URL}/about/api/getAllForUser`
         ).then(response => {
             if (response.status === 200) {
                 if (response.data.status === 'OK') {

@@ -10,7 +10,7 @@ import { faCheck, faDownload } from '@fortawesome/free-solid-svg-icons';
 import Loader from '../component/Loader';
 import Rating from '../component/Rating/Rating';
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 
 import './CourseDetailTaken.css';
 import SeoHead from "../../utils/SEOHead/SEOHead";
@@ -21,6 +21,7 @@ import {useLogoutMutation} from "../../api/usersApiSlice";
 export default function CourseDetailTaken() {
     const { t } = useTranslation();
     const { id: courseId } = useParams();
+    debugger
     const [courses, setCourses] = useState([]);
     const [comments, setComments] = useState([]);
     const [activeKey, setActiveKey] = useState('');
@@ -51,10 +52,14 @@ export default function CourseDetailTaken() {
     const getCourseDetail = async () => {
         try {
             debugger
-            const resp = await authAPI.getAllByCourseId(courseId);
+            const resp = await universalAPI.getAllByCourseId(courseId);
             if (resp.status === 'OK') {
                 setCourses(resp)
-                setActiveKey(resp.body.items[0].id)
+                debugger
+                const minContentId = resp.body?.items?.reduce((minItem, current) =>
+                    current.sequency < minItem.sequency ? current : minItem
+                )?.id;
+                putProgress(minContentId)
             } else {
                 debugger
                 resp.status ==='FORBIDDEN' && logoutHandler()
@@ -67,7 +72,7 @@ export default function CourseDetailTaken() {
 
     const getCourseComments = async () => {
         try {
-            const res = await authAPI.getCommentsByCourseId(courseId);
+            const res = await universalAPI.getCommentsByCourseId(courseId);
             if (res.status === 'OK') {
                 setComments(res)
             } else {
@@ -80,7 +85,7 @@ export default function CourseDetailTaken() {
 
     const handleRateCourse = async (rating) => {
         try {
-            const resp = await authAPI.postSubmitRating({ courseId, rating });
+            const resp = await universalAPI.postSubmitRating({ courseId, rating });
             if (resp.status === 'OK') {
                 toast.success(resp.body);
             } else {
@@ -94,12 +99,15 @@ export default function CourseDetailTaken() {
     useEffect(() => {
         getCourseDetail();
         getCourseComments();
+        // setTimeout(()=>{
+        //     putProgress(courseId)
+        // },[500])
     }, [])
 
     const sendComment = async () => {
         if (commentInput !== "") {
             try {
-                const resp = await authAPI.postComment({ comment: commentInput, courseId });
+                const resp = await universalAPI.postComment({ comment: commentInput, courseId });
                 if (resp.status === 'OK') {
                     toast.success(resp.body);
                     ClearCommentInput();
@@ -115,7 +123,7 @@ export default function CourseDetailTaken() {
 
     const saveCertificateCourse = async () => {
         try {
-            const respon = await authAPI.getCourseCertificate(courseId);
+            const respon = await universalAPI.getCourseCertificate(courseId);
             if (respon.status === 'OK') {
                 const linkSource = `data:application/pdf;base64,${respon.body.content}`;
                 const downloadLink = document.createElement("a");
@@ -135,9 +143,9 @@ export default function CourseDetailTaken() {
         try {
             // console.log(courseId)
             // console.log(contentId)
-            // const responseCourseUpdateProgress = await authAPI.updateUserProgressOnCourse(courseId);
+            // const responseCourseUpdateProgress = await universalAPI.updateUserProgressOnCourse(courseId);
             // if (responseCourseUpdateProgress.status === 'OK') {
-                const response = await authAPI.updateUserProgressOnCourseContent(contentId);
+                const response = await universalAPI.updateUserProgressOnCourseContent(contentId);
                 if (response.status === 'OK') {
                     setSelectedContents(s => [...s, contentId]);
                 } else {
