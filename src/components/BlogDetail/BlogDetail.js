@@ -5,7 +5,7 @@ import { useTranslation } from 'react-i18next';
 import { Col, Row, Container } from 'react-bootstrap';
 import ReactHtmlParser from 'react-html-parser';
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 import Loader from '../component/Loader';
 
 import './BlogDetail.css';
@@ -20,7 +20,7 @@ export default function BlogDetail() {
 
     const getBlogById = async () => {
         try {
-            const resp = await authAPI.getBlogById(blogId);
+            const resp = await universalAPI.getBlogById(blogId);
             if (resp.status === 'OK') {
                 setBlog(resp);
             } else {

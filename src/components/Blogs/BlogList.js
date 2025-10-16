@@ -8,7 +8,7 @@ import Blogs from "./Blog";
 import Loader from "../component/Loader";
 import CoursePagination from "../component/CoursePagination";
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 import SeoHead from "../../utils/SEOHead/SEOHead";
 
 export default function CoursesContainer() {
@@ -19,7 +19,7 @@ export default function CoursesContainer() {
 
     const getBlogs = async () => {
         try {
-            const res = await authAPI.getBlogs(page)
+            const res = await universalAPI.getBlogs(page)
             if (res.status === 'OK') {
                 setData({ courses: res?.body?.items, totalPage: res?.body?.totalPages })
             } else {

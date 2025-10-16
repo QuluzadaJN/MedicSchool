@@ -7,7 +7,7 @@ import { Col, Container, Image, Row } from "react-bootstrap";
 import ClientCoursesContainer from './ClientCoursesContainer';
 import InterestedCourses from "../InterestedPart/InterestedCourses";
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 
 import "./ProfileInstructor.css"
 
@@ -17,7 +17,7 @@ export default function ProfileInstructor() {
 
     const getUserInfo = async () => {
         try {
-            const resp = await authAPI.getUserShortInfo();
+            const resp = await universalAPI.getUserShortInfo();
             setUserInfo(resp.body)
         } catch (err) {
             toast.error(err?.response?.data?.errors?.[0].defaultMessage)

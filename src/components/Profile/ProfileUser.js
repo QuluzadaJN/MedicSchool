@@ -9,7 +9,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 import ClientCoursesContainer from "./ClientCoursesContainer";
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 
 import "./ProfileUser.css"
 import {useDispatch, useSelector} from "react-redux";
@@ -39,7 +39,7 @@ export default function ProfileUser() {
     }
     const getUserInfo = async () => {
         try {
-            const resp = await authAPI.getUserShortInfo();
+            const resp = await universalAPI.getUserShortInfo();
             debugger
             if(resp.status === 'OK') {
                 debugger

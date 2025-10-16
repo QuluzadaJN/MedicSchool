@@ -7,7 +7,7 @@ import { Tab, Nav, Row, Col, Form, Button, Container } from 'react-bootstrap';
 import InterestedCourses from '../InterestedPart/InterestedCourses';
 import { isEmail, isNotEmpty, hasMinLength, isMatchPassword } from '../../utils/validation';
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 
 import './Settings.css';
 
@@ -53,7 +53,7 @@ export default function Settings() {
 
         if (!updateEmailIsInvalid && !updatePasswordIsInvalid) {
             try {
-                const res = await authAPI.updateEmail({ newEmail, oldPassword });
+                const res = await universalAPI.updateEmail({ newEmail, oldPassword });
                 if (res.status === 'OK') {
                     toast.success(res.body);
                 } else {
@@ -108,7 +108,7 @@ export default function Settings() {
 
         if (!updatePassPrevPasswordIsInvalid && !updatePassPasswordIsInvalid && !updatePassNewPasswordIsInvalid) {
             try {
-                const resp = await authAPI.updatePassword({ newPassword, oldPassword });
+                const resp = await universalAPI.updatePassword({ newPassword, oldPassword });
                 if (resp.status === 'OK') {
                     toast.success(resp.body);
                 } else {

@@ -10,7 +10,7 @@ import Courses from "../Courses/Courses";
 import Loader from "../component/Loader";
 import CoursePagination from "../component/CoursePagination";
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 
 export default function CoursesByCategory() {
     const { t } = useTranslation();
@@ -21,7 +21,7 @@ export default function CoursesByCategory() {
 
     const getCourses = async () => {
         try {
-            const resp = await authAPI.getAllByCategory(courseId);
+            const resp = await universalAPI.getAllByCategory(courseId);
             if (resp.status === 'OK') {
                 setData({ courses: resp?.body.items, totalPage: resp?.body.totalPages })
             } else {

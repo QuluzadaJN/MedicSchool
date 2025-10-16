@@ -1,13 +1,13 @@
 @font-face {
     font-family: "TT Hoves";
     font-weight: 400;
-    src: url("../../assets/fonts/TT-hoves/TT\ Hoves\ Pro\ Trial\ Regular.ttf") format("truetype");
+    src: url("../../assets/fonts/TT-hoves/TT Hoves Pro Trial Regular.ttf") format("truetype");
     font-display: swap;
 }
 
 @font-face {
     font-family: "TT Hoves Bold";
     font-weight: 400;
-    src: url("../../assets/fonts/TT-hoves/TT\ Hoves\ Pro\ Trial\ Medium.ttf") format("truetype");
+    src: url("../../assets/fonts/TT-hoves/TT Hoves Pro Trial Medium.ttf") format("truetype");
     font-display: swap;
 }

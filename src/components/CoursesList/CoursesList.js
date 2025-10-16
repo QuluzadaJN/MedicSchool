@@ -10,7 +10,7 @@ import Loader from "../component/Loader";
 import CoursePagination from "../component/CoursePagination";
 import InterestedCourses from '../InterestedPart/InterestedCourses';
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 
 import './CoursesList.css';
 import {useDispatch, useSelector} from "react-redux";
@@ -46,7 +46,7 @@ export default function CoursesList() {
     const getClientCourses = async () => {
         debugger
         try {
-            const res = await authAPI.getClientCourses(page)
+            const res = await universalAPI.getClientCourses(page)
             if (res.status === 'OK') {
                 debugger
                 console.log(res?.body?.items)
@@ -66,7 +66,7 @@ export default function CoursesList() {
     const handleFilter = async (val) => {
         try {
             const filter = val;
-            const res = await authAPI.getAllByFilter({ page, filter })
+            const res = await universalAPI.getAllByFilter({ page, filter })
             if (res.status === 'OK') {
                 setData({ courses: res?.body?.items, totalPage: Math.ceil((res?.body?.items.length) / 6) })
             } else {

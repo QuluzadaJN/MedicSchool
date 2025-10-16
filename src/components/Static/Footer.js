@@ -13,7 +13,7 @@ import whatsappIcon from "../../images/whatsapp-mini.svg";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 import Loader from '../component/Loader';
 
 import "./Footer.css";
@@ -34,7 +34,7 @@ export default function Footer() {
 
     const getCategories = async () => {
         try {
-            const resp = await authAPI.getAllCategories();
+            const resp = await universalAPI.getAllCategories();
             setCategories(resp)
         } catch (err) {
             toast.error(err?.response?.data?.errors?.[0].defaultMessage)

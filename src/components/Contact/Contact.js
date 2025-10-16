@@ -12,7 +12,7 @@ import whatsappIcon from "../../images/whatsapp-mini.svg";
 import InterestedCourses from '../InterestedPart/InterestedCourses';
 import { isEmail, isNotEmpty, hasMinLength } from '../../utils/validation';
 
-import { authAPI } from '../../api/api';
+import { universalAPI } from '../../api/api';
 
 import "./Contact.css";
 import SeoHead from "../../utils/SEOHead/SEOHead";
@@ -63,7 +63,7 @@ export default function Contact() {
 
         if (!contactEmailIsInvalid && !contactNameIsInvalid && !contactNoteIsInvalid) {
             try {
-                const res = await authAPI.postSubmitContactForm({ email, fullName, note });
+                const res = await universalAPI.postSubmitContactForm({ email, fullName, note });
                 if (res.status === 'OK') {
                     toast.success(res.body);
                     setEnteredContactValues({
