@@ -30,9 +30,6 @@ export default function Instructors({users}) {
                                 <span className="instructor-badge instructor-badge-danger me-2">
                                     {element.role}
                                 </span>
-                                {/*<span className="instructor-badge instructor-badge-danger">*/}
-                                {/*{element.instructorWorkplace}*/}
-                                {/*</span>*/}
                                 </div>
                                 <span className="mt-2 instructor-badge instructor-badge-info">
                                   {element.userPosition}
@@ -44,22 +41,6 @@ export default function Instructors({users}) {
                         </Row>
                     </Col>
                 ))}
-                {/*<Col sm={12} md={6}>*/}
-                {/*    <Row>*/}
-                {/*        <Col sm={12} md={4}>*/}
-                {/*            <Image className='about-instructor-img' src={instructorImage} />*/}
-                {/*        </Col>*/}
-                {/*        <Col sm={12} md={8}>*/}
-                {/*            <h3 className='instructor-name'>Mətin Mahmudov</h3>*/}
-                {/*            <div>*/}
-                {/*                <span className='instructor-badge instructor-badge-danger me-2'>DİREKTOR</span>*/}
-                {/*                <span className='instructor-badge instructor-badge-danger'>TƏSİSÇİ</span>*/}
-                {/*            </div>*/}
-                {/*            <span className='mt-2 instructor-badge instructor-badge-info'>BLS TƏLİMÇİ</span>*/}
-                {/*            <p className='mt-2 instructor-text'>AHA Coordinator, 10 il təcrübə asd . dasd k da dkjsa d    asjnd kjansd kda nsdknad   asmdn   çmd  das  sdad sjd ajhsd aksd</p>*/}
-                {/*        </Col>*/}
-                {/*    </Row>*/}
-                {/*</Col>*/}
 
             </Row>
         </div>
