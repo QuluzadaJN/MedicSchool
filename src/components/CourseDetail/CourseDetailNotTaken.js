@@ -18,6 +18,7 @@ import SeoHead from "../../utils/SEOHead/SEOHead";
 import {useLogoutMutation} from "../../api/usersApiSlice";
 import {useDispatch, useSelector} from "react-redux";
 import {logOut} from "../../store/authSlice";
+import ReactHtmlParser from "react-html-parser";
 
 export default function CourseDetailNotTaken({showRegParam, setShowRegParam, showLogin, setShowLogin}) {
     const { t } = useTranslation();
@@ -184,7 +185,7 @@ export default function CourseDetailNotTaken({showRegParam, setShowRegParam, sho
                                 Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris non condimentum mauris. Nam vulputate a dui at interdum. In rutrum mollis arcu nec consectetur.
                             </h4> */}
                                 <p className='detail-text my-4'>
-                                    {course.body.body}
+                                    {ReactHtmlParser(course.body.body)}
                                 </p>
                                 <Image className='course-coverPhoto' src={course.body.coverPhotoPath} />
                                 <h4 className='detail-title mt-5'>
@@ -252,19 +253,6 @@ export default function CourseDetailNotTaken({showRegParam, setShowRegParam, sho
                                     <h1 className='course-detail-price'>₼{course.body.price} AZN</h1>
                                 }
                                 <div className='p-relative'>
-                                    {/*<TooltipWrapper*/}
-                                    {/*    tooltipText={tooltipText}*/}
-                                    {/*    disabledCondition={!localStorage.getItem('userInfo')}*/}
-                                    {/*    placement="bottom"*/}
-                                    {/*>*/}
-                                    {/*    <button*/}
-                                    {/*        disabled={!localStorage.getItem('userInfo')}*/}
-                                    {/*        className="btn btn-primary detail-btn"*/}
-                                    {/*        onClick={handlePurchaseCourse}*/}
-                                    {/*    >*/}
-                                    {/*        {course.body.price > 0 ? t('actions.purchaseCourse') : t('actions.goToCourse')}*/}
-                                    {/*    </button>*/}
-                                    {/*</TooltipWrapper>*/}
                                     <TooltipWrapper
                                         tooltipText={tooltipText}
                                         disabledCondition={!localStorage.getItem('userInfo')}
