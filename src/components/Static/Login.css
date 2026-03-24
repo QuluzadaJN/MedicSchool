@@ -75,7 +75,8 @@
 
 .login-modal-form-btn {
     width: 100%;
-    background: #FF4330 !important;
+    /*background: #FF4330 !important;*/
+    background: #4b50ea !important;
     border-radius: 8px;
     border: none !important;
 }
@@ -93,7 +94,7 @@
     font-size: 15px;
     font-weight: 700;
     line-height: 17.67px;
-    color: #FF4330;
+    color: #4b50ea;
     cursor: pointer;
 }
 
