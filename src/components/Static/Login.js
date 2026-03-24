@@ -4,6 +4,7 @@ import { useTranslation } from 'react-i18next';
 import { Button, Modal, Row, Col, Image } from 'react-bootstrap';
 import { useGoogleLogin } from '@react-oauth/google';
 // import FacebookLogin from 'react-facebook-login';
+import LogoImage from "../../images/logo sv.svg";
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 
@@ -260,7 +261,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
                     <Col sm={12} md={7} className='ps-0'>
                         <div className='text-center login-modal-body-inner'>
                             <div className='login-bg-white px-4'>
-                                <Image src={LogoRedImage} className='login-modal-logo m-auto' />
+                                <Image src={LogoImage} className='login-modal-logo m-auto' />
                                 <FacebookLogin
                                     appId="797206392291276"
                                     fields="name,email,picture"

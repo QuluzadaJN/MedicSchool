@@ -22,7 +22,6 @@ function App() {
               setShowRegParam={setShowRegParam}
               showLogin={showLogin}
               setShowLogin={setShowLogin} />
-
       <ToastContainer />
       <Footer />
     </div>
