@@ -52,7 +52,7 @@ export default function CoursesContainer() {
                         <Row className='align-items-center my-4'>
                             <Col sm={12}>
                                 <h2 className='coursesDetail-header'>{t('blog.header')}</h2>
-                                <p className='coursesDetail-text'>{t('blog.text')}</p>
+                                {/*<p className='coursesDetail-text'>{t('blog.text')}</p>*/}
                             </Col>
                         </Row>
                         <div>

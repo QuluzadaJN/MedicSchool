@@ -42,6 +42,7 @@ import CoursesByFilter from '../Courses/CoursesByFilter';
 import { universalAPI } from '../../api/api';
 
 import "./Header.css";
+import ScrollToTop from "../component/ScrollToTop";
 
 export default function Header({showRegParam, setShowRegParam, showLogin, setShowLogin}) {
     // const [showRegParam, setShowRegParam] = useState(false);
@@ -96,7 +97,10 @@ export default function Header({showRegParam, setShowRegParam, showLogin, setSho
             toast.error(err?.response?.data?.errors?.[0].defaultMessage)
         }
     }
-
+    const [expanded, setExpanded] = useState(false);
+    const navClickHideMenu = ()=>{
+        document.querySelector('.navbar-collapse').classList.remove('show')
+    }
     const getSearchByName = (topicName) => {
         localStorage.removeItem('filterName');
         localStorage.setItem('topicName', topicName);
@@ -115,58 +119,70 @@ export default function Header({showRegParam, setShowRegParam, showLogin, setSho
             <div>
                 <div className='header-bg'>
                     <Container>
-                        <Navbar expand="lg">
-                            <Container fluid className='position-static'>
+                        <Navbar expand="lg"
+                                collapseOnSelect
+                                expanded={expanded}
+                                onToggle={() => setExpanded(!expanded)}
+                        >
+                            <Container fluid >
                                 <Navbar.Toggle aria-controls="navbarScroll" />
                                 <Navbar.Brand href="/"><Image src={LogoImage} /></Navbar.Brand>
                                 <Navbar.Collapse id="navbarScroll">
-                                    <Nav
-                                        className="my-2 my-lg-0"
-                                        navbarScroll
+                                    <Nav className="my-2 my-lg-0" navbarScroll
                                     >
-                                        <NavDropdown title={t('menu.courses')} className='courses-dropdown position-static' id="navbarScrollingDropdown" onClick={getCategories}>
-                                            <Container className='d-flex nav-courses-flex'>
+                                        <NavDropdown title={t('menu.courses')} className='courses-dropdown' id="navbarScrollingDropdown" onClick={getCategories}>
+                                            <div className='d-flex nav-courses-flex'>
                                                 <div className='nav-courses-flex-left'>
-                                                    <h3 className="footer-title mb-3">{t('footerMenu.allCourses')} <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} /></h3>
+                                                    <h3 className="footer-title mb-3">{t('footerMenu.allCourses')}
+                                                        <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} />
+                                                    </h3>
                                                     {categories ? categories?.body?.items?.map((cat) => {
                                                         return (
-                                                            <NavDropdown.Item className='footer-listItem ps-0' href={`/courses/category/${cat.id}`} key={cat.id}>{cat.name}</NavDropdown.Item>
+                                                            <NavDropdown.Item className='footer-listItem ps-0 '
+                                                                              onClick={() => setExpanded(false)}
+                                                                              href={`/courses/category/${cat.id}`} key={cat.id}>{cat.name}
+                                                            </NavDropdown.Item>
                                                         )
                                                     }) : <Loader />}
                                                 </div>
                                                 <div className='nav-courses-flex-right'>
-                                                    <h3 className="footer-title mb-3">{t('footerMenu.myCourses')} <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} /></h3>
+                                                    <h3 className="footer-title mb-3">{t('footerMenu.myCourses')}
+                                                        <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} />
+                                                    </h3>
                                                     <NavDropdown.Item className='footer-listItem ps-0' value="" href="/courses">{t('footerMenu.myCourses')}</NavDropdown.Item>
                                                     {filterArray.map((filter, index) => (
-                                                        <NavDropdown.Item href={`/courses/${filter.name}`} className='footer-listItem ps-0' key={index} value={filter.name}>{filter.text}</NavDropdown.Item>
+                                                        <NavDropdown.Item href={`/courses/${filter.name}`}
+                                                                          onClick={() => setExpanded(false)}
+                                                                          className='footer-listItem ps-0' key={index} value={filter.name}>{filter.text}
+                                                        </NavDropdown.Item>
                                                     ))}
                                                 </div>
-                                            </Container>
+                                            </div>
                                         </NavDropdown>
-                                        <Nav.Link as={Link} activeClassName="active" to={'/blogs'}>{t('menu.blogs')}</Nav.Link>
-                                        <Nav.Link as={Link} activeClassName="active" to={'/about'}>{t('menu.about')}</Nav.Link>
-                                        <Nav.Link as={Link} activeClassName="active" to={'/contact'}>{t('menu.contact')}</Nav.Link>
+                                        <Nav.Link as={Link}  onClick={() => setExpanded(false)} activeClassName="active" to={'/blogs'}>{t('menu.blogs')}</Nav.Link>
+                                        <Nav.Link as={Link}  onClick={() => setExpanded(false)} activeClassName="active" to={'/about'}>{t('menu.about')}</Nav.Link>
+                                        <Nav.Link as={Link}  onClick={() => setExpanded(false)} activeClassName="active" to={'/contact'}>{t('menu.contact')}</Nav.Link>
                                         {userInfo?.status === 'OK' &&
                                             <>
                                                 <Nav.Link as={Link} activeClassName="active" to={'/myCourses'}>{t('menu.myCourses')}</Nav.Link>
                                                 <NavDropdown className='profil-dropdown' title="Profilim" id="navbarScrollingDropdown">
-                                                    <NavDropdown.Item href="/profileUser">
+                                                    <NavDropdown.Item  onClick={() => setExpanded(false)} href="/profileUser">
                                                         <FontAwesomeIcon className='me-3' icon={faUser} />
                                                         {t('menu.profil')}
                                                     </NavDropdown.Item>
-                                                    <NavDropdown.Item href="/myCourses">
+                                                    <NavDropdown.Item  onClick={() => setExpanded(false)} href="/myCourses">
                                                         <FontAwesomeIcon className='me-3' icon={faBookmark} />
                                                         {t('menu.myCourses')}
                                                     </NavDropdown.Item>
-                                                    <NavDropdown.Item href="/settings">
+                                                    <NavDropdown.Item  onClick={() => setExpanded(false)} href="/settings">
                                                         <FontAwesomeIcon className='me-3' icon={faGear} />
                                                         {t('menu.settings')}
                                                     </NavDropdown.Item>
-                                                    <NavDropdown.Item href="/healthcare">
+                                                    <NavDropdown.Item  onClick={() => setExpanded(false)} href="/healthcare">
                                                         <FontAwesomeIcon className='me-3' icon={faComment} />
                                                         {t('menu.beHealthy')}
                                                     </NavDropdown.Item>
-                                                    <NavDropdown.Item href="/contact">
+                                                    <NavDropdown.Item  onClick={() => setExpanded(false)} href="/contact">
                                                         <FontAwesomeIcon className='me-3' icon={faCircleQuestion} />
                                                         {t('menu.contact')}
                                                     </NavDropdown.Item>
@@ -224,6 +240,7 @@ export default function Header({showRegParam, setShowRegParam, showLogin, setSho
                     &nbsp;
                 </div>
                 <div>
+                    <ScrollToTop />
                     <Routes>
                         {/* <Switch> */}
                         <Route path="/" element={<HomePage />} />

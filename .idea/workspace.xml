@@ -5,10 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="b90f0982-5cc0-42ed-a22d-ebed67b527c0" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/images/logo sv.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/component/ScrollToTop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/components/Static/Login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/assets/locales/i18n.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/assets/locales/i18n.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/About/About.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/About/About.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Blogs/BlogList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Blogs/BlogList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Static/Footer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Footer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Static/Header.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Header.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/Static/Header.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Header.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Static/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Static/Login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -110,7 +115,8 @@
       <workItem from="1764175823820" duration="772000" />
       <workItem from="1771028179584" duration="2383000" />
       <workItem from="1771474223955" duration="590000" />
-      <workItem from="1774322168510" duration="1634000" />
+      <workItem from="1774322168510" duration="2423000" />
+      <workItem from="1775706991439" duration="10087000" />
     </task>
     <servers />
   </component>
