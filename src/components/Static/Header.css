@@ -273,6 +273,10 @@
         padding: 12px 40px;
         z-index: 20;
     }
+    .courses-dropdown .dropdown-menu {
+        position: absolute !important;
+        top: 100% !important;
+    }
 
     .navbar-collapse .nav-link {
         text-transform: uppercase;
@@ -312,16 +316,34 @@
         color: #fff!important;
         padding-left: 0;
     }
+
 }
 
 @media screen and (max-width: 400px) {
     .navbar-collapse {
         position: fixed;
         background: #232323;
-        top: 128px;
+        top: 61px;
         left: 0;
         width: 100%;
         padding: 12px 40px;
         z-index: 20;
+    }
+    .nav-courses-flex {
+        flex-direction: column;
+    }
+    /*.courses-dropdown .dropdown-menu {*/
+    /*    position: absolute !important;*/
+    /*    top: 100% !important;*/
+    /*    width: 100%;*/
+    /*    !*max-height: 300px; !* istədiyin hündürlük *!*!*/
+    /*    overflow-y: auto;*/
+    /*    background: #232323; !* navbar rəngi ilə uyğun *!*/
+    /*    z-index: 999;*/
+    /*}*/
+    .courses-dropdown .dropdown-menu {
+        position: relative !important; /* absolute yox */
+        display: block !important;
+        width: 100%;
     }
 }

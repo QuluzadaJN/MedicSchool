@@ -80,21 +80,21 @@ export default function Footer() {
                             <p className='tab-input d-flex justify-content-between align-items-center'>
                                 <span>{t('footerMenu.forContact')}</span>
                                 <div>
-                                    <a className="socialMediaLinks" href="tel:+123456789">
+                                    <a className="socialMediaLinks" href="tel:+994507551135">
                                         <Image className="footer-icon" src={phoneIcon} />
                                     </a>
                                     <a className="socialMediaLinks" href="https://api.whatsapp.com/send?text=Salam MedicSchooldan müraciət edirəm&phone=994507551135" target="_blank" rel="noreferrer">
                                         <Image className="footer-icon" src={whatsappIcon} />
                                     </a>
                                     <a className="socialMediaLinks" href="https://www.facebook.com/medicschool/" target="_blank" rel="noreferrer">
-                                        <Image className="footer-icon" src={facebookIcon} />
+                                        <Image className="footer-icon" src={facebookIcon} />navbar-collapse
                                     </a>
                                     <a className="socialMediaLinks" href="https://instagram.com/medicschool.az" target="_blank" rel="noreferrer">
                                         <Image className="footer-icon" src={instagramIcon} />
                                     </a>
-                                    <a className="socialMediaLinks" href="https://www.tiktok.com/@medicschool?_t=8bJvqOVQpIw&_r=1" target="_blank" rel="noreferrer">
-                                        <Image className="footer-icon" src={tiktokIcon} />
-                                    </a>
+                                    {/*<a className="socialMediaLinks" href="https://www.tiktok.com/@medicschool?_t=8bJvqOVQpIw&_r=1" target="_blank" rel="noreferrer">*/}
+                                    {/*    <Image className="footer-icon" src={tiktokIcon} />*/}
+                                    {/*</a>*/}
                                     <a className="socialMediaLinks" href="https://www.youtube.com/c/medicschool" target="_blank" rel="noreferrer">
                                         <Image className="footer-icon" src={youtubeIcon} />
                                     </a>

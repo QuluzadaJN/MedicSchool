@@ -175,6 +175,7 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
                     if (response.status === 200) {
                         authWGoogleApi(response);
                     } else {
+                        debugger
                         toast.error(response.body)
                     }
                 })
@@ -252,7 +253,12 @@ export default function Login({ setShowRegParam, showRegParam, setShowLogin, ...
     }
 
     return (
-        <Modal show={props.show} setShowRegParam={props.setShowRegParam} showRegParam={props.showRegParam} onHide={props.close} size="lg" className='login-modal'>
+        <Modal show={props.show}
+               setShowRegParam={props.setShowRegParam}
+               showRegParam={props.showRegParam}
+               onHide={props.close}
+               size="lg"
+               className='login-modal'>
             <Modal.Body className='login-modal-body'>
                 <Row>
                     <Col md={5} className='login-sm-none pe-0'>

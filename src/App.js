@@ -7,6 +7,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import './assets/fonts/fonts.css';
 import './App.css';
 import {useState} from "react";
+import ScrollToTop from "./components/component/ScrollToTop";
 
 function App() {
   if (!cookies.get("Authorization")) {
@@ -17,7 +18,8 @@ function App() {
     const [showLogin, setShowLogin] = useState(false);
   return (
     <div>
-      <HeaderTop />
+      {/*<HeaderTop />*/}
+
       <Header showRegParam={showRegParam}
               setShowRegParam={setShowRegParam}
               showLogin={showLogin}

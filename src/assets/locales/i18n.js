@@ -315,7 +315,7 @@ i18n
                         course: "Kurs tapılmadı",
                     },
                     blog: {
-                        header: "MedicSchool Bloqları",
+                        header: "Bloq",
                         text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus rutrum fringilla lorem hendrerit mollis. Aliquam venenatis dolor sit amet velit facilisis consectetur.",
                     },
                 }
