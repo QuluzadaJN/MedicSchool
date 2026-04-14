@@ -1,0 +1,16 @@
+.slideCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;   /* slaydın hündürlüyünü tam tutmaq üçün */
+}
+.partnorImg {
+    max-width: 100%;
+    max-height: 150px; /* istəyə görə ölçünü məhdudlaşdır */
+    object-fit: contain;
+}
+.swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
