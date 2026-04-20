@@ -176,7 +176,7 @@ export default function Header({showRegParam, setShowRegParam, showLogin, setSho
                                                     </NavDropdown.Item>
                                                     <NavDropdown.Item  onClick={() => setExpanded(false)} href="/settings">
                                                         <FontAwesomeIcon className='me-3' icon={faGear} />
-                                                        {t('menu.settings')}
+                                                        {t('menu.settings')}courses-dropdown
                                                     </NavDropdown.Item>
                                                     <NavDropdown.Item  onClick={() => setExpanded(false)} href="/healthcare">
                                                         <FontAwesomeIcon className='me-3' icon={faComment} />
