@@ -20,7 +20,7 @@ i18n
                     menu: {
                         courses: "Courses",
                         about: "About",
-                        blogs: "Blogs",
+                        blogs: "Blog",
                         contact: "Contact",
                         search: "Search",
                         profil: "View profile",
@@ -171,7 +171,7 @@ i18n
                 translation: {
                     menu: {
                         courses: "Kurslar",
-                        blogs: "Bloqlar",
+                        blogs: "Bloq",
                         about: "Haqqımızda",
                         contact: "Əlaqə",
                         search: "Axtarış",
@@ -260,7 +260,7 @@ i18n
                         contents: "Contents",
                         comments: "Şərhlər",
                         courseContent: "KURSUN MƏZMUNU",
-                        containerText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec fermentum massa sit amet porta efficitur.",
+                        containerText: "",
                         notStarted: "Bu kursa hələ başlamamısınız",
                         myCourses: "KURSLARIM",
                     },

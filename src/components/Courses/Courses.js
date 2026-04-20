@@ -8,6 +8,7 @@ import { faCartShopping, faStar, faUser } from "@fortawesome/free-solid-svg-icon
 import './Courses.css';
 import SeoHead from "../../utils/SEOHead/SEOHead";
 import React from "react";
+import ReactHtmlParser from "react-html-parser";
 
 function Courses({ id, img, topic, instructorName, body, soldCount, rating, price,discountedPrice, purchased }) {
     const { t } = useTranslation();
@@ -30,7 +31,7 @@ function Courses({ id, img, topic, instructorName, body, soldCount, rating, pric
                         <Card.Title className="courses-header px-4">{topic}</Card.Title>
                         <h6 className="courses-author px-4">{instructorName}</h6>
                         <Card.Text className="courses-text px-4 text-truncate">
-                            {body}
+                            {/*{ReactHtmlParser(course.body.body)}*/}
                         </Card.Text>
                         <div className="courses-rating d-flex align-items-center px-4">
                             {soldCount != null && <p className="me-3"><FontAwesomeIcon icon={faUser} /> <span>{soldCount}</span></p>}

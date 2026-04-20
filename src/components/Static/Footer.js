@@ -87,7 +87,7 @@ export default function Footer() {
                                         <Image className="footer-icon" src={whatsappIcon} />
                                     </a>
                                     <a className="socialMediaLinks" href="https://www.facebook.com/medicschool/" target="_blank" rel="noreferrer">
-                                        <Image className="footer-icon" src={facebookIcon} />navbar-collapse
+                                        <Image className="footer-icon" src={facebookIcon} />
                                     </a>
                                     <a className="socialMediaLinks" href="https://instagram.com/medicschool.az" target="_blank" rel="noreferrer">
                                         <Image className="footer-icon" src={instagramIcon} />
