@@ -1,5 +1,5 @@
 import { toast } from 'react-toastify';
-import { useEffect, useState } from 'react';
+import {useEffect, useRef, useState} from 'react';
 import LogoImage from "../../images/Logo.png";
 import { useTranslation } from 'react-i18next';
 import { logOut } from '../../store/authSlice';
@@ -98,14 +98,93 @@ export default function Header({showRegParam, setShowRegParam, showLogin, setSho
         }
     }
     const [expanded, setExpanded] = useState(false);
-    const navClickHideMenu = ()=>{
-        document.querySelector('.navbar-collapse').classList.remove('show')
-    }
+    useEffect(() => {
+        if (expanded) {
+            getCategories();
+        }
+    }, [expanded]);
+
+    // const navClickHideMenu = ()=>{
+    //     document.querySelector('.navbar-collapse').classList.remove('show')
+    // }
+    const navClickHideMenu = () => setExpanded(false);
     const getSearchByName = (topicName) => {
         localStorage.removeItem('filterName');
         localStorage.setItem('topicName', topicName);
     }
 
+    const navRef = useRef(null);
+    const collapseRef = useRef(null);
+
+    useEffect(() => {
+        function handlePointer(e) {
+            if (!expanded) return;
+
+            const navEl = navRef.current;
+            const collapseEl = collapseRef.current;
+            if (!collapseEl) return;
+
+            // click/touch Y
+            const clickY = (e.touches && e.touches[0]) ? e.touches[0].clientY : (e.clientY || 0);
+            const clickX = (e.touches && e.touches[0]) ? e.touches[0].clientX : (e.clientX || 0);
+
+            const collapseRect = collapseEl.getBoundingClientRect();
+            const navRect = navEl ? navEl.getBoundingClientRect() : null;
+
+            // 1) Əgər klik collapse və ya navbar içindədirsə, heç nə etmə
+            if ((navEl && navEl.contains(e.target)) || collapseEl.contains(e.target)) {
+                return;
+            }
+
+            // 2) elementFromPoint ilə vizual targetı yoxla (overlay və z-index problemlərinə qarşı)
+            const elemAtPoint = document.elementFromPoint(clickX, clickY);
+            if (elemAtPoint && (collapseEl.contains(elemAtPoint) || (navEl && navEl.contains(elemAtPoint)))) {
+                return;
+            }
+
+            // 3) Əgər klik collapse altındadırsa (yəni collapse bottom‑dan aşağıdır) bağla
+            if (clickY > collapseRect.bottom) {
+                setExpanded(false);
+                return;
+            }
+
+            // 4) Default: klik navbar xaricindədirsə bağla
+            setExpanded(false);
+        }
+
+        document.addEventListener('pointerdown', handlePointer, true);
+        // bəzi cihazlarda touchstart daha etibarlı olur
+        document.addEventListener('touchstart', handlePointer, true);
+
+        return () => {
+            document.removeEventListener('pointerdown', handlePointer, true);
+            document.removeEventListener('touchstart', handlePointer, true);
+        };
+    }, [expanded]);
+
+
+    const updateCollapseHeight = () => {
+        const collapseEl = collapseRef.current;
+        if (!collapseEl) return;
+        // scrollHeight collapse içindəki tam məzmun hündürlüyüdür
+        const h = collapseEl.scrollHeight;
+        // optional: CSS variable for backdrop top if you use it
+        collapseEl.style.setProperty('--collapse-height', `${h}px`);
+        // ensure max-height large enough
+        collapseEl.style.maxHeight = `calc(100vh - var(--navbar-height, 64px))`;
+    };
+
+
+    useEffect(() => {
+        // update on mount and when expanded changes
+        updateCollapseHeight();
+    }, [expanded, categories]); //
+    const [coursesOpen, setCoursesOpen] = useState(false);
+
+    // useEffect: navbar collapse bağlananda dropdown da bağlansın
+    useEffect(() => {
+        if (!expanded) setCoursesOpen(false);
+    }, [expanded]);
     return (
         <Router>
             <Login
@@ -117,9 +196,10 @@ export default function Header({showRegParam, setShowRegParam, showLogin, setSho
                     setShowLogin(false)
                 }} />
             <div>
-                <div className='header-bg'>
+                <header className='header-bg' ref={navRef}>
                     <Container>
-                        <Navbar expand="lg"
+                        <Navbar
+                                expand="lg"
                                 collapseOnSelect
                                 expanded={expanded}
                                 onToggle={() => setExpanded(!expanded)}
@@ -127,33 +207,95 @@ export default function Header({showRegParam, setShowRegParam, showLogin, setSho
                             <Container fluid >
                                 <Navbar.Toggle aria-controls="navbarScroll" />
                                 <Navbar.Brand href="/"><Image src={LogoImage} /></Navbar.Brand>
-                                <Navbar.Collapse id="navbarScroll">
+                                <Navbar.Collapse id="navbarScroll" ref={collapseRef}>
                                     <Nav className="my-2 my-lg-0" navbarScroll
                                     >
-                                        <NavDropdown title={t('menu.courses')} className='courses-dropdown' id="navbarScrollingDropdown" onClick={getCategories}>
+                                        {/*<NavDropdown title={t('menu.courses')} className='courses-dropdown' id="navbarScrollingDropdown" onClick={getCategories}>*/}
+                                        {/*    <div className='d-flex nav-courses-flex'>*/}
+                                        {/*        <div className='nav-courses-flex-left'>*/}
+                                        {/*            <h3 className="footer-title mb-3">{t('footerMenu.allCourses')}*/}
+                                        {/*                <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} />*/}
+                                        {/*            </h3>*/}
+                                        {/*            {categories ? categories?.body?.items?.map((cat) => {*/}
+                                        {/*                return (*/}
+                                        {/*                    <NavDropdown.Item className='footer-listItem ps-0 '*/}
+                                        {/*                                      onClick={() => setExpanded(false)}*/}
+                                        {/*                                      href={`/courses/category/${cat.id}`} key={cat.id}>{cat.name}*/}
+                                        {/*                    </NavDropdown.Item>*/}
+                                        {/*                )*/}
+                                        {/*            }) : <Loader />}*/}
+                                        {/*        </div>*/}
+                                        {/*        <div className='nav-courses-flex-right'>*/}
+                                        {/*            <h3 className="footer-title mb-3">{t('footerMenu.myCourses')}*/}
+                                        {/*                <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} />*/}
+                                        {/*            </h3>*/}
+                                        {/*            <NavDropdown.Item className='footer-listItem ps-0' value="" href="/courses">{t('footerMenu.myCourses')}</NavDropdown.Item>*/}
+                                        {/*            {filterArray.map((filter, index) => (*/}
+                                        {/*                <NavDropdown.Item href={`/courses/${filter.name}`}*/}
+                                        {/*                                  onClick={() => setExpanded(false)}*/}
+                                        {/*                                  className='footer-listItem ps-0' key={index} value={filter.name}>{filter.text}*/}
+                                        {/*                </NavDropdown.Item>*/}
+                                        {/*            ))}*/}
+                                        {/*        </div>*/}
+                                        {/*    </div>*/}
+                                        {/*</NavDropdown>*/}
+                                        <NavDropdown
+                                            className='courses-dropdown'
+                                            id="navbarScrollingDropdown"
+                                            show={coursesOpen}
+                                            onClick={() => {
+                                                // əgər kateqoriyalar hələ yüklənməyibsə, yüklə
+                                                if (!categories?.body) getCategories();
+                                            }}
+                                            onToggle={(nextShow) => {
+                                                setCoursesOpen(nextShow);
+                                                if (nextShow) setTimeout(updateCollapseHeight, 60);
+                                            }}
+                                            title={t('menu.courses')}
+                                        >
                                             <div className='d-flex nav-courses-flex'>
                                                 <div className='nav-courses-flex-left'>
                                                     <h3 className="footer-title mb-3">{t('footerMenu.allCourses')}
                                                         <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} />
                                                     </h3>
-                                                    {categories ? categories?.body?.items?.map((cat) => {
-                                                        return (
-                                                            <NavDropdown.Item className='footer-listItem ps-0 '
-                                                                              onClick={() => setExpanded(false)}
-                                                                              href={`/courses/category/${cat.id}`} key={cat.id}>{cat.name}
-                                                            </NavDropdown.Item>
-                                                        )
-                                                    }) : <Loader />}
+
+                                                    {categories?.body?.items?.length ? categories.body.items.map(cat => (
+                                                        <NavDropdown.Item
+                                                            as={Link}
+                                                            to={`/courses/category/${cat.id}`}
+                                                            key={cat.id}
+                                                            className='footer-listItem ps-0'
+                                                            onClick={() => { setCoursesOpen(false); setExpanded(false); }}
+                                                        >
+                                                            {cat.name}
+                                                        </NavDropdown.Item>
+                                                    )) : <Loader />}
                                                 </div>
+
                                                 <div className='nav-courses-flex-right'>
                                                     <h3 className="footer-title mb-3">{t('footerMenu.myCourses')}
                                                         <FontAwesomeIcon className="footer-arrowIcon" icon={faArrowRight} />
                                                     </h3>
-                                                    <NavDropdown.Item className='footer-listItem ps-0' value="" href="/courses">{t('footerMenu.myCourses')}</NavDropdown.Item>
+
+                                                    <NavDropdown.Item
+                                                        as={Link}
+                                                        to="/courses"
+                                                        className='footer-listItem ps-0'
+                                                        onClick={() => setExpanded(false)}
+                                                    >
+                                                        {t('footerMenu.myCourses')}
+                                                    </NavDropdown.Item>
+
                                                     {filterArray.map((filter, index) => (
-                                                        <NavDropdown.Item href={`/courses/${filter.name}`}
-                                                                          onClick={() => setExpanded(false)}
-                                                                          className='footer-listItem ps-0' key={index} value={filter.name}>{filter.text}
+                                                        <NavDropdown.Item
+                                                            as={Link}
+                                                            to={`/courses/${filter.name}`}
+                                                            onClick={() => setExpanded(false)}
+                                                            className='footer-listItem ps-0'
+                                                            key={index}
+                                                            value={filter.name}
+                                                        >
+                                                            {filter.text}
                                                         </NavDropdown.Item>
                                                     ))}
                                                 </div>
@@ -235,7 +377,7 @@ export default function Header({showRegParam, setShowRegParam, showLogin, setSho
                             </Container>
                         </Navbar>
                     </Container>
-                </div>
+                </header>
                 <div className="spacer">
                     &nbsp;
                 </div>
