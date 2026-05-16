@@ -320,32 +320,138 @@
     }
 
 }
-
-@media screen and (max-width: 400px) {
+@media screen and (max-width: 600px) {
+    /* collapse artıq content‑ə uyğun olacaq */
     .navbar-collapse {
         position: fixed;
         background: #232323;
-        top: 61px;
+        top: var(--navbar-height, 64px);
         left: 0;
         width: 100%;
-        padding: 12px 40px;
-        z-index: 20;
-    }
-    .nav-courses-flex {
-        flex-direction: column;
-    }
-    .courses-dropdown .dropdown-menu {
-        position: absolute !important;
-        top: 100% !important;
-        width: 100%;
-        /*max-height: 300px; !* istədiyin hündürlük *!*/
+        padding: 12px 20px;
+        z-index: 1060;
+        height: auto;
+        max-height: calc(100vh - var(--navbar-height, 64px));
         overflow-y: auto;
-        background: #232323; /* navbar rəngi ilə uyğun */
-        z-index: 999;
     }
+
+    /* Kurslar dropdown mobil üçün axında olsun */
+    .courses-dropdown .dropdown-menu {
+        position: static !important;   /* <- very important */
+        display: block;                /* collapse içində blok kimi göstər */
+        width: 100%;
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    /* Dropdown içi sütunları blok et */
+    .nav-courses-flex {
+        display: block;
+    }
+
+    /* Dropdown itemlər mobil üçün */
+    .courses-dropdown .dropdown-item {
+        color: #fff !important;
+        padding: 12px 0;
+        position: static !important;
+    }
+}
+/*!* Mobil üçün: .navbar-collapse overlay və dinamik top *!*/
+/*@media screen and (max-width: 600px) {*/
+/*    .navbar-collapse {*/
+/*        position: fixed;*/
+/*        background: #232323;*/
+/*        top: var(--navbar-height, 64px);   !* JS ilə təyin olunacaq; default 64px *!*/
+/*        left: 0;*/
+/*        width: 100%;*/
+/*        padding: 12px 20px;*/
+/*        z-index: 1050;*/
+/*        height: calc(100vh - var(--navbar-height, 64px));*/
+/*        overflow-y: auto;*/
+/*        transition: transform 180ms ease, opacity 180ms ease;*/
+/*        transform-origin: top;*/
+/*    }*/
+
+/*    !* Başlanğıcda bağlanmış halda menyunu yuxarı gizlətmək üçün (istəyə görə) *!*/
+/*    .navbar-collapse:not(.show) {*/
+/*        opacity: 0;*/
+/*        pointer-events: none;*/
+/*        transform: translateY(-6px);*/
+/*    }*/
+/*    .navbar-collapse.show {*/
+/*        opacity: 1;*/
+/*        pointer-events: auto;*/
+/*        transform: translateY(0);*/
+/*    }*/
+
+/*    !* Dropdown menyuların collapse içində düzgün axması üçün *!*/
+/*    .courses-dropdown .dropdown-menu {*/
+/*        position: static !important;*/
+/*        top: auto !important;*/
+/*        left: auto !important;*/
+/*        width: 100%;*/
+/*        background: transparent;*/
+/*        box-shadow: none;*/
+/*        padding: 0;*/
+/*    }*/
+
+/*    !* Dropdown içi sütunları blok halına gətir *!*/
+/*    .nav-courses-flex {*/
+/*        display: block;*/
+/*    }*/
+
+/*    !* Nav linklər mobil üçün *!*/
+/*    .navbar-collapse .nav-link {*/
+/*        color: #fff;*/
+/*        padding: 12px 0;*/
+/*    }*/
+/*}*/
+
+/*!* Kiçik ekranlar üçün əlavə incə tənzimləmə *!*/
+/*@media screen and (max-width: 400px) {*/
+/*    .navbar-collapse {*/
+/*        padding: 12px 16px;*/
+/*    }*/
+/*    .courses-dropdown .dropdown-menu {*/
+/*        overflow-y: auto;*/
+/*        max-height: calc(100vh - var(--navbar-height, 56px) - 40px);*/
+/*    }*/
+/*}*/
+
+/*@media screen and (max-width: 400px) {*/
+/*    .navbar-collapse {*/
+/*        padding: 12px 16px;*/
+/*    }*/
+/*    .courses-dropdown .dropdown-menu {*/
+/*        overflow-y: auto;*/
+/*        max-height: calc(100vh - var(--navbar-height, 56px) - 40px);*/
+/*    }*/
+    /*.navbar-collapse {*/
+    /*    position: fixed;*/
+    /*    background: #232323;*/
+    /*    top: 61px;*/
+    /*    left: 0;*/
+    /*    width: 100%;*/
+    /*    padding: 12px 40px;*/
+    /*    z-index: 20;*/
+    /*}*/
+    /*.nav-courses-flex {*/
+    /*    flex-direction: column;*/
+    /*}*/
+    /*.courses-dropdown .dropdown-menu {*/
+    /*    position: absolute !important;*/
+    /*    top: 100% !important;*/
+    /*    width: 100%;*/
+    /*    !*max-height: 300px; !* istədiyin hündürlük *!*!*/
+    /*    overflow-y: auto;*/
+    /*    background: #232323; !* navbar rəngi ilə uyğun *!*/
+    /*    z-index: 999;*/
+    /*}*/
     /*.courses-dropdown .dropdown-menu {*/
     /*    position: relative !important; !* absolute yox *!*/
     /*    display: block !important;*/
     /*    width: 100%;*/
     /*}*/
-}
+
+/*}*/
