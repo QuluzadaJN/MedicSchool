@@ -321,6 +321,9 @@
 
 }
 @media screen and (max-width: 600px) {
+    .container{
+        padding: 0px 20px !important;
+    }
     /* collapse artıq content‑ə uyğun olacaq */
     .navbar-collapse {
         position: fixed;
@@ -344,16 +347,12 @@
         box-shadow: none;
         padding: 0;
     }
-
-    /* Dropdown içi sütunları blok et */
     .nav-courses-flex {
         display: block;
     }
-
-    /* Dropdown itemlər mobil üçün */
     .courses-dropdown .dropdown-item {
         color: #fff !important;
-        padding: 12px 0;
+        /*padding: 12px 0;*/
         position: static !important;
     }
 }
