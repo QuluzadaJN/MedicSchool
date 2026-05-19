@@ -117,4 +117,8 @@
     .login-sm-none {
         display: none;
     }
+    .login-modal{
+        overflow-y: auto;
+    }
+
 }

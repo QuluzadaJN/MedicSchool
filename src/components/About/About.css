@@ -56,17 +56,24 @@
 }
 
 @media screen and (max-width: 600px) {
-    .about-header {
-        font-size: 52px;
-        line-height: 82px;
+    .about-header ,.about-section-header {
+        font-size: 2rem;
+        line-height: 2.5rem;
     }
-
-    .about-content {
-        font-size: 24px;
-        line-height: 32px;
+    .about-header{
+        padding-top: 1.2rem;
+    }
+    .about-content ,.about-text {
+        font-size: 1.5rem;
+        line-height: 2.2rem;
     }
 
     .about-section-header-wrapper {
         margin: 20px 0;
     }
+    .instructor-header, .instructor-name{
+        font-size: 1.6rem;
+        line-height: 0.5rem;
+    }
+
 }
